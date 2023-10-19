@@ -25,5 +25,5 @@ int	main() {
 
 /*
 ** compile with:
-** g++ -Wall -Werror -Wextra -Wno-useu -o SampleClassAtrFunc main.cpp Sample.class.cpp
+** g++ -Wall -Wextra -Werror -std=c++98 -o SampleClassAtrFunc main.cpp Sample.class.cpp
 */

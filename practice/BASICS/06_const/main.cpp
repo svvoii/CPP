@@ -25,5 +25,5 @@ int	main(void) {
 ** This is a good practice and it should be used as much as possible.
 **
 ** compile with:
-** g++ -Wall -Werror -Wextra -Wno-useu -o Const main.cpp Sample.class.cpp
+** g++ -Wall -Wextra -Werror -std=c++98 -o Const main.cpp Sample.class.cpp
 */

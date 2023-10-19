@@ -27,5 +27,5 @@ int	main(void) {
 ** is the preferred way to initialize.
 **
 ** compile with:
-** g++ -Wall -Werror -Wextra -Wno-useu -o InitList main.cpp Sample.class.cpp
+** g++ -Wall -Wextra -Werror -std=c++98 -o InitList main.cpp Sample.class.cpp
 */

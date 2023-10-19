@@ -26,5 +26,5 @@ int	main(void) {
 ** So, the instance of the class Sample will be destroyed by the destructor.
 **
 ** compile with:
-** g++ -Wall -Werror -Wextra -Wno-useu -o SampleClass 02_class_and_instance.cpp Sample.class.cpp
+** g++ -Wall -Wextra -Werror -std=c++98 -o SampleClass main.cpp Sample.class.cpp
 */

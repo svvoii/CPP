@@ -33,5 +33,5 @@ int	main(void) {
 ** for new line. So, introduction of 'endl' is a good practice.
 **
 ** compile with:
-** g++ -Wall -Werror -Wextra -Wno-used -o std_in_out 01_stdio_streams.cpp
+** g++ -Wall -Wextra -Werror -std=c++98 -o std_in_out 01_stdio_streams.cpp
 */

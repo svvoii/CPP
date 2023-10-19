@@ -33,5 +33,5 @@ int	main(void) {
 ** This is encapsulation in its simplest form.
 ** 
 ** Compile with:
-** g++ -Wall -Werror -Wextra -Wno-useu -o Encapsulation main.cpp Sample.class.cpp
+** g++ -Wall -Wextra -Werror -std=c++98 -o Encapsulation main.cpp Sample.class.cpp
 */

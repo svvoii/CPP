@@ -30,5 +30,5 @@ int		main(void) {
 ** the members of a `struct` are public by default.
 **
 ** Compile with:
-** g++ -Wall -Werror -Wextra -o ClassVsStruct main.cpp Sample.class.cpp
+** g++ -Wall -Wextra -Werror -std=c++98 -o ClassVsStruct main.cpp Sample.class.cpp
 */

@@ -57,5 +57,5 @@ int	main(void) {
 
 /*
 ** compile with:
-** g++ -Wall -Werror -Wextra -Wno-useu -o namespace 00_namespace.cpp
+** g++ -Wall -Wextra -Werror -std=c++98 -o namespace 00_namespace.cpp
 */

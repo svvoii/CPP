@@ -23,5 +23,5 @@ int	main() {
 ** to access the instance's attributes and methods/functions.
 **
 ** compile with:
-** g++ -Wall -Werror -Wextra -Wno-useu -o This main.cpp Sample.class.cpp
+** g++ -Wall -Wextra -Werror -std=c++98 -o This main.cpp Sample.class.cpp
 */
