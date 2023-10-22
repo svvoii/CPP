@@ -21,11 +21,11 @@ public:
 
 	std::map<std::string, float> const &getRates(void) const;
 
-	bool	verifyDate();
-	bool	verifyValue();
-	bool	verifyInputValue();
+	bool	isDateValid();
+	bool	isValueValid();
+	bool	isInputValueValid();
 	void	saveHistoricalData();
-	void	evaluateLine(std::string line);
+	void	parseLine(std::string line);
 	void	outputData();
 
 };

@@ -31,10 +31,10 @@ BitcoinExchange	&BitcoinExchange::operator=(BitcoinExchange const &rhs) {
 	return *this;
 }
 
-bool	BitcoinExchange::verifyDate() {
+bool	BitcoinExchange::isDateValid() {
 
-	unsigned int	index;
-	unsigned int	position;
+	size_t			index;
+	size_t			position;
 	std::string		year;
 	std::string		month;
 	std::string		day;
@@ -75,9 +75,9 @@ bool	BitcoinExchange::verifyDate() {
 	return true;
 }
 
-bool	BitcoinExchange::verifyValue() {
+bool	BitcoinExchange::isValueValid() {
 
-	unsigned int	index;
+	size_t	index;
 	
 	index = _value.find_first_not_of("0123456789.");
 	if (_value == "Value") {
@@ -95,9 +95,9 @@ bool	BitcoinExchange::verifyValue() {
 	return true;
 }
 
-bool	BitcoinExchange::verifyInputValue() {
+bool	BitcoinExchange::isInputValueValid() {
 
-	unsigned int	index;
+	size_t	index;
 
 	index = _value.find_first_not_of("0123456789.-");
 
@@ -140,7 +140,7 @@ void	BitcoinExchange::saveHistoricalData() {
 				position = line.find(",");
 				_date = line.substr(0, position);
 				_value = line.substr(position + 1, std::string::npos);
-				if (verifyDate() && verifyValue()) {
+				if (isDateValid() && isValueValid()) {
 					_ratesMap.insert(std::pair<std::string, float>(_date, std::stof(_value)));
 				}
 			}
@@ -154,10 +154,10 @@ void	BitcoinExchange::saveHistoricalData() {
 
 }
 
-void	BitcoinExchange::evaluateLine(std::string line) {
+void	BitcoinExchange::parseLine(std::string line) {
 
-	unsigned int	position = line.find("|");
-	float			result = 0;
+	size_t	position = line.find("|");
+	float	result = 0;
 
 	if (position == std::string::npos) {
 		std::cout << "Error: Input line is not in the correct format: [" << line << "]" << std::endl;
@@ -166,7 +166,7 @@ void	BitcoinExchange::evaluateLine(std::string line) {
 	_date = line.substr(0, position);
 	_value = line.substr(position + 1, std::string::npos);
 	_date.erase(std::remove_if(_date.begin(), _date.end(), ::isspace), _date.end());
-	if (verifyDate() == false || verifyInputValue() == false) {
+	if (isDateValid() == false || isInputValueValid() == false) {
 		std::cout << "Error: wrong input" << std::endl;
 		return ;
 	}
@@ -178,7 +178,30 @@ void	BitcoinExchange::evaluateLine(std::string line) {
 			std::cout << _date << " | " << _value << " BTC = " << result << " EUR" << std::endl;
 		}
 		else {
-
+			std::map<std::string, float>::iterator it;
+			it = this->_ratesMap.lower_bound(this->_date);
+			if (it == this->_ratesMap.begin()) {
+				std::cout << "Error: No data available befor this date" << std::endl;
+				return ;
+			}
+			else if (it == this->_ratesMap.end()) {
+				std::cout << "Error: No data available after this date" << std::endl;
+				return ;
+			}
+			else {
+				--it;
+				result = it->second * std::stof(_value);
+				std::cout << _date << " | " << _value << " BTC = " << result << " EUR" << std::endl;
+			}
 		}
+	}
+}
+
+void	BitcoinExchange::outputData() {
+
+	std::map<std::string, float>::iterator it;
+
+	for (it = this->_ratesMap.begin(); it != this->_ratesMap.end(); ++it) {
+		std::cout << it->first << " | " << it->second << std::endl;
 	}
 }
