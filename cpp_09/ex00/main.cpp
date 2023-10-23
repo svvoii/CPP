@@ -10,12 +10,37 @@
 
 #include "BitcoinExchange.hpp"
 
-int main()
+int main(int argc, char **argv)
 {
 	BitcoinExchange exchange;
 
-	exchange.saveHistoricalData();
-	exchange.outputData();
+	if (argc != 2) {
+		std::cout << "Error: could not open file." << std::endl;
+		return 1;
+	}
+	else {
+		exchange.saveHistoricalData();
+
+		std::string		line;
+		bool			firstLine = true;
+		std::ifstream	file(argv[1]);
+
+		if (file.is_open()) {
+			while (getline(file, line)) {
+				if (!firstLine && line.find_first_not_of("0123456789-,.|") != std::string::npos) {
+					exchange.parseLine(line);
+				}
+				firstLine = false;
+			}
+			file.close();
+		}
+		else {
+			std::cout << "Error: could not open file." << std::endl;
+			return 1;
+		}
+	}
+
+	//exchange.outputData();
 
 	return 0;
 }
