@@ -5,9 +5,21 @@
 			"name": "(GDB) Launch",
 			"type": "cppdbg",
 			"request": "launch",
-			"program": "${workspaceFolder}/cpp_09/ex00/btc",
+			// change this path to executable:
+			//"program": "${workspaceFolder}/cpp_09/ex00/btc",
+			"program": "${workspaceFolder}/cpp_09/ex01/RPN",
+			// change this path for input args:
 			"args": [
+				/* cpp_09/ex00: 
 				"${workspaceFolder}/cpp_09/ex00/input.txt"
+				*/
+				/* cpp_09/ex01:
+				"8 9 * 9 - 9 - 9 - 4 - 1 +"
+				"7 7 * 7 -"
+				"1 2 * 2 / 2 * 2 4 - +"
+				"(1 + 1)"
+				*/
+				"1 2 * 2 / 2 * 2 4 - +"
 			],
 			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}/cpp_09/ex00/",

@@ -5,9 +5,11 @@
 			"label": "Build with Makefile",
 			"type": "shell",
 			"command": "make",
+			// change this path to executable:
 			"args": [
 				"-C",
-				"${workspaceFolder}/cpp_09/ex00/"
+				//"${workspaceFolder}/cpp_09/ex00/"
+				"${workspaceFolder}/cpp_09/ex01/"
 			],
 			"group": {
 				"kind": "build",
@@ -17,7 +19,8 @@
 				"owner": "cpp",
 				"fileLocation": [
 					"relative",
-					"${workspaceFolder}/cpp_09/ex00/"
+					//"${workspaceFolder}/cpp_09/ex00/"
+					"${workspaceFolder}/cpp_09/ex01/"
 				],
 				"pattern": {
 					"regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",

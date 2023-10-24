@@ -4,10 +4,9 @@
 
 NAME = btc
 
-#CXX = c++
-#CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -g
-CXX = g++
-CXXFLAGS = -std=c++98 -g
+#CXX = g++
+CXX = c++
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -g
 
 SRCS = BitcoinExchange.cpp main.cpp
 OBJS = $(SRCS:.cpp=.o)
