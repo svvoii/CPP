@@ -63,6 +63,42 @@ int		main( void ) {
 	return 0;
 }
 
+/*
+** About iterators:
+** http://www.cplusplus.com/reference/iterator/
+**
+** `iterator` is an object that points to an element inside the container
+** (vector, list, map, etc.).
+** It is used to iterate through the elements of the container.
+**
+** `begin()` returns an iterator pointing to the first element of the container.
+** `end()` returns an iterator pointing to the element after the last element of it.
+** `++` increments the iterator to point to the next element.
+** `*` dereferences the iterator to access the element it points to.
+** `!=` compares two iterators.
+** `std::for_each` applies a function to each element of a container.
+** `std::mem_fun_ref` returns a function object that calls a member function
+** on its argument.
+** `std::mem_fun_ref( &Account::displayStatus )` returns a function object that
+** calls `Account::displayStatus` on its argument.
+**
+** In the given code excerpt, `dep_begin` and `dep_end` are iterators that point
+** to the first and last elements of the `deposits` vector, respectively.
+**
+** Similarly, `wit_begin` and `wit_end` are iterators that point to the first
+** and last elements of the `withdrawals` vector, respectively.
+**
+** The `acc_int_t` typedef is a pair of iterators, where the first iterator
+** points to an element of the `accounts` vector, and the second iterator points
+** to an element of the `deposits` or `withdrawals` vector.
+**
+** The `it` object is an instance of the `acc_int_t` pair, initialized with
+** `acc_begin` and `dep_begin` or `wit_begin`.
+**
+** The `for` loop iterates through the `accounts` vector, and either `deposits`
+** or `withdrawals` vector, depending on the `acc_int_t` instance.
+*/
+
 
 // ************************************************************************** //
 // vim: set ts=4 sw=4 tw=80 noexpandtab:                                      //

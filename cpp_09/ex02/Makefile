@@ -2,12 +2,13 @@
 # Author: sbocanci
 # Date: 23.10.2023
 
-NAME = RPN
+NAME = PmergeMe
 
+#CXX = c++
 CXX = g++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -g
 
-SRCS = main.cpp RPN.cpp
+SRCS = main.cpp PmergeMe.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 # this is called by default when you just type make

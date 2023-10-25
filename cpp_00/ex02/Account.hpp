@@ -16,6 +16,16 @@
 //                               Account Class                                //
 // ************************************************************************** //
 
+/*
+** This Account class definition provides a basic
+** scaffolding to model bank accounts in an 
+** object-oriented manner for C++ program.
+**
+** It focuses on declaring the class members
+** and methods that represent the key attributes
+** and behaviors of real-world bank accounts.
+*/
+
 class Account {
 
 
@@ -23,15 +33,27 @@ public:
 
 	typedef Account		t;
 
+	/* 
+	** These are static methods of the Account class.
+	** Each of them returns information about the accounts.
+	*/
 	static int	getNbAccounts( void );
 	static int	getTotalAmount( void );
 	static int	getNbDeposits( void );
 	static int	getNbWithdrawals( void );
 	static void	displayAccountsInfos( void );
 
+	/*
+	** These are the constructor and destructor
+	** of the Account class, respectively.
+	*/
 	Account( int initial_deposit );
 	~Account( void );
 
+	/* 
+	** These are public methods of the Account class
+	** Each of them performs an action on the account.
+	*/
 	void	makeDeposit( int deposit );
 	bool	makeWithdrawal( int withdrawal );
 	int		checkAmount( void ) const;
@@ -40,6 +62,11 @@ public:
 
 private:
 
+	/*
+	** These are private static attributes,
+	** which are used to keep track of the 
+	** collective information for all accounts.
+	*/
 	static int	_nbAccounts;
 	static int	_totalAmount;
 	static int	_totalNbDeposits;
@@ -47,6 +74,11 @@ private:
 
 	static void	_displayTimestamp( void );
 
+	/*
+	** These are private attributes,
+	** which are used to keep track of
+	** each account's information.
+	*/
 	int				_accountIndex;
 	int				_amount;
 	int				_nbDeposits;
@@ -55,6 +87,14 @@ private:
 	Account( void );
 
 };
+
+/*
+** The static members allow collecting data across 
+** all instances of the Account class.
+** 
+** The key logic flows are the deposit and withdrawal
+** methods, which safely update the account's balance.
+*/
 
 
 

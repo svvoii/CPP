@@ -26,28 +26,29 @@ int main(int argc, char **argv)
 	}
 	try
 	{
-		if (!isValidExpression(argv[1]))
+	
+	if (!isValidExpression(argv[1]))
 			throw std::runtime_error("Invalid expression");
-
-		RPNCalculator<int> calculator;
-		std::string input = argv[1];
-
-		for (int i = 0; input[i]; i++) {
-			if (isspace(input[i])) {
-				continue;
-			} else if (isInSet(input[i], "0123456789")) {
-				calculator.push(input[i] - '0');
-			} else if (isInSet(input[i], "+-*/")) {
-				calculator.performOperation(input[i]);
-			}
-		}
-		std::cout << calculator.result() << std::endl;
 	}
 	catch (std::exception &e)
 	{
 		std::cout << "Error: " << e.what() << std::endl;
 		return (1);
 	}	
+
+	RPNCalculator<int> calculator;
+	std::string input = argv[1];
+
+	for (int i = 0; input[i]; i++) {
+		if (isspace(input[i])) {
+			continue;
+		} else if (isInSet(input[i], "0123456789")) {
+			calculator.push(input[i] - '0');
+		} else if (isInSet(input[i], "+-*/")) {
+			calculator.performOperation(input[i]);
+		}
+	}
+	std::cout << calculator.result() << std::endl;
 
 	return (0);
 }

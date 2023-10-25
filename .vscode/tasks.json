@@ -1,15 +1,32 @@
+/*
+This config file is for VSCode to build with Makefile.
+
+Lookfor the line in .vscode/launch.json:
+	`"preLaunchTask": "Build with Makefile",`
+which means that VSCode will run this task first.
+
+This task will run `make` command in the folder with Makefile, 
+before running the program in debug mode.
+*/
 {
 	"version": "2.0.0",
 	"tasks": [
 		{
+			/*
+			***** !!!!!!!!!!!!!!! ***** 
+			Makefile have to compile with `g++` !! and `-g` flag 
+			to work properly with GDB (c++ or clang will NOT work) !!
+			Otherwise string variables wont be visible !!
+			***** !!!!!!!!!!!!!!! ***** 
+			*/
 			"label": "Build with Makefile",
 			"type": "shell",
 			"command": "make",
-			// change this path to executable:
+			// change this path to the folder with Makefile:
 			"args": [
-				"-C",
+				"-C", // is used to specify the directory with Makefile
 				//"${workspaceFolder}/cpp_09/ex00/"
-				"${workspaceFolder}/cpp_09/ex01/"
+				"${workspaceFolder}/cpp_00/ex02/"
 			],
 			"group": {
 				"kind": "build",
@@ -20,7 +37,7 @@
 				"fileLocation": [
 					"relative",
 					//"${workspaceFolder}/cpp_09/ex00/"
-					"${workspaceFolder}/cpp_09/ex01/"
+					"${workspaceFolder}/cpp_00/ex02/"
 				],
 				"pattern": {
 					"regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",

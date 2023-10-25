@@ -5,11 +5,14 @@
 			"name": "(GDB) Launch",
 			"type": "cppdbg",
 			"request": "launch",
-			// change this path to executable:
-			//"program": "${workspaceFolder}/cpp_09/ex00/btc",
+			/* change this path to executable:
+			"program": "${workspaceFolder}/cpp_09/ex00/btc",
 			"program": "${workspaceFolder}/cpp_09/ex01/RPN",
+			*/
+			"program": "${workspaceFolder}/cpp_00/ex02/Account",
 			// change this path for input args:
 			"args": [
+				/* cpp_00/ex02: NO input */
 				/* cpp_09/ex00: 
 				"${workspaceFolder}/cpp_09/ex00/input.txt"
 				*/
@@ -19,10 +22,9 @@
 				"1 2 * 2 / 2 * 2 4 - +"
 				"(1 + 1)"
 				*/
-				"1 2 * 2 / 2 * 2 4 - +"
 			],
-			"stopAtEntry": false,
-			"cwd": "${workspaceFolder}/cpp_09/ex00/",
+			"stopAtEntry": true,
+			"cwd": "${workspaceFolder}/cpp_00/ex02/",
 			"environment": [],
 			"externalConsole": false,
 			"MIMode": "gdb",
