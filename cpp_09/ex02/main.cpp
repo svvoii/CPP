@@ -44,11 +44,28 @@
 ** `Error`
 */
 
+int main(int argc, char **argv) {
 
-int main(int argc, char **argv)
-{
-	PmergeMe pmergeMe(argc, argv);
+	if (argc < 2) {
+		std::cout << "Error" << std::endl;
+		return 1;
+	}
+	PmergeMe pmergeMe;
 
-	pmergeMe.run();
-	return (0);
+	try
+	{
+		if (pmergeMe.isValidInput(argc, argv))
+		{
+			pmergeMe.sortVector();
+		}
+		else
+			std::cout << "Error" << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	
+
+	return 0;
 }

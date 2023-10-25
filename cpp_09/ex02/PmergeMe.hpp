@@ -1,9 +1,18 @@
 #ifndef PMERGEME_HPP
-#define PMERGEME_HPP
+# define PMERGEME_HPP
 
-#include <iostream>
+# include <iostream>
+# include <vector>
+# include <list>
+# include <algorithm>
+# include <ctime>
 
 class PmergeMe {
+
+	private:
+
+		std::vector<int>	_vector;
+		std::list<int>		_list;
 
 	public:
 
@@ -13,9 +22,9 @@ class PmergeMe {
 
 		PmergeMe &operator=(PmergeMe const & rhs);
 
-		void	sortVector(void);
-
-	private:
+		bool	isValidInput(int argc, char **argv);
+		void	sortVector(int argc, char **argv);
+		void	sortList(int argc, char **argv);
 
 };
 
