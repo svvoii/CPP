@@ -6,6 +6,7 @@
 # include <list>
 # include <algorithm>
 # include <ctime>
+# include <iterator>
 
 class PmergeMe {
 
@@ -22,7 +23,8 @@ class PmergeMe {
 
 		PmergeMe &operator=(PmergeMe const & rhs);
 
-		bool	isValidInput(int argc, char **argv);
+		bool	isValidInputString(int argc, char **argv);
+		bool	isValidNumSequence(int argc, char **argv);
 		void	sortVector(int argc, char **argv);
 		void	sortList(int argc, char **argv);
 

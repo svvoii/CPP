@@ -113,7 +113,7 @@ void	PmergeMe::sortVector(int argc, char **argv) {
 	std::vector<int>	unsorted;
 
 	for (int i = 1; i < argc; i++) {
-		unsorted.push_back(std::stoi(argv[i]));
+		unsorted.push_back(atoi(argv[i]));
 	}
 
 	std::cout << "Before: ";
@@ -133,23 +133,28 @@ void	PmergeMe::sortVector(int argc, char **argv) {
 	std::cout << " ~s" << std::endl;
 }
 
-std::list<int>	mergeInsertList(std::list<int>& lst) {
+std::list<int> mergeInsertList(std::list<int>& lst) {
 
 	if (lst.size() <= 1) {
 		return lst;
 	}
 
-	// dividing the list into two parts
-	int	middle = lst.size() / 2;
-	std::list<int>	first(lst.begin(), std::next(lst.begin(), middle));
-	std::list<int>	second(std::next(lst.begin(), middle), lst.end());
+	// Dividing the list into two parts
+	int middle = lst.size() / 2;
+	std::list<int>::iterator it = lst.begin();
+	std::advance(it, middle);
+	std::list<int> first(lst.begin(), it);
+	std::list<int> second(it, lst.end());
 
-	// sorting the two parts
+	// Recursively sort the two parts
 	first = mergeInsertList(first);
 	second = mergeInsertList(second);
 
-	// merging the two parts
-	return mergeList(first, second);
+	// Merge the two sorted parts
+	std::list<int> result;
+	std::merge(first.begin(), first.end(), second.begin(), second.end(), std::back_inserter(result));
+
+	return result;
 }
 
 void	PmergeMe::sortList(int argc, char **argv) {
@@ -157,7 +162,7 @@ void	PmergeMe::sortList(int argc, char **argv) {
 	std::list<int>	unsorted;
 
 	for (int i = 1; i < argc; i++) {
-		unsorted.push_back(std::stoi(argv[i]));
+		unsorted.push_back(atoi(argv[i]));
 	}
 
 	std::cout << "Before: ";
@@ -175,4 +180,32 @@ void	PmergeMe::sortList(int argc, char **argv) {
 	std::cout << "Time to process a range of " << argc - 1;
 	std::cout << " elements with std::list<int> : " << timeLapse;
 	std::cout << " ~s" << std::endl;
+}
+
+bool	PmergeMe::isValidInputString(int argc, char **argv) {
+
+	for (int i = 1; i < argc; i++) {
+		if (std::string(argv[i]).find_first_not_of("0123456789 ") != std::string::npos) {
+			return false;
+		}
+		if (atoi(argv[i]) < 0) {
+			return false;
+		}
+	}
+	return true;
+}
+
+bool	PmergeMe::isValidNumSequence(int argc, char **argv) {
+
+	int	num = 0;
+	std::vector<int>	numbers;
+
+	for (int i = 1; i < argc; i++) {
+		num = atoi(argv[i]);
+		if (std::find(numbers.begin(), numbers.end(), num) != numbers.end()) {
+			return false;
+		}
+		numbers.push_back(num);
+	}
+	return true;
 }

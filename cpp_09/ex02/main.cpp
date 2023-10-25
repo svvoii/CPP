@@ -47,25 +47,25 @@
 int main(int argc, char **argv) {
 
 	if (argc < 2) {
-		std::cout << "Error" << std::endl;
-		return 1;
+		std::cout << "Error: Usage: " << std::endl;
+		std::cout << "./PmergeMe 3 5 9 7 4" << std::endl;
+		return 0;
 	}
 	PmergeMe pmergeMe;
 
-	try
-	{
-		if (pmergeMe.isValidInput(argc, argv))
-		{
-			pmergeMe.sortVector();
+	try {
+		if (!pmergeMe.isValidInputString(argc, argv)) {
+			throw std::exception();
+		} else if (!pmergeMe.isValidNumSequence(argc, argv)) {
+			throw std::exception();
 		}
-		else
-			std::cout << "Error" << std::endl;
 	}
-	catch(const std::exception& e)
-	{
+	catch(const std::exception& e) {
 		std::cerr << e.what() << '\n';
 	}
 	
+	pmergeMe.sortVector(argc, argv);
+	pmergeMe.sortList(argc, argv);
 
 	return 0;
 }

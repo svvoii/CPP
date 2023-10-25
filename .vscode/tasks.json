@@ -26,7 +26,7 @@ before running the program in debug mode.
 			"args": [
 				"-C", // is used to specify the directory with Makefile
 				//"${workspaceFolder}/cpp_09/ex00/"
-				"${workspaceFolder}/cpp_00/ex02/"
+				"${workspaceFolder}/cpp_09/ex02/"
 			],
 			"group": {
 				"kind": "build",
@@ -37,7 +37,7 @@ before running the program in debug mode.
 				"fileLocation": [
 					"relative",
 					//"${workspaceFolder}/cpp_09/ex00/"
-					"${workspaceFolder}/cpp_00/ex02/"
+					"${workspaceFolder}/cpp_09/ex02/"
 				],
 				"pattern": {
 					"regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
