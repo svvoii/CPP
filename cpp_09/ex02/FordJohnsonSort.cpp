@@ -53,49 +53,56 @@ struct Task {
 };
 
 // Define a function to construct the graph for the Ford-Johnson algorithm
-vector<Task> constructGraph(vector<int>& sequence, vector<Task>& graph) {
+void constructGraph(const vector<int>& sequence, vector<Task>& graph) {
 
 	for (int i = 0; i < sequence.size(); i++) {
 
-		graph[i].value = sequence[i];
+		//graph[i].value = sequence[i];
+		graph.emplace_back(Task{sequence[i], {}});
+		graph[i].dependencies.reserve(i);
 
 		for (int j = 0; j < i; j++) {
 
 			if (sequence[j] < sequence[i]) {
-				graph[i].dependencies.push_back(j);
+				//graph[i].dependencies.push_back(j);
+				graph[i].dependencies.emplace_back(j);
 			}
 		}
+		/*
+		int dependency = std::distance(sequence.begin(), std::lower_bound(sequence.begin(), sequence.begin() + i, sequence[i]));
+		graph[i].dependencies.push_back(dependency);
+		*/
 	}
-	return graph;
 }
 
 // Define a function to find the longest path in the graph using the Bellman-Ford algorithm
 /*
 ** The Bellman-Ford algorithm is used to find the longest path in the graph.
 ** It works by assigning a weight to each task, 
-** which represents the time it takes to complete the task.
 **
-** The comparison condition is `dist[k] + graph[k].value > dist[i]`.
-** The weight is `graph[k].value`.
-** `i` is the index of the task that comes after the task `k`.
-** `dist[i]` is the weight of the task `i`.
-** `dist[k]` is the weight of the task `k`.
-** `k` is the index of the task that comes before the task `i`.
+** The flow:
+** Setting of the first task in the graph to 0.
+** Iterating over each task in the graph.
+** For each task, iterates through all its dependencies. 
+** For each dependency, calculates the distance to the
+** current task by adding 1 to the distance of the dependency.
+** If the calculated distance is greater than the current distance
+** of the task, then the distance of the task is updated to the 
+** calculated distance.
 */
 void findLongestPath(vector<Task>& graph, vector<int>& dist) {
 
 	dist[0] = 0;
 	for (int i = 0; i < graph.size(); i++) {
 		for (int j = 0; j < graph[i].dependencies.size(); j++) {
-			int k = graph[i].dependencies[j];
-			if (dist[k] + 1 > dist[i]) {
-				dist[i] = dist[k] + 1;
+
+			int dependency = graph[i].dependencies[j];
+			int weight = i;
+
+			if (dist[dependency] + 1 > dist[weight]) {
+				dist[weight] = dist[dependency] + 1;
 			}
-			/*
-			if (dist[k] + graph[k].value > dist[i]) {
-				dist[i] = dist[k] + graph[k].value;
-			}
-			*/
+			//dist[weight] = std::max(dist[weight], dist[dependency] + 1);
 		}
 	}
 }
@@ -106,30 +113,30 @@ void findLongestPath(vector<Task>& graph, vector<int>& dist) {
 ** The first element of the pair is the weight of the task, 
 ** which is the distance to the node/task in the graph
 ** The second element of the pair is the corresponding value in the sequence.
-** 
 */
 void fordJohnsonSort(vector<int>& sorted, vector<int>& sequence) {
-	vector<Task> graph(sequence.size());
-	vector<int> dist(graph.size(), numeric_limits<int>::min());
-	priority_queue<pair<int, int>> pq;
+	vector<Task> graph;
+	graph.reserve(sequence.size());
+	vector<int> dist(sequence.size(), numeric_limits<int>::min());
+	priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
 	
 	constructGraph(sequence, graph);
 	findLongestPath(graph, dist);
 
 	for (int i = 0; i < sequence.size(); i++) {
-		pq.push(make_pair(dist[i], graph[i].value));
+		pq.emplace(dist[i], graph[i].value);
 	}
 	for (int i = 0; i < sequence.size(); i++) {
-		//sorted[pq.top().first] = pq.top().second;
-		sorted[i] = pq.top().second;
+		sorted.push_back(pq.top().second);
 		pq.pop();
 	}
 }
 
 // Define a main function to test the Ford-Johnson algorithm
 int main() {
-	vector<int> sequence = {3, 1, 4, 2, 9, 5, 8, 6, 7, 10};
-	vector<int> sorted(sequence.size());
+	vector<int> sequence = {33, 11, 44, 22, 99, 55, 88, 66, 77, 100};
+	vector<int> sorted;
+	sorted.reserve(sequence.size());
 	
 	fordJohnsonSort(sorted, sequence);
 
