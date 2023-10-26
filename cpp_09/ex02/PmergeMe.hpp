@@ -7,13 +7,14 @@
 # include <algorithm>
 # include <ctime>
 # include <iterator>
+# include <queue>
 
 class PmergeMe {
 
 	private:
 
-		std::vector<int>	_vector;
-		std::list<int>		_list;
+		std::vector<int>	_vSorted;
+		// std::list<int>		_list;
 
 	public:
 
