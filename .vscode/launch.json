@@ -11,7 +11,7 @@
 			"program": "${workspaceFolder}/cpp_00/ex02/Account",
 			"program": "${workspaceFolder}/cpp_09/ex02/PmergeMe",
 			*/
-			"program": "${workspaceFolder}/cpp_09/ex02/Ford_Johnson",
+			"program": "${workspaceFolder}/cpp_09/ex02/ford_johnson",
 			// change this path for input args:
 			"args": [
 				/* cpp_09/ex02: 
