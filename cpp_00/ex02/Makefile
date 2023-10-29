@@ -1,6 +1,6 @@
-# Makefile to build the megaphone executable 
+# Makefile to build the Account executable 
 # Author: sbocanci
-# Date: 17.10.2023
+# Date: 25.10.2023
 
 NAME = Account
 

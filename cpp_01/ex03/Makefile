@@ -1,13 +1,13 @@
-# Makefile to build the PhoneBook executable 
+# Makefile to build the Unnecessary_violence executable 
 # Author: sbocanci
-# Date: 24.10.2023
+# Date: 29.10.2023
 
-NAME = PhoneBook
+NAME = Unnecessary_violence
 
 CXX = c++
-CXXFLAGS = -Wall -Werror -Wextra -std=c++98
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -g
 
-SRCS = main.cpp PhoneBook.class.cpp
+SRCS = main.cpp src/Weapon.class.cpp src/HumanA.class.cpp src/HumanB.class.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 # this is called by default when you just type make
