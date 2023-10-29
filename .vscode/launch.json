@@ -11,7 +11,7 @@
 			"program": "${workspaceFolder}/cpp_00/ex02/Account",
 			"program": "${workspaceFolder}/cpp_09/ex02/PmergeMe",
 			*/
-			"program": "${workspaceFolder}/cpp_09/ex02/ford_johnson",
+			"program": "${workspaceFolder}/cpp_01/ex04/Sed_is_for_losers",
 			// change this path for input args:
 			"args": [
 				/* cpp_09/ex02: 
@@ -27,9 +27,10 @@
 				"1 2 * 2 / 2 * 2 4 - +"
 				"(1 + 1)"
 				*/
+				"infile", "sad", "happy"
 			],
 			"stopAtEntry": false,
-			"cwd": "${workspaceFolder}/cpp_09/ex02/",
+			"cwd": "${workspaceFolder}/cpp_01/ex04/",
 			"environment": [],
 			"externalConsole": false,
 			"MIMode": "gdb",
