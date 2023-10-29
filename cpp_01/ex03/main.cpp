@@ -22,3 +22,14 @@ int main(void) {
 	}
 	return 0;
 }
+
+/*
+** To answer the question from the task:
+** "In which case do you think it would be best to use a pointer to Weapon?"
+** So, it would be best to use a pointer to Weapon in the case where we want
+** to change the type of the weapon dynamically during runtime. 
+** This is because when we use a pointer to Weapon,
+**  we can change the value of the object it points to at any time, 
+** whereas if we use a reference to Weapon, we cannot change the object 
+** it refers to after initialization.
+*/
