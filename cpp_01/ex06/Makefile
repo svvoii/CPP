@@ -1,14 +1,13 @@
-# Makefile to build the Find_adn_replace executable 
+# Makefile to build the harlFilter executable 
 # Author: sbocanci
-# Date: 29.10.2023
+# Date: 30.10.2023
 
-NAME = Find_adn_replace
+NAME = harlFilter
 
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -g
 
-#SRCS = main.cpp
-SRCS = main.cpp src/FindAndReplace.class.cpp
+SRCS = main.cpp src/Harl.class.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 # this is called by default when you just type make
@@ -26,7 +25,6 @@ $(NAME): $(OBJS)
 # recipe to cleans the object files
 clean:
 	rm -rf $(OBJS)
-	rm -f *.replace
 
 # recipe to cleans the object files and the executable
 fclean: clean
