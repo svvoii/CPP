@@ -11,8 +11,6 @@ int	main(int argc, char **argv) {
 	Harl	harl;
 	std::string	level(argv[1]);
 
-	transform(level.begin(), level.end(), level.begin(), ::toupper);
-
 	harl.complain(level);
 
 	return 0;

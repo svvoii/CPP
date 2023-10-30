@@ -27,6 +27,8 @@ int main(int argc, char **argv) {
 }
 
 /*
+** The following implementation does not require the use of a class.
+** 
 int main(int argc, char **argv) {
 	if (argc != 4) {
 		std::cerr << "Error: Invalid number of arguments\n";

@@ -11,8 +11,6 @@ int	main(void) {
 
 		std::getline(std::cin, level);
 
-		transform(level.begin(), level.end(), level.begin(), ::toupper);
-
 		if (level == "EXIT") {
 			break ;
 		}
