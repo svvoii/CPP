@@ -1,10 +1,11 @@
 /*
 ** This is the implementation of the `MutantStack` class.
-** The mainidea behind is to make the `stack` class iterable.
-** `MutantStack` shall inherit from the `std::stack` class
+** The main idea behind is to make the `stack` class iterable.
+** `MutantStack` will inherit from the `std::stack` class
 ** all its member functions and complete them with the
 ** iterating functionality.
 **
+** About the `std::stack` class:
 ** `std::stack` is a container adapter that gives the programmer
 ** the functionality of a stack - specifically, a LIFO (last-in, first-out)
 ** data structure.
