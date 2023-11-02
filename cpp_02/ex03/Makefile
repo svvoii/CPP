@@ -1,13 +1,13 @@
-# Makefile to build the Fixed executable 
+# Makefile to build the BSP executable 
 # Author: sbocanci
 # Date: 02.11.2023
 
-NAME = Fixed
+NAME = BSP
 
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -g
 
-SRCS = main.cpp Fixed.cpp
+SRCS = main.cpp src/Fixed.cpp src/Point.cpp src/bsp.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 # this is called by default when you just type make

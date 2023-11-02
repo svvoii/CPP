@@ -1,13 +1,13 @@
-# Makefile to build the Fixed executable 
+# Makefile to build the FragTrap executable 
 # Author: sbocanci
 # Date: 02.11.2023
 
-NAME = Fixed
+NAME = FragTrap
 
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -g
 
-SRCS = main.cpp Fixed.cpp
+SRCS = main.cpp src/ClapTrap.cpp src/ScavTrap.cpp src/FragTrap.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 # this is called by default when you just type make
