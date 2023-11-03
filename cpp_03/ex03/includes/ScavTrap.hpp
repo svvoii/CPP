@@ -20,14 +20,18 @@
 ** `ScavTrap` will have one additional method called `guardGate`.
 ** `guardGate` will have a unique message stating that the `ScavTrap`
 ** is in the Gate keeper mode.
+**
+** In order to avoid double inheritance of `ClapTrap` class by
+** `DiamondTrap` we add the keyword `virtual` to the declaration
+** statement below.
 */
 #ifndef SCAVTRAP_HPP
 # define SCAVTRAP_HPP
 
 # include "ClapTrap.hpp"
 
-class ScavTrap : public ClapTrap {
-	private:
+class ScavTrap : virtual public ClapTrap {
+	protected:
 		ScavTrap(void);
 
 	public:

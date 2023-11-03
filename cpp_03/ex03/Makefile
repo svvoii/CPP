@@ -1,13 +1,13 @@
 # Makefile to build the DiamondTrap executable 
 # Author: sbocanci
-# Date: 02.11.2023
+# Date: 03.11.2023
 
 NAME = DiamondTrap
 
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -g
 
-SRCS = main.cpp src/ClapTrap.cpp src/ScavTrap.cpp src/FlagTrap.cpp src/DiamondTrap.cpp
+SRCS = main.cpp src/ClapTrap.cpp src/ScavTrap.cpp src/FragTrap.cpp src/DiamondTrap.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 # this is called by default when you just type make

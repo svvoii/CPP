@@ -7,7 +7,7 @@
 ** Multiple inheritance is when a class inherits
 ** from more than one base class.
 **
-** The following example is an example of
+** The following example is the illustration of
 ** the diamond problem.
 ** 
 */

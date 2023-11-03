@@ -6,14 +6,18 @@
 ** its own individuality.
 **
 ** `highFivesGuys` will be a unique method to the `FragTrap` class.
+**
+** In order to avoid double inheritance of `ClapTrap` class by
+** `DiamondTrap` we add the keyword `virtual` to the declaration
+** statement below.
 */
 #ifndef FRAGTRAP_HPP
 # define FRAGTRAP_HPP
 
 # include "ClapTrap.hpp"
 
-class FragTrap : public ClapTrap {
-	private:
+class FragTrap : virtual public ClapTrap {
+	protected:
 		FragTrap(void);
 
 	public:
