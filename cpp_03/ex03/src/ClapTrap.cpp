@@ -10,7 +10,7 @@
 ** `_attackDamage` is the amount of damage the ClapTrap can deal.
 */
 ClapTrap::ClapTrap(void) : 
-	_name("ClapTrap"), 
+	_name("<default_ClapTrap>"), 
 	_hitPoints(10), 
 	_energyPoints(10), 
 	_attackDamage(0) {
@@ -48,6 +48,7 @@ ClapTrap::ClapTrap(const ClapTrap &clapTrap) {
 
 ClapTrap::~ClapTrap(void) {
 	std::cout << RED << "\t< ClapTrap destructor called >" << RESET << " (name: " << this->_name << ")" << std::endl;
+	std::cout << std::endl;
 }
 
 /*

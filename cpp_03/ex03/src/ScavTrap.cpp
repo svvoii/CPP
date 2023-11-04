@@ -6,7 +6,7 @@
 */
 ScavTrap::ScavTrap(void) : ClapTrap() {
 
-	this->_name = "ScavTrap";
+	this->_name = "<default_ScavTrap>";
 	this->_hitPoints = 100;
 	this->_energyPoints = 50;
 	this->_attackDamage = 20;

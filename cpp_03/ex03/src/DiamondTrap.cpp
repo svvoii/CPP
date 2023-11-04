@@ -28,10 +28,10 @@
 
 #include "../includes/DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap(void) : ClapTrap(), ScavTrap(), FragTrap() {
+DiamondTrap::DiamondTrap(void) {
 
-    this->_name = ClapTrap::_name + "_clap_name";
-    ClapTrap::_name = "ClapTrap";
+	ClapTrap::_name = "<default_clap_name>";
+	this->_name = "<default>";
     this->_hitPoints = FragTrap::_hitPoints;
     this->_energyPoints = ScavTrap::_energyPoints;
     this->_attackDamage = FragTrap::_attackDamage;
@@ -39,10 +39,10 @@ DiamondTrap::DiamondTrap(void) : ClapTrap(), ScavTrap(), FragTrap() {
 	std::cout << CYAN << "\t< DiamondTrap default constructor called >" << RESET << " (name: " << this->_name << ")" << std::endl;
 }
 
-DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), ScavTrap(name), FragTrap(name) {
+DiamondTrap::DiamondTrap(std::string name) {
 
-    this->_name = ClapTrap::_name + "_clap_name";
-    ClapTrap::_name = "ClapTrap";
+	ClapTrap::_name = name + "_clap_name";
+    this->_name = name;
     this->_hitPoints = FragTrap::_hitPoints;
     this->_energyPoints = ScavTrap::_energyPoints;
     this->_attackDamage = FragTrap::_attackDamage;
@@ -102,6 +102,6 @@ void DiamondTrap::whoAmI(void) {
 
 	this->_energyPoints -= 1;
     std::cout << "I AM (" << this->_name;
-    std::cout << ")!! THE SON OF (" << ClapTrap::_name << ")!";
+    std::cout << ")!! THE SON OF THE (" << ClapTrap::_name << ")!";
     std::cout << std::endl;
 }

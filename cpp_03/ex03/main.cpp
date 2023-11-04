@@ -5,6 +5,8 @@
 
 int main()
 {
+	/*
+	*/
     ClapTrap clap("Claptrap");
     std::cout << std::endl;
 
@@ -14,9 +16,14 @@ int main()
     FragTrap frag("Fragtrap");
     std::cout << std::endl;
 
-    DiamondTrap diamond("Diamondtrap");
+    DiamondTrap diamond;
     std::cout << std::endl;
 
+    DiamondTrap diamond2("Diamondtrap");
+    std::cout << std::endl;
+
+	/*
+	*/
     clap.attack("enemy");
     scav.guardGate();
     frag.highFivesGuys();
@@ -63,10 +70,15 @@ int main()
     diamond.whoAmI();
 
     std::cout << std::endl;
-
     diamond.highFivesGuys();
     diamond.guardGate();
     diamond.whoAmI();
+    std::cout << std::endl;
+
+    diamond2.highFivesGuys();
+    diamond2.guardGate();
+    diamond2.whoAmI();
+    std::cout << std::endl;
 
     return 0;
 }
