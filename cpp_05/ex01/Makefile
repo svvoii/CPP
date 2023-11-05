@@ -1,13 +1,13 @@
-# Makefile to build the Form executable 
+# Makefile to build the FormUP executable 
 # Author: sbocanci
-# Date: 04.11.2023
+# Date: 05.11.2023
 
-NAME = Form
+NAME = FormUP
 
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -g
 
-SRCS = main.cpp
+SRCS = main.cpp src/Bureaucrat.cpp src/Form.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 # this is called by default when you just type make

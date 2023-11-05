@@ -135,6 +135,26 @@ void	Bureaucrat::decrementGrade() {
 }
 
 /*
+** New member function. It takes a reference to a `Form` and tries to sign it,
+** if the bureaucrat's grade is high enough. If not, it prints a message
+** indicating that the bureaucrat can't sign the form due to low grade.
+*/
+void	Bureaucrat::signForm(Form &form) {
+
+	if (this->_grade <= form.getGradeToSign()) {
+		form.beSigned(*this);
+		std::cout << GREEN << "\t< form signed >" << RESET;
+		std::cout << " by: [" << this->_name << "], grade: [" << this->_grade << "]" << std::endl;
+		std::cout << std::endl;
+	}
+	else {
+		std::cout << RED << "\t< form not signed >" << RESET;
+		std::cout << " by: [" << this->_name << "], grade: [" << this->_grade << "]" << std::endl;
+		std::cout << std::endl;
+	}
+}
+
+/*
 ** GradeTooHighException class:
 */
 const char *Bureaucrat::GradeTooHighException::what() const throw() {

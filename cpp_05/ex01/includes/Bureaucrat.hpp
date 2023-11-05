@@ -1,5 +1,10 @@
 /*
 ** Bellow we have simple `Bureaucrat` class in a canonical form.
+**
+** In addition to the previous version, we add another member function:
+** `signForm` - it takes a reference to a `Form` and tries to sign it,
+** if the bureaucrat's grade is high enough. If not, it prints a message
+** indicating that the bureaucrat can't sign the form due to low grade.
 */
 
 #ifndef BUREAUCRAT_HPP
@@ -7,6 +12,7 @@
 
 # include <iostream>
 # include <string>
+# include "Form.hpp"
 
 // Defining some ANSI escape codes for consol output colors
 # define RESET   "\033[0m"
@@ -15,6 +21,8 @@
 # define BLUE    "\033[34m"
 # define MAGENTA "\033[35m"
 # define CYAN    "\033[36m"
+
+class Form;
 
 class Bureaucrat {
 
@@ -34,6 +42,9 @@ class Bureaucrat {
 		int					getGrade() const;
 		void				incrementGrade();
 		void				decrementGrade();
+
+		// New member function
+		void				signForm(Form &form);
 
 		class GradeTooHighException : public std::exception
 		{
