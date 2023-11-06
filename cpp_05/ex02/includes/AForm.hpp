@@ -1,6 +1,14 @@
 /*
 ** Changing the `Form` class into an abstract class:
 **
+** `AForm` will be a base form class for all the form classes.
+**
+** We also added another method to this base class:
+** `execute(Bureaucrat const &executor) const` which will be used
+** to execute the form. The method will check whether the form is
+** signed and whether the executor's grade is high enough to execute
+** the form. Otherwise, it will throw an exception.
+**
 */
 
 #ifndef FORM_HPP
@@ -34,12 +42,22 @@ class AForm {
 		int					getGradeToExecute() const;
 		void				beSigned(Bureaucrat const &bureaucrat);
 
+		// Adding new, execute method
+		virtual void		execute(Bureaucrat const &executor) const = 0;
+
 		class GradeTooHighException : public std::exception
 		{
 			public:
 				virtual const char *what() const throw();
 		};
 		class GradeTooLowException : public std::exception
+		{
+			public:
+				virtual const char *what() const throw();
+		};
+
+		// Fresh excdeption for NOT signed form
+		class FormNotSignedException : public std::exception
 		{
 			public:
 				virtual const char *what() const throw();

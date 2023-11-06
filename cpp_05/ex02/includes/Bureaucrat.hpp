@@ -1,10 +1,16 @@
 /*
 ** Bellow we have simple `Bureaucrat` class in a canonical form.
 **
-** In addition to the previous version, we add another member function:
+** The following method was added in the previous exercise:
 ** `signForm` - it takes a reference to a `Form` and tries to sign it,
 ** if the bureaucrat's grade is high enough. If not, it prints a message
 ** indicating that the bureaucrat can't sign the form due to low grade.
+**
+** In this exercise we will add another method:
+** `executeForm(AForm const &form)` - it will take a reference to a `Form`
+** and try to execute it, if the bureaucrat's grade is high enough. 
+** If not, it prints an explicit error message indicating that 
+** the bureaucrat can't execute the form due to low grade.
 */
 
 #ifndef BUREAUCRAT_HPP
@@ -12,7 +18,7 @@
 
 # include <iostream>
 # include <string>
-# include "Form.hpp"
+# include "AForm.hpp"
 
 // Defining some ANSI escape codes for consol output colors
 # define RESET   "\033[0m"
@@ -43,8 +49,10 @@ class Bureaucrat {
 		void				incrementGrade();
 		void				decrementGrade();
 
+		void				signForm(AForm &form);
+		
 		// New member function
-		void				signForm(Form &form);
+		void				executeForm(AForm const &form);
 
 		class GradeTooHighException : public std::exception
 		{

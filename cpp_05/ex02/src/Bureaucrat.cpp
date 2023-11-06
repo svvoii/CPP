@@ -139,7 +139,7 @@ void	Bureaucrat::decrementGrade() {
 ** if the bureaucrat's grade is high enough. If not, it prints a message
 ** indicating that the bureaucrat can't sign the form due to low grade.
 */
-void	Bureaucrat::signForm(Form &form) {
+void	Bureaucrat::signForm(AForm &form) {
 
 	if (this->_grade <= form.getGradeToSign()) {
 		form.beSigned(*this);
@@ -149,6 +149,26 @@ void	Bureaucrat::signForm(Form &form) {
 	}
 	else {
 		std::cout << RED << "\t< form not signed >" << RESET;
+		std::cout << " by: [" << this->_name << "], grade: [" << this->_grade << "]" << std::endl;
+		std::cout << std::endl;
+	}
+}
+
+/*
+** New member function. It takes a reference to a `Form` and tries to execute it,
+** if the bureaucrat's grade is high enough. If not, it prints a message
+** indicating that the bureaucrat can't execute the form due to low grade.
+*/
+void	Bureaucrat::executeForm(AForm const &form) {
+
+	if (this->_grade <= form.getGradeToExecute()) {
+		form.execute(*this);
+		std::cout << GREEN << "\t< form executed >" << RESET;
+		std::cout << " by: [" << this->_name << "], grade: [" << this->_grade << "]" << std::endl;
+		std::cout << std::endl;
+	}
+	else {
+		std::cout << RED << "\t< form not executed >" << RESET;
 		std::cout << " by: [" << this->_name << "], grade: [" << this->_grade << "]" << std::endl;
 		std::cout << std::endl;
 	}
