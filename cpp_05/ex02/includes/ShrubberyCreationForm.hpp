@@ -22,8 +22,9 @@ class ShrubberyCreationForm : public AForm {
 
     private:
         std::string		    _target;
-        static int const	_minGradeToSign = 145;
-        static int const	_minGradeToExecute = 137;
+		// These are not needed, since they are inherited from AForm
+        //static int const	_minGradeToSign = 145;
+        //static int const	_minGradeToExecute = 137;
 
     public:
         ShrubberyCreationForm(void);
@@ -33,11 +34,9 @@ class ShrubberyCreationForm : public AForm {
 
         ShrubberyCreationForm &operator=(ShrubberyCreationForm const &copy);
 
-        std::string const	&getTarget() const;
+        //std::string const	&getTarget() const;
 
-        void				execute(Bureaucrat const &executor) const;
-        void                action() const;
-        void                writeTree(std::ofstream &out) const;
+        void				executeAction(void) const;
 };
 
 #endif

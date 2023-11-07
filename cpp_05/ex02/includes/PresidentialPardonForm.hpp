@@ -19,8 +19,6 @@ class PresidentialPardonForm : public AForm {
 
     private:
         std::string		    _target;
-        static int const	_minGradeToSign = 25;
-        static int const	_minGradeToExecute = 5;
 
     public:
         PresidentialPardonForm(void);
@@ -30,10 +28,9 @@ class PresidentialPardonForm : public AForm {
 
         PresidentialPardonForm &operator=(PresidentialPardonForm const &copy);
 
-        std::string const	&getTarget() const;
+        //std::string const	&getTarget() const;
 
-        void				execute(Bureaucrat const &executor) const;
-        void                action() const;
+        void				executeAction() const;
 };
 
 #endif

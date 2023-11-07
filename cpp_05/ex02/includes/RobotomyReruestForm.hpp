@@ -22,8 +22,6 @@ class RobotomyRequestForm : public AForm {
 
     private:
         std::string		    _target;
-        static int const	_minGradeToSign = 72;
-        static int const	_minGradeToExecute = 45;
 
     public:
         RobotomyRequestForm(void);
@@ -33,10 +31,9 @@ class RobotomyRequestForm : public AForm {
 
         RobotomyRequestForm &operator=(RobotomyRequestForm const &copy);
 
-        std::string const	&getTarget() const;
+        //std::string const	&getTarget() const;
 
-        void				execute(Bureaucrat const &executor) const;
-        void                action() const;
+        void				executeAction(void) const;
 };
 
 #endif

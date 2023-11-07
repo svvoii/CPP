@@ -42,8 +42,10 @@ class AForm {
 		int					getGradeToExecute() const;
 		void				beSigned(Bureaucrat const &bureaucrat);
 
-		// Adding new, execute method
-		virtual void		execute(Bureaucrat const &executor) const = 0;
+		// Adding new, execute methods
+		void				execute(Bureaucrat const &executor) const;
+		// This method will be overridden by derived classes
+		virtual void		executeAction() const = 0;
 
 		class GradeTooHighException : public std::exception
 		{
@@ -67,3 +69,16 @@ class AForm {
 std::ostream &operator<<(std::ostream &out, AForm const &form);
 
 #endif
+
+/*
+** About the `execute` method:
+** `virtual void executeAction() const;`
+** `virtual` - means that this method is virtual and will be overridden
+** by the derived classes.
+** `= 0` - this syntax means that this method is a pure virtual method.
+**
+** `Pure virtual methods` are virtual methods that are declared in the base
+** class but not defined. They are used to make the base class abstract.
+** Every class that inherits from an abstract class must implement the pure
+** virtual methods, unless it is also an abstract class.
+*/

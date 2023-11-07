@@ -117,7 +117,10 @@ void	AForm::execute(Bureaucrat const &executor) const {
 	}
 
 	std::cout << "Form [" << this->_name << "] is signed and the executor's grade: [";
-	std::cout << executor.getGrade() << "] is OK to execute the form" << std::endl;
+	std::cout << executor.getGrade() << "] is OK to execute the form. Passing to execution.." << std::endl;
+
+	// This is where we call the execute function of the derived class
+	this->executeAction();
 }
 
 /*
