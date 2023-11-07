@@ -7,7 +7,13 @@ NAME = Form
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -g
 
-SRCS = main.cpp
+SRCS = main.cpp \
+	Bureaucrat.cpp \
+	AForm.cpp \
+	ShrubberyCreationForm.cpp \
+	RobotomyRequestForm.cpp \
+	PresidentialPardonForm.cpp
+
 OBJS = $(SRCS:.cpp=.o)
 
 # this is called by default when you just type make
