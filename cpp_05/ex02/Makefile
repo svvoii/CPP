@@ -1,18 +1,18 @@
-# Makefile to build the Form executable 
+# Makefile to build the FormExecution executable 
 # Author: sbocanci
 # Date: 06.11.2023
 
-NAME = Form
+NAME = FormExecution
 
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -g
 
 SRCS = main.cpp \
-	Bureaucrat.cpp \
-	AForm.cpp \
-	ShrubberyCreationForm.cpp \
-	RobotomyRequestForm.cpp \
-	PresidentialPardonForm.cpp
+	src/Bureaucrat.cpp \
+	src/AForm.cpp \
+	src/ShrubberyCreationForm.cpp \
+	src/RobotomyRequestForm.cpp \
+	src/PresidentialPardonForm.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
@@ -34,7 +34,7 @@ clean:
 
 # recipe to cleans the object files and the executable
 fclean: clean
-	rm -rf $(NAME)
+	rm -rf $(NAME) *_shrubbery
 
 # recipe to cleans the object files and the executable
 re: fclean all
