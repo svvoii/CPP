@@ -20,7 +20,7 @@ class Cat : public Animal
 
 		Cat &operator=(Cat const &rhs);
 
-		virtual void makeSound(void) const;
+		void makeSound(void) const;
 };
 
 #endif
