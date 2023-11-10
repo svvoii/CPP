@@ -20,6 +20,17 @@
 int	main(void) {
 
 	{
+		AAnimal *dog = new Dog();
+		dog->makeSound();
+
+		delete dog;
+
+		Dog *dog2 = new Dog();
+		dog2->makeSound();
+
+		delete dog2;
+	}
+	{
 		std::cout << std::endl;
 		std::cout << "= = = = = = = = = = = = TEST 1 = = = = = = = = = = " << std::endl;
 		std::cout << std::endl;
@@ -88,5 +99,7 @@ int	main(void) {
 		std::cout << jerry.getType() << std::endl;
 		jerry.makeSound();
 	}
+	/*
+	*/
 	return (0);
 }

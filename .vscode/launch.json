@@ -11,8 +11,9 @@
 			"program": "${workspaceFolder}/cpp_00/ex02/Account",
 			"program": "${workspaceFolder}/cpp_09/ex02/PmergeMe",
 			"program": "${workspaceFolder}/cpp_01/ex04/Sed_is_for_losers",
-			*/
 			"program": "${workspaceFolder}/cpp_08/ex01/Span",
+			*/
+			"program": "${workspaceFolder}/cpp_04/ex03/AMateria",
 			// change this path for input args:
 			"args": [
 				/* cpp_09/ex02: 

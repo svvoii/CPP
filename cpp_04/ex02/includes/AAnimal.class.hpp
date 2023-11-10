@@ -55,3 +55,29 @@ class AAnimal
 };
 
 #endif
+
+/*
+** A pure virtual function is a function that is declared
+** in the base class but has no implementation.
+** A pure virtual function is declared by adding `= 0` to
+** the end of the function declaration.
+** `virtual void makeSound(void) const = 0;`
+**
+** A class that contains a pure virtual function is called
+** an abstract class.
+** So, in this exercise, the `Animal` class is an abstract
+** class. And it cannot be instantiated as it is.
+** It can only be used as a base class for derived classes.
+**
+** Some more info about `virtual` keyword:
+** The `virtual` keyword used with the default destructor 
+** of the base class will ensure that the destructor of
+** the derived class will be called when the object is
+** destroyed.
+** When a derived class is destroyed, the destructor of
+** the derived class will be called first, then the
+** destructor of the base class will be called.
+** If the destructor of the base class is not declared
+** as `virtual`, then the destructor of the derived class
+** will not be called, and this will cause a memory leak.
+*/

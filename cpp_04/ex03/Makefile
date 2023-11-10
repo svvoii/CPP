@@ -1,14 +1,19 @@
-# Makefile to build the Interface executable 
+# Makefile to build the AMateria executable 
 # Author: sbocanci
 # Date: 08.11.2023
 
-NAME = Interface
+NAME = AMateria
 
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -g
 
-SRCS = main.cpp
-
+SRCS = main.cpp \
+	   src/AMateria.cpp \
+	   src/Ice.cpp \
+	   src/Cure.cpp \
+	   src/Character.cpp \
+	   src/MateriaSource.cpp
+	
 OBJS = $(SRCS:.cpp=.o)
 
 # this is called by default when you just type make
@@ -29,7 +34,7 @@ clean:
 
 # recipe to cleans the object files and the executable
 fclean: clean
-	rm -rf $(NAME) *_shrubbery
+	rm -rf $(NAME)
 
 # recipe to cleans the object files and the executable
 re: fclean all
