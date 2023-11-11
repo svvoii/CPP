@@ -27,11 +27,44 @@
 
 int main()
 {
+	// The following TEST is given in the subject.
+		/* EXPECTED OUTPUT:
+	{
+		std::cout << GREEN << "= = = = = = = = = = ====== = = = = = = = = = =" << RESET << std::endl;
+		std::cout << GREEN << "= = = = = = = = = = TEST 0 = = = = = = = = = =" << RESET << std::endl;
+		std::cout << GREEN << "= = = = = = = = = = ====== = = = = = = = = = =" << RESET << std::endl;
+		std::cout << MAGENTA << "This is default test from the subject" << RESET << std::endl;
+		std::cout << std::endl;
+
+		IMateriaSource* src = new MateriaSource();
+		src->learnMateria(new Ice());
+		src->learnMateria(new Cure());
+		
+		ICharacter* me = new Character("me");
+		
+		AMateria* tmp;
+		tmp = src->createMateria("ice");
+		me->equip(tmp);
+		tmp = src->createMateria("cure");
+		me->equip(tmp);
+		
+		ICharacter* bob = new Character("bob");
+		
+		me->use(0, *bob);
+		me->use(1, *bob);
+		
+		delete bob;
+		delete me;
+		delete src;
+	}
+	* shoots an ice bolt at bob *
+	* heals bob's wounds *
+		*/
 	/*
 	{
-		std::cout << GREEN << "= = = = = = = = = = = =  = = = = = = = = = =" << RESET << std::endl;
+		std::cout << GREEN << "= = = = = = = = = = ====== = = = = = = = = = =" << RESET << std::endl;
 		std::cout << GREEN << "= = = = = = = = = = TEST 1 = = = = = = = = = =" << RESET << std::endl;
-		std::cout << GREEN << "= = = = = = = = = = = =  = = = = = = = = = =" << RESET << std::endl;
+		std::cout << GREEN << "= = = = = = = = = = ====== = = = = = = = = = =" << RESET << std::endl;
 		std::cout << MAGENTA << "Testing the `Ice` class and its methods. Creating an instance as `Ice ice;`" << RESET << std::endl;
 		//std::cout << std::endl;
 		// Create an instance of the Ice class
@@ -83,9 +116,9 @@ int main()
 		delete ice4;
 	}
 	{
-		std::cout << GREEN << "= = = = = = = = = = = =  = = = = = = = = = =" << RESET << std::endl;
+		std::cout << GREEN << "= = = = = = = = = = ====== = = = = = = = = = =" << RESET << std::endl;
 		std::cout << GREEN << "= = = = = = = = = = TEST 2 = = = = = = = = = =" << RESET << std::endl;
-		std::cout << GREEN << "= = = = = = = = = = = =  = = = = = = = = = =" << RESET << std::endl;
+		std::cout << GREEN << "= = = = = = = = = = ====== = = = = = = = = = =" << RESET << std::endl;
 		std::cout << MAGENTA << "Testing the `Cure` class and its methods" << RESET << std::endl;
 		std::cout << std::endl;
 
@@ -137,11 +170,10 @@ int main()
 		delete cure_ptr;
 		delete cure4;
 	}
-	*/
 	{
-		std::cout << GREEN << "= = = = = = = = = = = =  = = = = = = = = = =" << RESET << std::endl;
+		std::cout << GREEN << "= = = = = = = = = = ====== = = = = = = = = = =" << RESET << std::endl;
 		std::cout << GREEN << "= = = = = = = = = = TEST 3 = = = = = = = = = =" << RESET << std::endl;
-		std::cout << GREEN << "= = = = = = = = = = = =  = = = = = = = = = =" << RESET << std::endl;
+		std::cout << GREEN << "= = = = = = = = = = ====== = = = = = = = = = =" << RESET << std::endl;
 		std::cout << MAGENTA << "Testing the `Character` class and its methods" << RESET << std::endl;
 		std::cout << std::endl;
 
@@ -203,79 +235,100 @@ int main()
 		std::cout << std::endl;
 
 		// Clean up
-		//delete ice;
+		//delete ice; // need to free if it is not equipped ! If it is equipped, it will be freed in the Character destructor
 		delete target2;
 
-		/*
-		So, if all the instances of the AMateria is equipped, it will be freed in the Character destructor,
-		by calling the _deleteInventory() method.
-		
-		Otherwise, all the instances of the AMateria, which is not equipped, shall be freed manually with `delete`.
-		*/
+		// So, if all the instances of the AMateria is equipped, it will be freed in the Character destructor,
+		// by calling the _deleteInventory() method.
+		// Otherwise, all the instances of the AMateria, which is not equipped, shall be freed manually with `delete`.
 
 	}
-
-	/*
-	*/
-		/* EXPECTED OUTPUT:
-	// The following TEST is given in the subject.
 	{
-		IMateriaSource* src = new MateriaSource();
+		std::cout << GREEN << "= = = = = = = = = = ====== = = = = = = = = = =" << RESET << std::endl;
+		std::cout << GREEN << "= = = = = = = = = = TEST 4 = = = = = = = = = =" << RESET << std::endl;
+		std::cout << GREEN << "= = = = = = = = = = ====== = = = = = = = = = =" << RESET << std::endl;
+		std::cout << MAGENTA << "Testing the `MateriaSource` class and its methods" << RESET << std::endl;
+		std::cout << std::endl;
+
+		// Creating an instance of MateriaSource
+		MateriaSource *src = new MateriaSource();
+
+		// Test the learnMateria method
+		std::cout << MAGENTA << "Testing the `src->learnMateria(new Ice())` method:" << RESET << std::endl;
 		src->learnMateria(new Ice());
+		std::cout << "MateriaSource inventory size: " << src->getInventorySize() << std::endl; // Expected output: 1
+		std::cout << std::endl;
+
+		// Test the createMateria method
+		std::cout << MAGENTA << "Testing the `src->createMateria(\"ice\")` method:" << RESET << std::endl;
+		AMateria *ice = src->createMateria("ice");
+		std::cout << "Ice type: " << ice->getType() << std::endl; // Expected output: ice
+		std::cout << std::endl;
+
+		// Test the learnMateria method with Cure
+		std::cout << MAGENTA << "Testing the `src->learnMateria(new Cure())` method:" << RESET << std::endl;
 		src->learnMateria(new Cure());
-		
-		ICharacter* me = new Character("me");
-		
-		AMateria* tmp;
-		tmp = src->createMateria("ice");
-		me->equip(tmp);
-		tmp = src->createMateria("cure");
-		me->equip(tmp);
-		
-		ICharacter* bob = new Character("bob");
-		
-		me->use(0, *bob);
-		me->use(1, *bob);
-		
-		delete bob;
-		delete me;
+		std::cout << "MateriaSource inventory size: " << src->getInventorySize() << std::endl; // Expected output: 2
+		std::cout << std::endl;
+
+		// Test the createMateria method with Cure
+		std::cout << MAGENTA << "Testing the `src->createMateria(\"cure\")` method:" << RESET << std::endl;
+		AMateria *cure = src->createMateria("cure");
+		std::cout << "Cure type: " << cure->getType() << std::endl; // Expected output: cure
+		std::cout << std::endl;
+
+		// Clean up
+		delete ice;
+		delete cure;
 		delete src;
 	}
-	* shoots an ice bolt at bob *
-	* heals bob's wounds *
-		*/
-	/*
+	*/
 	// MORE TESTS
 	{
-		// Test 1: Create a new MateriaSource and learn a new Ice Materia
+		std::cout << GREEN << "= = = = = = = = = = ====== = = = = = = = = = =" << RESET << std::endl;
+		std::cout << GREEN << "= = = = = = = = = = TEST 5 = = = = = = = = = =" << RESET << std::endl;
+		std::cout << GREEN << "= = = = = = = = = = ====== = = = = = = = = = =" << RESET << std::endl;
+		std::cout << MAGENTA << "Testing a bit of everything" << RESET << std::endl;
+		std::cout << std::endl;	
+
+		// Creating a new MateriaSource and learn a new Ice Materia
+		std::cout << MAGENTA << "Creating `IMateriaSource *src = new MateriaSource()` ";
+		std::cout << "and creating a new Ice Materia `AMateria *ice = src->createMateria(\"ice\")`:" << RESET << std::endl;
 		IMateriaSource* src = new MateriaSource();
 		src->learnMateria(new Ice());
-		AMateria* ice = src->createMateria("ice");
-		std::cout << "Ice Materia type: " << ice->getType() << std::endl; // Expected output: Ice
+		AMateria *ice = src->createMateria("ice");
+		std::cout << "Ice Materia type: [" << ice->getType() << "]" << std::endl; // Expected output: Ice
 
-		// Test 2: Create a new Character and equip the Ice Materia
+		// Creating new Character and equip the Ice Materia
+		std::cout << MAGENTA << "Creating `ICharacter *me = new Character(\"me\")` ";
+		std::cout << "and equip the Ice Materia `me->equip(ice)`:" << RESET << std::endl;
 		ICharacter* me = new Character("me");
 		me->equip(ice);
-		std::cout << "Ice Materia XP before use: " << ice->getXP() << std::endl; // Expected output: 0
+		std::cout << "Ice Materia XP before use: [" << ice->getXP() << "]" << std::endl; // Expected output: 0
 
-		// Test 3: Use the Ice Materia on a new Character
-		ICharacter* bob = new Character("bob");
+		// Clearing another Character and using Ice Materia on a new Character as target
+		std::cout << MAGENTA << "Clearing another Character `ICharacter *bob = new Character(\"bob\")` ";
+		std::cout << "and using Ice Materia on a new Character as target `me->use(0, *bob)`:" << RESET << std::endl;
+		Character *bob = new Character("bob");
 		me->use(0, *bob);
-		std::cout << "Ice Materia XP after use: " << ice->getXP() << std::endl; // Expected output: 10
+		std::cout << "Ice Materia XP after use: [" << ice->getXP() << "]" << std::endl; // Expected output: 10
 
-		// Test 4: Create a new MateriaSource and learn a new Cure Materia
-		IMateriaSource* src2 = new MateriaSource();
+		// Creating a new MateriaSource and learn a new Cure Materia
+		std::cout << MAGENTA << "Creating `IMateriaSource *src2 = new MateriaSource()` ";
+		std::cout << "and creating a new Cure Materia `AMateria *cure = src2->createMateria(\"cure\")`:" << RESET << std::endl;
+		IMateriaSource *src2 = new MateriaSource();
 		src2->learnMateria(new Cure());
-		AMateria* cure = src2->createMateria("cure");
-		std::cout << "Cure Materia type: " << cure->getType() << std::endl; // Expected output: Cure
+		AMateria *cure = src2->createMateria("cure");
+		std::cout << "Cure Materia type: [" << cure->getType() << "]" << std::endl; // Expected output: Cure
 
-		// Test 5: Equip the Cure Materia and use it on the Character
+		// Equip Cure Materia and use it on the target Character
+		std::cout << MAGENTA << "Equip Cure Materia and use it on target `me->equip(cure)` and `me->use(1, *bob)`:" << RESET << std::endl;
 		me->equip(cure);
 		me->use(1, *bob);
 		//std::cout << "Bob's HP after being healed: " << bob->getHP() << std::endl; // Expected output: 110
 
 		// Test 6: Create a new Character and equip the Ice Materia twice
-		ICharacter* alice = new Character("alice");
+		ICharacter *alice = new Character("alice");
 		me->equip(ice);
 		me->equip(ice);
 		me->use(2, *alice);
@@ -312,6 +365,7 @@ int main()
 		delete cure;
 		delete cure2;
 	}
+	/*
 	*/
 	
 	return 0;

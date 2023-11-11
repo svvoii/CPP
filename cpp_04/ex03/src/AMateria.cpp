@@ -70,5 +70,6 @@ unsigned int		AMateria::getXP(void) const {
 void				AMateria::use(ICharacter& target) {
 
 	(void)target;
+	// adding additional optionality to deduct HP from the target	
 	this->_xp += 10;
 }

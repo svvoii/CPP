@@ -30,6 +30,10 @@ class MateriaSource : public IMateriaSource {
 		virtual ~MateriaSource(void);
 		
 		MateriaSource &	operator=(MateriaSource const & rhs);
+
+		// Testing purposes
+		int				getInventorySize(void) const;
+		void			printMateria(void);
 		
 		virtual void		learnMateria(AMateria* m);
 		virtual AMateria*	createMateria(std::string const & type);
