@@ -2,6 +2,38 @@
 #include <string>
 #include "includes/Zombie.class.hpp"
 
+
+int	main() {
+
+	int			numZombies = 0;
+	std::string	hordeName;
+
+	std::cout << "Enter the NUMBER of zombies: ";
+	std::cin >> numZombies;
+	if (numZombies <= 0) {
+		std::cout << "Error: wrong input." << std::endl;
+		return 1;
+	}
+	std::cin.ignore(); // !!!
+	std::cout << "\tThere will be: [" << numZombies << "] zombies created in the Horde." << std::endl;
+
+	std::cout << "Enter the horde name: ";
+	if (!(std::getline(std::cin, hordeName))) {
+		std::cout << "Error: input was interrupted." << std::endl;
+		return 1;
+	}
+	std::cout << "\thordeName: [" << hordeName << "]" << std::endl;
+
+	Zombie *zombies = zombieHorde(numZombies, hordeName);
+
+	moarBrainz(zombies, numZombies);
+
+	deleteZombieHorde(zombies);
+
+	return 0;
+}
+
+/*
 int main()
 {
 	int			numZombies = 0;
@@ -25,7 +57,6 @@ int main()
 	return 0;
 }
 
-/*
 ** !!! `std::cin.ignore();` is needed after `std::cin >> ..` because
 ** `std::cin >> ..` leaves a newline character in the input buffer.
 ** `std::getline(std::cin, ..)` will read this newline character 

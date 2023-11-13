@@ -21,8 +21,8 @@ int main(void) {
 
 	std::cout << "Printing the address of each variable:" << std::endl;
 	std::cout << "&stringVariable @:\t" << &stringVariable << std::endl;
-	std::cout << "&stringPTR @:\t" << &stringPTR << std::endl;
-	std::cout << "&stringREF @:\t" << &stringREF << std::endl;
+	std::cout << "&stringPTR      @:\t" << &stringPTR << std::endl;
+	std::cout << "&stringREF      @:\t" << &stringREF << std::endl;
 	std::cout << std::endl;
 
 	std::cout << "Printing the value of each variable:" << std::endl;

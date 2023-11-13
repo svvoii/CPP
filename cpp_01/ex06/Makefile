@@ -37,7 +37,7 @@ re: fclean all
 # to pass the ARGS variable to the makefile use:
 # make valgrind ARGS="arg1 arg2 arg3"
 valgrind:
-	clang++ $(FLAGS) -g $(SRCS) -o $(NAME)
+	clang++ $(CXXFLAGS) -g $(SRCS) -o $(NAME)
 	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) $(ARGS)
 
 .PHONY: all clean fclean re valgrind

@@ -26,21 +26,25 @@ Harl::~Harl() {
 }
 
 void	Harl::_debug(void) {
+
 	std::cout << "[DEBUG] message:" << std::endl;
 	std::cout << "\"" << DEBUG_MSG << "\"" << std::endl << std::endl;
 }
 
 void	Harl::_info(void) {
+
 	std::cout << "[INFO] message:" << std::endl;
 	std::cout << "\"" << INFO_MSG << "\"" << std::endl << std::endl;
 }
 
 void	Harl::_warning(void) {
+
 	std::cout << "[WARNING] message:" << std::endl;
 	std::cout << "\"" << WARNING_MSG << "\"" << std::endl << std::endl;
 }
 
 void	Harl::_error(void) {
+
 	std::cout << "[ERROR] message:" << std::endl;
 	std::cout << "\"" << ERROR_MSG << "\"" << std::endl << std::endl;
 }
@@ -56,6 +60,7 @@ void	Harl::_error(void) {
 void	Harl::complain(std::string level) {
 
 	for (size_t i = 0; i < MAX_LEVELS; i++) {
+
 		if (_level_to_f[i].level == level) {
 			(this->*(_level_to_f[i].function))();
 			return ;

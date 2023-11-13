@@ -1,7 +1,7 @@
 #include "../includes/Zombie.class.hpp"
 
 Zombie::~Zombie(void) {
-	std::cout << "Zombie [" << this->getName() << "] destroyed." << std::endl;
+	std::cout << "Zombie from horde [" << this->getName() << "] destroyed." << std::endl;
 }
 
 void Zombie::SetName(std::string name) {

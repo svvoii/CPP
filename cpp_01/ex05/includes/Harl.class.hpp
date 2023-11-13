@@ -3,6 +3,7 @@
 
 # include <iostream>
 # include <string>
+# include <limits>
 
 # define MAX_LEVELS 4
 

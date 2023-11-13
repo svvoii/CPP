@@ -7,7 +7,11 @@ NAME = Zombie
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -g
 
-SRCS = main.cpp src/Zombie.class.cpp src/newZombie.cpp src/randomChump.cpp
+SRCS = main.cpp \
+		src/Zombie.class.cpp \
+		src/newZombie.cpp \
+		src/randomChump.cpp
+
 OBJS = $(SRCS:.cpp=.o)
 
 # this is called by default when you just type make
@@ -37,7 +41,7 @@ re: fclean all
 # to pass the ARGS variable to the makefile use:
 # make valgrind ARGS="arg1 arg2 arg3"
 valgrind:
-	clang++ $(FLAGS) -g $(SRCS) -o $(NAME)
+	clang++ $(CXXFLAGS) $(SRCS) -o $(NAME)
 	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) $(ARGS)
 
 .PHONY: all clean fclean re valgrind

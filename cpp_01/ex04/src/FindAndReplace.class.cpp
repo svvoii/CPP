@@ -32,6 +32,9 @@ bool	FindAndReplace::getFileContents(std::string fileName) {
 /*
 ** This will read the contents of the `_fileContentsBuffer` and replace s1 with s2 in it
 ** and store the result in the `_output` buffer
+** 
+** `src.find(s1, pos)` will return the position of the first occurrence
+** of `s1` in `src` starting from `pos`
 */
 bool	FindAndReplace::replace(std::string const s1, std::string const s2) {
 
@@ -39,6 +42,7 @@ bool	FindAndReplace::replace(std::string const s1, std::string const s2) {
 	size_t pos = 0;
 
 	while ((pos = src.find(s1, pos)) != std::string::npos) {
+
 		src = src.substr(0, pos) + s2 + src.substr(pos + s1.length());
 		pos += s2.length();
 	}

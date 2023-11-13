@@ -5,6 +5,7 @@
 ** Returns a pointer to the first zombie in the array.
 */
 Zombie *zombieHorde(int N, std::string name) {
+
 	Zombie *zombies = new Zombie[N];
 
 	for (int i = 0; i < N; i++) {
@@ -20,6 +21,7 @@ Zombie *zombieHorde(int N, std::string name) {
 ** calls the announce() method for each zombie.
 */
 void moarBrainz(Zombie *zombies, int N) {
+
 	for (int i = 0; i < N; i++) {
 		std::cout << "Zombie [" << i + 1;
 		std::cout << "] from horde [" << zombies[i].getName() << "]... ";
@@ -31,6 +33,7 @@ void moarBrainz(Zombie *zombies, int N) {
 ** Deletes the allocated instances of the Zombie class.
 */
 void deleteZombieHorde(Zombie *zombies) {
+
 	delete[] zombies;
 }
 
