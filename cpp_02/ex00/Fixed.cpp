@@ -9,7 +9,8 @@
 ** with the integer literal 0.
 */
 Fixed::Fixed(void) : _rawBits(0) {
-	std::cout << "Default constructor called" << std::endl;
+	
+	std::cout << CYAN << "\tFixed default constructor called" << RESET << std::endl;
 }
 
 /*
@@ -22,7 +23,8 @@ Fixed::Fixed(void) : _rawBits(0) {
 ** which is triggered by the `=` sign in: `*this = fixed;`.
 */
 Fixed::Fixed(const Fixed &fixed) {
-	std::cout << "Copy constructor called" << std::endl;
+	
+	std::cout << CYAN << "\tFixed copy constructor called" << RESET << std::endl;
 	*this = fixed;
 }
 
@@ -32,7 +34,8 @@ Fixed::Fixed(const Fixed &fixed) {
 ** when the program ends.
 */
 Fixed::~Fixed(void) {
-	std::cout << "Destructor called" << std::endl;
+	
+	std::cout << RED << "\tFixed destructor called" << RESET << std::endl;
 }
 
 /*
@@ -44,8 +47,10 @@ Fixed::~Fixed(void) {
 ** `a = b;`.
 */
 Fixed &Fixed::operator=(const Fixed &fixed) {
-	std::cout << "Assignment operator called" << std::endl;
+
+	std::cout << CYAN << "\tFixed assignment operator called" << RESET << std::endl;
 	this->_rawBits = fixed.getRawBits();
+	//this->_rawBits = fixed._rawBits; // same as above
 	return *this;
 }
 
@@ -57,6 +62,7 @@ Fixed &Fixed::operator=(const Fixed &fixed) {
 ** this function cannot modify the object `*this` on which it is called.
 */
 int Fixed::getRawBits(void) const {
+
 	std::cout << "getRawBits member function called" << std::endl;
 	return this->_rawBits;
 }
@@ -69,6 +75,7 @@ int Fixed::getRawBits(void) const {
 ** `raw` cannot be modified inside the function.
 */
 void Fixed::setRawBits(int const raw) {
+
 	std::cout << "setRawBits member function called";
 	std::cout << " with: [" << raw << "] as an argument" << std::endl;
 	this->_rawBits = raw;
