@@ -1,8 +1,8 @@
 /*
-** In this exercise we will extend the previous 2 exercises by adding
-** mopre functionality.
+** In this exercise we will extend the usage of 
+** `Fixed` class by adding mopre functionality.
 **
-** Overload the following operators:
+** Adding overload of the following operators:
 ** 6 comparison operators: `>`, `<`, `>=`, `<=`, `==`, `!=`
 ** 4 arithmetic operators: `+`, `-`, `*`, `/`
 ** 4 increment/decrement (pre- and post- increment)
@@ -32,6 +32,14 @@
 
 # include <iostream>
 # include <cmath>
+
+// Defining some ANSI escape codes for consol output colors
+# define RESET   "\033[0m"
+# define RED     "\033[31m"
+# define GREEN   "\033[32m"
+# define BLUE    "\033[34m"
+# define MAGENTA "\033[35m"
+# define CYAN    "\033[36m"
 
 class Fixed {
 	private:

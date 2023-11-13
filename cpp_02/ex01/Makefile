@@ -19,8 +19,8 @@ $(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
 # recipe to compile .cpp files to .o files
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+# %.o: %.cpp
+#	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 # recipe to cleans the object files
 clean:
@@ -37,7 +37,7 @@ re: fclean all
 # to pass the ARGS variable to the makefile use:
 # make valgrind ARGS="arg1 arg2 arg3"
 valgrind:
-	g++ $(FLAGS) -g $(SRCS) -o $(NAME)
+	g++ $(CXXFLAGS) -g $(SRCS) -o $(NAME)
 	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) $(ARGS)
 
 .PHONY: all clean fclean re valgrind

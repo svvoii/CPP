@@ -34,7 +34,9 @@ Fixed::~Fixed(void) {
 
 Fixed &Fixed::operator=(const Fixed &fixed) {
 	// std::cout << "Assignment operator called" << std::endl;
-	this->_rawBits = fixed.getRawBits();
+
+	_rawBits = fixed._rawBits;
+	//this->_rawBits = fixed.getRawBits(); // same as above
 	return *this;
 }
 
@@ -43,7 +45,9 @@ Fixed &Fixed::operator=(const Fixed &fixed) {
 ** raw bits of the two objects and returning a boolean result.
 */
 bool	Fixed::operator>(const Fixed &fixed) const {
-	return this->_rawBits > fixed.getRawBits();
+
+	return _rawBits > fixed._rawBits;
+	//return this->_rawBits > fixed.getRawBits(); // same as above
 }
 
 /*
@@ -51,7 +55,9 @@ bool	Fixed::operator>(const Fixed &fixed) const {
 ** raw bits of the two objects and returning a boolean result.
 */
 bool	Fixed::operator<(const Fixed &fixed) const {
-	return this->_rawBits < fixed.getRawBits();
+
+	return _rawBits < fixed._rawBits;
+	//return this->_rawBits < fixed.getRawBits(); // same as above
 }
 
 /*
@@ -59,7 +65,9 @@ bool	Fixed::operator<(const Fixed &fixed) const {
 ** raw bits of the two objects and returning a boolean result.
 */
 bool	Fixed::operator>=(const Fixed &fixed) const {
-	return this->_rawBits >= fixed.getRawBits();
+
+	return _rawBits >= fixed._rawBits;
+	//return this->_rawBits >= fixed.getRawBits(); // same as above
 }
 
 /*
@@ -67,7 +75,9 @@ bool	Fixed::operator>=(const Fixed &fixed) const {
 ** raw bits of the two objects and returning a boolean result.
 */
 bool	Fixed::operator<=(const Fixed &fixed) const {
-	return this->_rawBits <= fixed.getRawBits();
+
+	return _rawBits <= fixed._rawBits;
+	//return this->_rawBits <= fixed.getRawBits(); // same as above
 }
 
 /*
@@ -75,7 +85,9 @@ bool	Fixed::operator<=(const Fixed &fixed) const {
 ** raw bits of the two objects and returning a boolean result.
 */
 bool	Fixed::operator==(const Fixed &fixed) const {
-	return this->_rawBits == fixed.getRawBits();
+
+	return _rawBits == fixed._rawBits;
+	//return this->_rawBits == fixed.getRawBits(); // same as above
 }
 
 /*
@@ -83,7 +95,9 @@ bool	Fixed::operator==(const Fixed &fixed) const {
 ** raw bits of the two objects and returning a boolean result.
 */
 bool	Fixed::operator!=(const Fixed &fixed) const {
-	return this->_rawBits != fixed.getRawBits();
+
+	return _rawBits != fixed._rawBits;
+	//return this->_rawBits != fixed.getRawBits(); // same as above
 }
 
 /*
@@ -91,6 +105,7 @@ bool	Fixed::operator!=(const Fixed &fixed) const {
 ** to float. The result is returned as a new Fixed object.
 */
 Fixed	Fixed::operator+(const Fixed &fixed) const {
+
 	return Fixed(this->toFloat() + fixed.toFloat());
 }
 
@@ -99,6 +114,7 @@ Fixed	Fixed::operator+(const Fixed &fixed) const {
 ** to float. The result is returned as a new Fixed object.
 */
 Fixed	Fixed::operator-(const Fixed &fixed) const {
+
 	return Fixed(this->toFloat() - fixed.toFloat());
 }
 
@@ -107,6 +123,7 @@ Fixed	Fixed::operator-(const Fixed &fixed) const {
 ** to float. The result is returned as a new Fixed object.
 */
 Fixed	Fixed::operator*(const Fixed &fixed) const {
+
 	return Fixed(this->toFloat() * fixed.toFloat());
 }
 
@@ -115,6 +132,7 @@ Fixed	Fixed::operator*(const Fixed &fixed) const {
 ** to float. The result is returned as a new Fixed object.
 */
 Fixed	Fixed::operator/(const Fixed &fixed) const {
+
 	return Fixed(this->toFloat() / fixed.toFloat());
 }
 
@@ -123,7 +141,9 @@ Fixed	Fixed::operator/(const Fixed &fixed) const {
 ** of the object by one and returning a reference to the object.
 */
 Fixed	&Fixed::operator++(void) {
-	this->_rawBits++;
+
+	_rawBits++;
+	//this->_rawBits++; // same as above
 	return *this;
 }
 
@@ -132,6 +152,7 @@ Fixed	&Fixed::operator++(void) {
 ** of the object by one and returning a copy of the object.
 */
 Fixed	Fixed::operator++(int) {
+
 	Fixed tmp(*this);
 	operator++();
 	return tmp;
@@ -142,7 +163,9 @@ Fixed	Fixed::operator++(int) {
 ** of the object by one and returning a reference to the object.
 */
 Fixed	&Fixed::operator--(void) {
-	this->_rawBits--;
+
+	_rawBits--;
+	//this->_rawBits--; // same as above
 	return *this;
 }
 
@@ -151,6 +174,7 @@ Fixed	&Fixed::operator--(void) {
 ** of the object by one and returning a copy of the object.
 */
 Fixed	Fixed::operator--(int) {
+
 	Fixed tmp(*this);
 	operator--();
 	return tmp;
@@ -168,11 +192,15 @@ void Fixed::setRawBits(int const raw) {
 }
 
 int Fixed::toInt(void) const {
-	return this->_rawBits >> this->_fractionalBits;
+
+	return _rawBits >> _fractionalBits;
+	//return this->_rawBits >> this->_fractionalBits; // same as above
 }
 
 float Fixed::toFloat(void) const {
-	return (float)this->_rawBits / (1 << this->_fractionalBits);
+
+	return (float)_rawBits / (1 << _fractionalBits);
+	//return (float)this->_rawBits / (1 << this->_fractionalBits); // same as above
 }
 
 /*
@@ -181,6 +209,7 @@ float Fixed::toFloat(void) const {
 ** `Fixed &Fixed` means that the method returns a reference to a Fixed object.
 */
 Fixed &Fixed::min(Fixed &a, Fixed &b) {
+
 	return a < b ? a : b;
 }
 
@@ -190,6 +219,7 @@ Fixed &Fixed::min(Fixed &a, Fixed &b) {
 ** `const` means that the objects it returns cannot be modified.
 */
 Fixed const &Fixed::min(Fixed const &a, Fixed const &b) {
+
 	return a < b ? a : b;
 }
 
@@ -199,6 +229,7 @@ Fixed const &Fixed::min(Fixed const &a, Fixed const &b) {
 ** `Fixed &Fixed` means that the method returns a reference to a Fixed object.
 */
 Fixed &Fixed::max(Fixed &a, Fixed &b) {
+
 	return a > b ? a : b;
 }
 
@@ -208,10 +239,12 @@ Fixed &Fixed::max(Fixed &a, Fixed &b) {
 ** `const` means that the objects it returns cannot be modified.
 */
 Fixed const &Fixed::max(Fixed const &a, Fixed const &b) {
+
 	return a > b ? a : b;
 }
 
 std::ostream &operator<<(std::ostream &out, const Fixed &fixed) {
+
 	out << fixed.toFloat();
 	return out;
 }

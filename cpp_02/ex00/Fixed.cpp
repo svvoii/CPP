@@ -10,7 +10,7 @@
 */
 Fixed::Fixed(void) : _rawBits(0) {
 	
-	std::cout << CYAN << "\tFixed default constructor called" << RESET << std::endl;
+	std::cout << CYAN << "\tDefault constructor called" << RESET << std::endl;
 }
 
 /*
@@ -24,7 +24,7 @@ Fixed::Fixed(void) : _rawBits(0) {
 */
 Fixed::Fixed(const Fixed &fixed) {
 	
-	std::cout << CYAN << "\tFixed copy constructor called" << RESET << std::endl;
+	std::cout << CYAN << "\tCopy constructor called" << RESET << std::endl;
 	*this = fixed;
 }
 
@@ -35,7 +35,7 @@ Fixed::Fixed(const Fixed &fixed) {
 */
 Fixed::~Fixed(void) {
 	
-	std::cout << RED << "\tFixed destructor called" << RESET << std::endl;
+	std::cout << RED << "\tDestructor called" << RESET << std::endl;
 }
 
 /*
@@ -48,7 +48,7 @@ Fixed::~Fixed(void) {
 */
 Fixed &Fixed::operator=(const Fixed &fixed) {
 
-	std::cout << CYAN << "\tFixed assignment operator called" << RESET << std::endl;
+	std::cout << CYAN << "\tAssignment operator called" << RESET << std::endl;
 	this->_rawBits = fixed.getRawBits();
 	//this->_rawBits = fixed._rawBits; // same as above
 	return *this;
