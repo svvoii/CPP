@@ -55,6 +55,8 @@ class Fixed {
 /*
 ** The following declaration is used to overload the `std::ostream`
 ** operator `<<` so that it can be used with the `Fixed` class.
+** This operator inserts a FLOATING point representation of the
+** fixed point value into the output stream passed as parameter.
 */
 std::ostream &operator<<(std::ostream &out, const Fixed &fixed);
 

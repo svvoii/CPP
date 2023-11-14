@@ -19,6 +19,7 @@ $(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
 # recipe to compile .cpp files to .o files
+# !! this is not needed because make will do this by default !!
 # %.o: %.cpp
 #	$(CXX) $(CXXFLAGS) -c $< -o $@
 
