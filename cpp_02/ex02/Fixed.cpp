@@ -148,7 +148,7 @@ Fixed	Fixed::operator/(const Fixed &fixed) const {
 */
 Fixed	&Fixed::operator++(void) {
 
-	_rawBits++;
+	_rawBits += 1;
 	//this->_rawBits++; // same as above
 	return *this;
 }

@@ -41,7 +41,37 @@ int main(void) {
 	{
 		std::cout << std::endl << MAGENTA;
 		std::cout << "= = = = = = = = = = ====== = = = = = = = = = =" << std::endl;
-		std::cout << "= = = = = = = = = =  TEST  = = = = = = = = = =" << std::endl;
+		std::cout << "= = = = = = = = = = TEST 1 = = = = = = = = = =" << std::endl;
+		std::cout << "= = = = = = = = = = ====== = = = = = = = = = =" << std::endl;
+		std::cout << "Basic test from previous task description." << RESET << std::endl;
+		std::cout << RESET << std::endl;
+
+		std::cout << "Fixed a;" << std::endl;
+		Fixed 		a;
+		std::cout << "Fixed const b(10);" << std::endl;
+		Fixed const b(10);
+		std::cout << "Fixed const c(42.42f);" << std::endl;
+		Fixed const c(42.42f);
+		std::cout << "Fixed const d(b);" << std::endl;
+		Fixed const d(b);
+
+		std::cout << "a = Fixed(1234.4321f);" << std::endl;
+		a = Fixed(1234.4321f);
+
+		std::cout << "a is " << a << std::endl;
+		std::cout << "b is " << b << std::endl;
+		std::cout << "c is " << c << std::endl;
+		std::cout << "d is " << d << std::endl;
+		std::cout << std::endl;
+		std::cout << "a is " << a.toInt() << " as integer" << std::endl;
+		std::cout << "b is " << b.toInt() << " as integer" << std::endl;
+		std::cout << "c is " << c.toInt() << " as integer" << std::endl;
+		std::cout << "d is " << d.toInt() << " as integer" << std::endl;
+	}
+	{
+		std::cout << std::endl << MAGENTA;
+		std::cout << "= = = = = = = = = = ====== = = = = = = = = = =" << std::endl;
+		std::cout << "= = = = = = = = = = TEST 2 = = = = = = = = = =" << std::endl;
 		std::cout << "= = = = = = = = = = ====== = = = = = = = = = =" << std::endl;
 		std::cout << "  > < == !=  COMPARISON OPERATORS  != == < >" << RESET << std::endl;
 		std::cout << RESET << std::endl;
@@ -101,14 +131,14 @@ int main(void) {
 		std::cout << "expected:\t[" << boolToString(a_fl == c_fl) << "]\n" << std::endl;
 
 		bool aIsNotEqualc = (a != c);
-		std::cout << BLUE << "Using `bool aIsNotEqual = (a != c);`" << RESET << "( " << a << " != " << c << " )" << std::endl;
+		std::cout << BLUE << "`bool aIsNotEqual = (a != c);`" << RESET << "( " << a << " != " << c << " )" << std::endl;
 		std::cout << "aIsNotEqual:\t[" << boolToString(aIsNotEqualc) << "]" << std::endl;
 		std::cout << "expected:\t[" << boolToString(a_fl != c_fl) << "]\n" << std::endl;
 
-		std::cout << BLUE << "`Fixed zero;`";
+		std::cout << BLUE << "declaring `Fixed zero;`" << std::endl;
 		Fixed zero;
 		bool aIsNotEqualz = (a != zero);
-		std::cout << " and `bool aIsNotEqualz = (a != zero);`" << RESET << "( " << a << " != " << zero << " )" << std::endl;
+		std::cout << BLUE << "and `bool aIsNotEqualz = (a != zero);`" << RESET << "( " << a << " != " << zero << " )" << std::endl;
 		std::cout << "aIsNotEqual:\t[" << boolToString(aIsNotEqualz) << "]" << std::endl;
 		std::cout << "expected:\t[" << boolToString(a_fl != 0) << "]\n" << std::endl;
 
@@ -120,195 +150,129 @@ int main(void) {
 	{
 		std::cout << std::endl << MAGENTA;
 		std::cout << "= = = = = = = = = = ====== = = = = = = = = = =" << std::endl;
-		std::cout << "= = = = = = = = = =  TEST  = = = = = = = = = =" << std::endl;
+		std::cout << "= = = = = = = = = = TEST 3 = = = = = = = = = =" << std::endl;
 		std::cout << "= = = = = = = = = = ====== = = = = = = = = = =" << std::endl;
 		std::cout << "  + - * /  ARITHMETIC OPERATORS  / * - +" << RESET << std::endl;
 		std::cout << RESET << std::endl;
 
-		std::cout << BLUE << "Using `Fixed a(5.5f);` and `Fixed b(2);`" << RESET << std::endl;
-		Fixed a(5.5f);
-		Fixed b(2);
+		float	a_fl = 5.5f;
+		int		b_int = 2;
+		float	c_fl = -5.5f;
+		int		d_int = -2;
+
+		std::cout << BLUE << "Setting `Fixed a(" << a_fl << ");` and `Fixed b(" << b_int << ");`" << RESET << std::endl;
+		Fixed a(a_fl);
+		Fixed b(b_int);
 
 		std::cout << "Output of raw `a` and `b`:" << std::endl;
 		std::cout << "a:\t[" << a << "]" << std::endl;
 		std::cout << "b:\t[" << b << "]" << std::endl;
 
-		std::cout << BLUE << "Using `Fixed c = a + b;`" << RESET << std::endl;
-		Fixed addition = a + b;
+		std::cout << BLUE << "Setting `Fixed addition = (a + b);`" << RESET << std::endl;
+		Fixed addition = (a + b);
+		std::cout << "addition.toInt():\t[" << addition.toInt() << "]" << std::endl;
+		std::cout << "addition.toFloat():\t[" << addition.toFloat() << "]" << std::endl;
 
-		std::cout << "Output of `c`:" << std::endl;
-		std::cout << "int   addition:\t[" << addition.toInt() << "]" << std::endl;
-		std::cout << "float addition:\t[" << addition.toFloat() << "]" << std::endl;
+		std::cout << BLUE << "Setting `Fixed substraction = (a - b);`" << RESET << std::endl;
+		Fixed substraction = (a - b);
+		std::cout << "substruction.toInt():\t[" << substraction.toInt() << "]" << std::endl;
+		std::cout << "substruction.toFloat():\t[" << substraction.toFloat() << "]" << std::endl;
 
-		std::cout << BLUE << "Using `Fixed substraction = a - b;`" << RESET << std::endl;
-		Fixed substraction = a - b;
+		std::cout << BLUE << "Setting `Fixed multiplication = (a * b);`" << RESET << std::endl;
+		Fixed multiplication = (a * b);
+		std::cout << "multiplication.toInt():\t[" << multiplication.toInt() << "]" << std::endl;
+		std::cout << "multiplication.toFloat():\t[" << multiplication.toFloat() << "]" << std::endl;
 
-		std::cout << "Output of `substraction`:" << std::endl;
-		std::cout << "int   substruction:\t[" << substraction.toInt() << "]" << std::endl;
-		std::cout << "float substructio:\t[" << substraction.toFloat() << "]" << std::endl;
+		std::cout << BLUE << "Setting `Fixed division = (a / b);`" << RESET << std::endl;
+		Fixed division = (a / b);
+		std::cout << "division.toInt():\t[" << division.toInt() << "]" << std::endl;
+		std::cout << "division.toFloat():\t[" << division.toFloat() << "]" << std::endl;
 
-		std::cout << BLUE << "Using `Fixed multiplication = a * b;`" << RESET << std::endl;
-		Fixed multiplication = a * b;
-
-		std::cout << "Output of `multiplication`:" << std::endl;
-		std::cout << "int   multiplication:\t[" << multiplication.toInt() << "]" << std::endl;
-		std::cout << "float multiplication:\t[" << multiplication.toFloat() << "]" << std::endl;
-
-		std::cout << BLUE << "Using `Fixed division = a / b;`" << RESET << std::endl;
-		Fixed division = a / b;
-
-		std::cout << "Output of `division`:" << std::endl;
-		std::cout << "int   division:\t[" << division.toInt() << "]" << std::endl;
-		std::cout << "float division:\t[" << division.toFloat() << "]" << std::endl;
-
-		std::cout << BLUE << "Using `Fixed zero;` and `Fixed division = a / zero;`" << RESET << std::endl;
+		std::cout << BLUE << "Setting `Fixed zero;` and `Fixed division = (a / zero);`" << RESET << std::endl;
 		Fixed zero;
-		Fixed divisionByZero = a / zero;
+		Fixed divisionByZero = (a / zero);
+		std::cout << "divisionByZero.toInt(): \t[" << divisionByZero.toInt() << "]" << std::endl;
+		std::cout << "divisionByZero.toFloat():\t[" << divisionByZero.toFloat() << "]" << std::endl;
 
-		std::cout << "Output of `divisionByZero`:" << std::endl;
-		std::cout << "int   divisionByZero:\t[" << divisionByZero.toInt() << "]" << std::endl;
-		std::cout << "float divisionByZero:\t[" << divisionByZero.toFloat() << "]" << std::endl;
-
-		std::cout << BLUE << "Using `Fixed c(2);` and `Fixed d(3);`" << RESET << std::endl;
-		Fixed c(-5.5f);
-		Fixed d(-2);
+		std::cout << BLUE << "Setting `Fixed c(" << c_fl << ");` and `Fixed d(" << d_int << ");`" << RESET << std::endl;
+		Fixed c(c_fl);
+		Fixed d(d_int);
 
 		std::cout << "Output of raw `c` and `d`:" << std::endl;
 		std::cout << "c:\t[" << c << "]" << std::endl;
 		std::cout << "d:\t[" << d << "]" << std::endl;
 
-		std::cout << BLUE << "Using `Fixed e = c + d;`" << RESET << std::endl;
-		Fixed e = c + d;
+		std::cout << BLUE << "Setting `Fixed e = (c + d);`" << RESET << std::endl;
+		Fixed e = (c + d);
+		std::cout << "e.toInt():\t[" << e.toInt() << "]" << std::endl;
+		std::cout << "e.toFloat():\t[" << e.toFloat() << "]" << std::endl;
+	}
+	{
+		std::cout << std::endl << MAGENTA;
+		std::cout << "= = = = = = = = = = ====== = = = = = = = = = =" << std::endl;
+		std::cout << "= = = = = = = = = = TEST 4 = = = = = = = = = =" << std::endl;
+		std::cout << "= = = = = = = = = = ====== = = = = = = = = = =" << std::endl;
+		std::cout << "++ -- INCREMENT AND DECREMENT OPERATORS -- ++" << RESET << std::endl;
 
-		std::cout << "Output of `e`:" << std::endl;
-		std::cout << "int   e:\t[" << e.toInt() << "]" << std::endl;
-		std::cout << "float e:\t[" << e.toFloat() << "]" << std::endl;
+		int		a_int = 55;
+		int		b_int = 421;
+
+		std::cout << BLUE << "\nPOSTFIX incrementation++" << RESET << std::endl;
+		std::cout << "declaring `Fixed a(" << a_int << ");` and `Fixed b = a++;`" << std::endl;
+		Fixed a(a_int);
+		Fixed b = a++;
+
+		std::cout << "Output of `a` and `b` should be different:" << std::endl;
+		std::cout << "a:\t[" << a << "], raw:[" << a.getRawBits() << "]" << std::endl;
+		std::cout << "b:\t[" << b << "], raw:[" << b.getRawBits() << "]" << std::endl;
+
+		std::cout << BLUE << "\nPREFIX ++incrementation" << RESET << std::endl;
+		std::cout << "declaring `Fixed c(" << a_int << ");` and `Fixed d = ++c;`" << std::endl;
+		Fixed c(a_int);
+		Fixed d = ++c;
 		
-		/*
-		std::cout << BLUE << "Using `Fixed int_max(2147483647);` and `Fixed one(1);`" << RESET << std::endl;
-		Fixed int_max(2147483647); // 2147483647
-		Fixed one(1);
+		std::cout << "Output of `c` and `d` should be the same:" << std::endl;
+		std::cout << "c:\t[" << c << "], raw:[" << c.getRawBits() << "]" << std::endl;
+		std::cout << "d:\t[" << d << "], raw:[" << d.getRawBits() << "]" << std::endl;
 
-		std::cout << "Output of raw `int_max` and `one`:" << std::endl;
-		std::cout << "int_max:\t[" << int_max << "]" << std::endl;
-		std::cout << "one:\t\t[" << one << "]" << std::endl;
+		std::cout << BLUE << "\nPOSTFIX decrementation--" << RESET << std::endl;
+		std::cout << "declaring `Fixed e(" << b_int << ");` and `Fixed f = e--;`" << std::endl;
+		Fixed e(b_int);
+		Fixed f = e--;
 
-		std::cout << BLUE << "Using `Fixed int_max_plus_one = int_max + one;`" << RESET << std::endl;
-		Fixed int_max_plus_one = int_max + one;
+		std::cout << "Output of `e` and `f` should be different:" << std::endl;
+		std::cout << "e:\t[" << e << "], raw:[" << e.getRawBits() << "]" << std::endl;
+		std::cout << "f:\t[" << f << "], raw:[" << f.getRawBits() << "]" << std::endl;
 
-		std::cout << "Output of `int_max_plus_one`:" << std::endl;
-		std::cout << "int   int_max_plus_one:\t[" << int_max_plus_one.toInt() << "]" << std::endl;
-		std::cout << "float int_max_plus_one:\t[" << int_max_plus_one.toFloat() << "]" << std::endl;
+		std::cout << BLUE << "\nPREFIX --decrementation" << RESET << std::endl;
+		std::cout << "declaring `Fixed g(" << b_int << ");` and `Fixed h = --g;`" << std::endl;
+		Fixed g(b_int);
+		Fixed h = --g;
 
-		std::cout << BLUE << "Using `Fixed int_min(-2147483648);` and `Fixed minus_one(-1);`" << RESET << std::endl;
-		Fixed int_min(static_cast<int>(-2147483648)); // -2147483648
-		Fixed minus_one(-1);
+		std::cout << "Output of `g` and `h` should be the same:" << std::endl;
+		std::cout << "g:\t[" << g << "], raw:[" << g.getRawBits() << "]" << std::endl;
+		std::cout << "h:\t[" << h << "], raw:[" << h.getRawBits() << "]" << std::endl;
 
-		std::cout << "Output of raw `int_min` and `minus_one`:" << std::endl;
-		std::cout << "int_min:\t[" << int_min << "]" << std::endl;
-		std::cout << "minus_one:\t[" << minus_one << "]" << std::endl;
+		std::cout << BLUE << "\nPOSTFIX incrementation++" << RESET << std::endl;
+		std::cout << "`Fixed fixed(" << b_int << ");` and `fixed.operator++();`" << std::endl;
+		Fixed fixed(b_int);
+		std::cout << "Output of `fixed` should be incremented by the smallest increment:" << std::endl;
+		std::cout << "fixed:\t[" << fixed << "], raw:[" << fixed.getRawBits() << "]" << std::endl;
+		fixed.operator++();
+		std::cout << "fixed:\t[" << fixed << "], raw:[" << fixed.getRawBits() << "]" << std::endl;
+		fixed.operator++();
+		std::cout << "fixed:\t[" << fixed << "], raw:[" << fixed.getRawBits() << "]" << std::endl;
+		fixed.operator++();
+		std::cout << "fixed:\t[" << fixed << "], raw:[" << fixed.getRawBits() << "]" << std::endl;
+		fixed.operator++();
+		std::cout << "fixed:\t[" << fixed << "], raw:[" << fixed.getRawBits() << "]" << std::endl;
 
-		std::cout << BLUE << "Using `Fixed int_min_minus_one = int_min - minus_one;`" << RESET << std::endl;
-		Fixed int_min_minus_one = int_min - minus_one;
-
-		std::cout << "Output of `int_min_minus_one`:" << std::endl;
-		std::cout << "int   int_min_minus_one:\t[" << int_min_minus_one.toInt() << "]" << std::endl;
-		std::cout << "float int_min_minus_one:\t[" << int_min_minus_one.toFloat() << "]" << std::endl;
-		*/
 	}
 	/*
 	{
 		std::cout << std::endl << MAGENTA;
 		std::cout << "= = = = = = = = = = ====== = = = = = = = = = =" << std::endl;
-		std::cout << "= = = = = = = = = =  TEST  = = = = = = = = = =" << std::endl;
-		std::cout << "= = = = = = = = = = ====== = = = = = = = = = =" << std::endl;
-		std::cout << "++ -- INCREMENT AND DECREMENT OPERATORS -- ++" << RESET << std::endl;
-
-		std::cout << BLUE << "Using postfix increment operator as ";
-		std::cout << "`Fixed a(5.5f);` and `Fixed b = a++;`" << RESET << std::endl;
-		Fixed a(5.5f);
-		Fixed b = a++;
-
-		std::cout << "Output of `a` and `b` should be different:" << std::endl;
-		std::cout << "a:\t[" << a << "]" << std::endl;
-		std::cout << "b:\t[" << b << "]" << std::endl;
-
-		std::cout << BLUE << "Using prefix increment operator as ";
-		std::cout << "`Fixed c(5.5f);` and `Fixed d = ++c;`" << RESET << std::endl;
-		Fixed c(5.5f);
-		Fixed d = ++c;
-		
-		std::cout << "Output of `c` and `d` should be the same:" << std::endl;
-		std::cout << "c:\t[" << c << "]" << std::endl;
-		std::cout << "d:\t[" << d << "]" << std::endl;
-
-		std::cout << BLUE << "Using postfix decrement operator as ";
-		std::cout << "`Fixed e(42);` and `Fixed f = e--;`" << RESET << std::endl;
-		Fixed e(42);
-		Fixed f = e--;
-
-		std::cout << "Output of `e` and `f` should be different:" << std::endl;
-		std::cout << "e:\t[" << e << "]" << std::endl;
-		std::cout << "f:\t[" << f << "]" << std::endl;
-
-		std::cout << BLUE << "Using prefix decrement operator as ";
-		std::cout << "`Fixed g(42);` and `Fixed h = --g;`" << RESET << std::endl;
-		Fixed g(42);
-		Fixed h = --g;
-
-		std::cout << "Output of `g` and `h` should be the same:" << std::endl;
-		std::cout << "g:\t[" << g << "]" << std::endl;
-		std::cout << "h:\t[" << h << "]" << std::endl;
-
-		std::cout << BLUE << "Using postfix increment operator as ";
-		std::cout << "`Fixed fixed(42);` and `fixed.operator++();`" << RESET << std::endl;
-		Fixed fixed(42);
-		std::cout << "fixed:\t[" << fixed << "]" << std::endl;
-		fixed.operator++();
-		std::cout << "fixed:\t[" << fixed << "]" << std::endl;
-		fixed.operator++();
-		std::cout << "fixed:\t[" << fixed << "]" << std::endl;
-		fixed.operator++();
-		std::cout << "fixed:\t[" << fixed << "]" << std::endl;
-		fixed.operator++();
-
-		std::cout << "Output of `fixed` should be incremented by one:" << std::endl;
-		std::cout << "fixed:\t[" << fixed << "]" << std::endl;
-
-	}
-	{
-		std::cout << std::endl << MAGENTA;
-		std::cout << "= = = = = = = = = = ====== = = = = = = = = = =" << std::endl;
-		std::cout << "= = = = = = = = = = TEST ex01 = = = = = = = = = =" << std::endl;
-		std::cout << "= = = = = = = = = = ====== = = = = = = = = = =" << std::endl;
-		std::cout << RESET << std::endl;
-
-		std::cout << "Fixed a;" << std::endl;
-		Fixed 		a;
-		std::cout << "Fixed const b(10);" << std::endl;
-		Fixed const b(10);
-		std::cout << "Fixed const c(42.42f);" << std::endl;
-		Fixed const c(42.42f);
-		std::cout << "Fixed const d(b);" << std::endl;
-		Fixed const d(b);
-
-		std::cout << "a = Fixed(1234.4321f);" << std::endl;
-		a = Fixed(1234.4321f);
-
-		std::cout << "a is " << a << std::endl;
-		std::cout << "b is " << b << std::endl;
-		std::cout << "c is " << c << std::endl;
-		std::cout << "d is " << d << std::endl;
-		std::cout << std::endl;
-		std::cout << "a is " << a.toInt() << " as integer" << std::endl;
-		std::cout << "b is " << b.toInt() << " as integer" << std::endl;
-		std::cout << "c is " << c.toInt() << " as integer" << std::endl;
-		std::cout << "d is " << d.toInt() << " as integer" << std::endl;
-	}
-	{
-		std::cout << std::endl << MAGENTA;
-		std::cout << "= = = = = = = = = = ====== = = = = = = = = = =" << std::endl;
-		std::cout << "= = = = = = = = = = TEST 1 = = = = = = = = = =" << std::endl;
+		std::cout << "= = = = = = = = = = TEST 5 = = = = = = = = = =" << std::endl;
 		std::cout << "= = = = = = = = = = ====== = = = = = = = = = =" << std::endl;
 		std::cout << RESET << std::endl;
 
@@ -320,7 +284,7 @@ int main(void) {
 	
 		std::cout << std::endl << MAGENTA;
 		std::cout << "= = = = = = = = = = ====== = = = = = = = = = =" << std::endl;
-		std::cout << "= = = = = = = = = = TEST 2 = = = = = = = = = =" << std::endl;
+		std::cout << "= = = = = = = = = = TEST 6 = = = = = = = = = =" << std::endl;
 		std::cout << "= = = = = = = = = = ====== = = = = = = = = = =" << std::endl;
 		std::cout << RESET << std::endl;
 
@@ -336,7 +300,7 @@ int main(void) {
 
 		std::cout << std::endl << MAGENTA;
 		std::cout << "= = = = = = = = = = ====== = = = = = = = = = =" << std::endl;
-		std::cout << "= = = = = = = = = = TEST 3 = = = = = = = = = =" << std::endl;
+		std::cout << "= = = = = = = = = = TEST 7 = = = = = = = = = =" << std::endl;
 		std::cout << "= = = = = = = = = = ====== = = = = = = = = = =" << std::endl;
 		std::cout << "Initializing object and test variables:`" << RESET << std::endl;
 
@@ -353,7 +317,7 @@ int main(void) {
 
 		std::cout << std::endl << MAGENTA;
 		std::cout << "= = = = = = = = = = ====== = = = = = = = = = =" << std::endl;
-		std::cout << "= = = = = = = = = = TEST 4 = = = = = = = = = =" << std::endl;
+		std::cout << "= = = = = = = = = = TEST 8 = = = = = = = = = =" << std::endl;
 		std::cout << "= = = = = = = = = = ====== = = = = = = = = = =" << std::endl;
 		std::cout << "Initializing object and test variables:`" << RESET << std::endl;
 
@@ -370,7 +334,7 @@ int main(void) {
 
 		std::cout << std::endl << MAGENTA;
 		std::cout << "= = = = = = = = = = ====== = = = = = = = = = =" << std::endl;
-		std::cout << "= = = = = = = = = = TEST 5 = = = = = = = = = =" << std::endl;
+		std::cout << "= = = = = = = = = = TEST 9 = = = = = = = = = =" << std::endl;
 		std::cout << "= = = = = = = = = = ====== = = = = = = = = = =" << std::endl;
 		std::cout << "Initializing object and test variables:`" << RESET << std::endl;
 
@@ -387,7 +351,7 @@ int main(void) {
 
 		std::cout << std::endl << MAGENTA;
 		std::cout << "= = = = = = = = = = ====== = = = = = = = = = =" << std::endl;
-		std::cout << "= = = = = = = = = = TEST 6 = = = = = = = = = =" << std::endl;
+		std::cout << "= = = = = = = = = = TEST10 = = = = = = = = = =" << std::endl;
 		std::cout << "= = = = = = = = = = ====== = = = = = = = = = =" << std::endl;
 		std::cout << "Initializing object and test variables:`" << RESET << std::endl;
 
@@ -414,7 +378,6 @@ int main(void) {
 		std::cout << std::endl;
 	}
 	*/
-
 	return 0;
 }
 
