@@ -4,8 +4,8 @@
 ** Setting default values for class attributes in the 
 ** default constructor.
 ** `_name` is set to "ClapTrap" by default.
-** `_hitPoints` is the amount of hit points the ClapTrap
-** has. It represents the health level of the ClapTrap.
+** `_hitPoints` is the amount of hit points the ClapTrap has. 
+** It represents the health level of the ClapTrap.
 ** `_energyPoints` is the amount of energy points the ClapTrap has.
 ** `_attackDamage` is the amount of damage the ClapTrap can deal.
 */
@@ -29,7 +29,8 @@ ClapTrap::ClapTrap(std::string name) :
 	_energyPoints(10), 
 	_attackDamage(0) {
 
-	std::cout << CYAN << "\t< ClapTrap NAME constructor called >" << RESET << std::endl;
+	std::cout << CYAN << "\t< ClapTrap NAME constructor called >" << RESET;
+	std::cout << " name:(" << name << ")" << std::endl;
 }
 
 /*
@@ -38,6 +39,7 @@ ClapTrap::ClapTrap(std::string name) :
 ** to the new object.
 */
 ClapTrap::ClapTrap(const ClapTrap &clapTrap) {
+
 	std::cout << CYAN << "\t< ClapTrap copy constructor called >" << RESET << std::endl;
 
 	this->_name = clapTrap._name;
@@ -47,7 +49,9 @@ ClapTrap::ClapTrap(const ClapTrap &clapTrap) {
 }
 
 ClapTrap::~ClapTrap(void) {
-	std::cout << RED << "\t< ClapTrap destructor called >" << RESET << std::endl;
+
+	std::cout << RED << "\t< ClapTrap destructor called >" << RESET;
+	std::cout << " name:(" << _name << ")" << std::endl;
 }
 
 /*
@@ -58,6 +62,7 @@ ClapTrap::~ClapTrap(void) {
 ** but not the values.
 */
 ClapTrap &ClapTrap::operator=(const ClapTrap &clapTrap) {
+
 	std::cout << CYAN << "\t< ClapTrap assignment operator called >" << RESET << std::endl;
 
 	if (this == &clapTrap) {
