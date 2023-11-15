@@ -3,7 +3,7 @@
 #define EXPECTED_OUTPUT "0\n0.00390625\n0.00390625\n0.00390625\n0.0078125\n10.1016\n10.1016\n"
 
 std::string boolToString(bool b) {
-	return b ? "true" : "false";
+	return b ? "TRUE" : "FALSE";
 }
 
 int main(void) {
@@ -14,8 +14,8 @@ int main(void) {
 		std::cout << "= = = = = = = = = = TEST 0 = = = = = = = = = =" << std::endl;
 		std::cout << "= = = = = = = = = = ====== = = = = = = = = = =" << std::endl;
 		std::cout << "Basic test from the task description." << RESET << std::endl;
-		std::cout << "Expected output:" << std::endl;
-		std::cout << MAGENTA << EXPECTED_OUTPUT << RESET << std::endl;
+		std::cout << MAGENTA << "Expected output:" << RESET << std::endl;
+		std::cout << EXPECTED_OUTPUT << std::endl;
 		std::cout << "Actual output:" << std::endl;
 
 		Fixed a;
@@ -80,7 +80,7 @@ int main(void) {
 		int 	b_int	= 3;
 		float	c_fl	= 5.5f;
 
-		std::cout << BLUE << "Using `Fixed a(5.5f);` and `Fixed b(2);`" << RESET << std::endl;
+		std::cout << BLUE << "`Fixed a(5.5f);` and `Fixed b(2);`" << RESET << std::endl;
 		Fixed a(a_fl);
 		Fixed b(b_int);
 		Fixed c(c_fl);
@@ -92,25 +92,25 @@ int main(void) {
 		std::cout << "c:\t[" << c << "]" << std::endl;
 
 		bool aIsBigger = (a > b);
-		std::cout << BLUE << "Using `bool aIsBigger = (a > b);`" << RESET;
+		std::cout << BLUE << "`bool aIsBigger = (a > b);`" << RESET;
 		std::cout << "( " << a << " > " << b << " )" << std::endl;
 		std::cout << "aIsBigger:\t[" << boolToString(aIsBigger) << "]" << std::endl;
 		std::cout << "expected:\t[" << boolToString(a_fl > b_int) << "]\n" << std::endl;
 
 		bool aIsSmaller = (a < b);
-		std::cout << BLUE << "Using `bool aIsSmaller = (a < b);`" << RESET;
+		std::cout << BLUE << "`bool aIsSmaller = (a < b);`" << RESET;
 		std::cout << "( " << a << " < " << b << " )" << std::endl;
 		std::cout << "aIsSmaller:\t[" << boolToString(aIsSmaller) << "]" << std::endl;
 		std::cout << "expected:\t[" << boolToString(a_fl < b_int) << "]\n" << std::endl;
 
 		bool aIsBiggerOrEqual = (a >= b);
-		std::cout << BLUE << "Using `bool aIsBiggerOrEqual = (a >= b);`" << RESET;
+		std::cout << BLUE << "`bool aIsBiggerOrEqual = (a >= b);`" << RESET;
 		std::cout << "( " << a << " >= " << b << " )" << std::endl;
 		std::cout << "aIsBiggOrEq:\t[" << boolToString(aIsBiggerOrEqual) << "]" << std::endl;
 		std::cout << "expected:\t[" << boolToString(a_fl >= b_int) << "]\n" << std::endl;
 
 		bool aIsSmallerOrEqual = (a <= b);
-		std::cout << BLUE << "Using `bool aIsSmallerOrEqual = (a <= b);`" << RESET;
+		std::cout << BLUE << "`bool aIsSmallerOrEqual = (a <= b);`" << RESET;
 		std::cout << "( " << a << " <= " << b << " )" << std::endl;
 		std::cout << "aIsSmallOrEq:\t[" << boolToString(aIsSmallerOrEqual) << "]" << std::endl;
 		std::cout << "expected:\t[" << boolToString(a_fl <= b_int) << "]\n" << std::endl;
@@ -138,7 +138,7 @@ int main(void) {
 		std::cout << BLUE << "declaring `Fixed zero;`" << std::endl;
 		Fixed zero;
 		bool aIsNotEqualz = (a != zero);
-		std::cout << BLUE << "and `bool aIsNotEqualz = (a != zero);`" << RESET << "( " << a << " != " << zero << " )" << std::endl;
+		std::cout << BLUE << "`bool aIsNotEqualz = (a != zero);`" << RESET << "( " << a << " != " << zero << " )" << std::endl;
 		std::cout << "aIsNotEqual:\t[" << boolToString(aIsNotEqualz) << "]" << std::endl;
 		std::cout << "expected:\t[" << boolToString(a_fl != 0) << "]\n" << std::endl;
 
@@ -168,28 +168,33 @@ int main(void) {
 		std::cout << "a:\t[" << a << "]" << std::endl;
 		std::cout << "b:\t[" << b << "]" << std::endl;
 
-		std::cout << BLUE << "Setting `Fixed addition = (a + b);`" << RESET << std::endl;
+		std::cout << BLUE << "Setting `Fixed addition = (a + b);`" << RESET;
+		std::cout << "(" << a << " + " << b << ")" << std::endl;
 		Fixed addition = (a + b);
 		std::cout << "addition.toInt():\t[" << addition.toInt() << "]" << std::endl;
 		std::cout << "addition.toFloat():\t[" << addition.toFloat() << "]" << std::endl;
 
-		std::cout << BLUE << "Setting `Fixed substraction = (a - b);`" << RESET << std::endl;
+		std::cout << BLUE << "Setting `Fixed substraction = (a - b);`" << RESET;
+		std::cout << "(" << a << " - " << b << ")" << std::endl;
 		Fixed substraction = (a - b);
 		std::cout << "substruction.toInt():\t[" << substraction.toInt() << "]" << std::endl;
 		std::cout << "substruction.toFloat():\t[" << substraction.toFloat() << "]" << std::endl;
 
-		std::cout << BLUE << "Setting `Fixed multiplication = (a * b);`" << RESET << std::endl;
+		std::cout << BLUE << "Setting `Fixed multiplication = (a * b);`" << RESET;
+		std::cout << "(" << a << " * " << b << ")" << std::endl;
 		Fixed multiplication = (a * b);
 		std::cout << "multiplication.toInt():\t[" << multiplication.toInt() << "]" << std::endl;
 		std::cout << "multiplication.toFloat():\t[" << multiplication.toFloat() << "]" << std::endl;
 
-		std::cout << BLUE << "Setting `Fixed division = (a / b);`" << RESET << std::endl;
+		std::cout << BLUE << "Setting `Fixed division = (a / b);`" << RESET;
+		std::cout << "(" << a << " / " << b << ")" << std::endl;
 		Fixed division = (a / b);
 		std::cout << "division.toInt():\t[" << division.toInt() << "]" << std::endl;
 		std::cout << "division.toFloat():\t[" << division.toFloat() << "]" << std::endl;
 
-		std::cout << BLUE << "Setting `Fixed zero;` and `Fixed division = (a / zero);`" << RESET << std::endl;
+		std::cout << BLUE << "Setting `Fixed zero;` and `Fixed division = (a / zero);`" << RESET;
 		Fixed zero;
+		std::cout << "(" << a << " / " << zero << ")" << std::endl;
 		Fixed divisionByZero = (a / zero);
 		std::cout << "divisionByZero.toInt(): \t[" << divisionByZero.toInt() << "]" << std::endl;
 		std::cout << "divisionByZero.toFloat():\t[" << divisionByZero.toFloat() << "]" << std::endl;
@@ -202,7 +207,8 @@ int main(void) {
 		std::cout << "c:\t[" << c << "]" << std::endl;
 		std::cout << "d:\t[" << d << "]" << std::endl;
 
-		std::cout << BLUE << "Setting `Fixed e = (c + d);`" << RESET << std::endl;
+		std::cout << BLUE << "Setting `Fixed e = (c + d);`" << RESET;
+		std::cout << "(" << c << " + " << d << ")" << std::endl;
 		Fixed e = (c + d);
 		std::cout << "e.toInt():\t[" << e.toInt() << "]" << std::endl;
 		std::cout << "e.toFloat():\t[" << e.toFloat() << "]" << std::endl;
@@ -223,8 +229,8 @@ int main(void) {
 		Fixed b = a++;
 
 		std::cout << "Output of `a` and `b` should be different:" << std::endl;
-		std::cout << "a:\t[" << a << "], raw:[" << a.getRawBits() << "]" << std::endl;
-		std::cout << "b:\t[" << b << "], raw:[" << b.getRawBits() << "]" << std::endl;
+		std::cout << "a:\t[" << a << "],\traw:[" << a.getRawBits() << "]" << std::endl;
+		std::cout << "b:\t[" << b << "],\traw:[" << b.getRawBits() << "]" << std::endl;
 
 		std::cout << BLUE << "\nPREFIX ++incrementation" << RESET << std::endl;
 		std::cout << "declaring `Fixed c(" << a_int << ");` and `Fixed d = ++c;`" << std::endl;
@@ -232,8 +238,8 @@ int main(void) {
 		Fixed d = ++c;
 		
 		std::cout << "Output of `c` and `d` should be the same:" << std::endl;
-		std::cout << "c:\t[" << c << "], raw:[" << c.getRawBits() << "]" << std::endl;
-		std::cout << "d:\t[" << d << "], raw:[" << d.getRawBits() << "]" << std::endl;
+		std::cout << "c:\t[" << c << "],\traw:[" << c.getRawBits() << "]" << std::endl;
+		std::cout << "d:\t[" << d << "],\traw:[" << d.getRawBits() << "]" << std::endl;
 
 		std::cout << BLUE << "\nPOSTFIX decrementation--" << RESET << std::endl;
 		std::cout << "declaring `Fixed e(" << b_int << ");` and `Fixed f = e--;`" << std::endl;
@@ -241,8 +247,8 @@ int main(void) {
 		Fixed f = e--;
 
 		std::cout << "Output of `e` and `f` should be different:" << std::endl;
-		std::cout << "e:\t[" << e << "], raw:[" << e.getRawBits() << "]" << std::endl;
-		std::cout << "f:\t[" << f << "], raw:[" << f.getRawBits() << "]" << std::endl;
+		std::cout << "e:\t[" << e << "],\traw:[" << e.getRawBits() << "]" << std::endl;
+		std::cout << "f:\t[" << f << "],\traw:[" << f.getRawBits() << "]" << std::endl;
 
 		std::cout << BLUE << "\nPREFIX --decrementation" << RESET << std::endl;
 		std::cout << "declaring `Fixed g(" << b_int << ");` and `Fixed h = --g;`" << std::endl;
@@ -250,23 +256,37 @@ int main(void) {
 		Fixed h = --g;
 
 		std::cout << "Output of `g` and `h` should be the same:" << std::endl;
-		std::cout << "g:\t[" << g << "], raw:[" << g.getRawBits() << "]" << std::endl;
-		std::cout << "h:\t[" << h << "], raw:[" << h.getRawBits() << "]" << std::endl;
+		std::cout << "g:\t[" << g << "],\traw:[" << g.getRawBits() << "]" << std::endl;
+		std::cout << "h:\t[" << h << "],\traw:[" << h.getRawBits() << "]" << std::endl;
 
 		std::cout << BLUE << "\nPOSTFIX incrementation++" << RESET << std::endl;
 		std::cout << "`Fixed fixed(" << b_int << ");` and `fixed.operator++();`" << std::endl;
 		Fixed fixed(b_int);
 		std::cout << "Output of `fixed` should be incremented by the smallest increment:" << std::endl;
-		std::cout << "fixed:\t[" << fixed << "], raw:[" << fixed.getRawBits() << "]" << std::endl;
+		std::cout << "fixed:\t[" << fixed << "],\traw:[" << fixed.getRawBits() << "]" << std::endl;
 		fixed.operator++();
-		std::cout << "fixed:\t[" << fixed << "], raw:[" << fixed.getRawBits() << "]" << std::endl;
+		std::cout << "fixed:\t[" << fixed << "],\traw:[" << fixed.getRawBits() << "]" << std::endl;
 		fixed.operator++();
-		std::cout << "fixed:\t[" << fixed << "], raw:[" << fixed.getRawBits() << "]" << std::endl;
+		std::cout << "fixed:\t[" << fixed << "],\traw:[" << fixed.getRawBits() << "]" << std::endl;
 		fixed.operator++();
-		std::cout << "fixed:\t[" << fixed << "], raw:[" << fixed.getRawBits() << "]" << std::endl;
+		std::cout << "fixed:\t[" << fixed << "],\traw:[" << fixed.getRawBits() << "]" << std::endl;
 		fixed.operator++();
-		std::cout << "fixed:\t[" << fixed << "], raw:[" << fixed.getRawBits() << "]" << std::endl;
+		std::cout << "fixed:\t[" << fixed << "],\traw:[" << fixed.getRawBits() << "]" << std::endl;
 
+		std::cout << BLUE << "PREFIX ++incrementation" << RESET << std::endl;
+		int		i = 1;
+		Fixed	increment(i);
+		std::cout << "Output of `increment` should be increment by the smallest increment:" << std::endl;
+		++increment;
+		std::cout << "increment:\t[" << increment.toFloat() << "],\traw:[" << increment.getRawBits() << "]" << std::endl;
+		++increment;
+		std::cout << "increment:\t[" << increment.toFloat() << "],\traw:[" << increment.getRawBits() << "]" << std::endl;
+		++increment;
+		std::cout << "increment:\t[" << increment.toFloat() << "],\traw:[" << increment.getRawBits() << "]" << std::endl;
+		++increment;
+		std::cout << "increment:\t[" << increment.toFloat() << "],\traw:[" << increment.getRawBits() << "]" << std::endl;
+		++increment;
+		std::cout << "increment:\t[" << increment.toFloat() << "],\traw:[" << increment.getRawBits() << "]" << std::endl;
 	}
 	/*
 	{

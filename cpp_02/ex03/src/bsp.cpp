@@ -9,7 +9,7 @@
 ** the space into individual areas. 
 ** 
 ** In this exercise, we are given three points which form a triangle,
-** `a`, `b`, and `c`. We are also given a point `point` which we need to
+** `a`, `b`, and `c`. We are also given a `point` which we need to
 ** check if it is inside the triangle or not.
 ** 
 ** We use `Baricentric coordinate system` to determine if the `point` is

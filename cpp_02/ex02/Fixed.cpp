@@ -105,7 +105,6 @@ bool	Fixed::operator!=(const Fixed &fixed) const {
 */
 Fixed	Fixed::operator+(const Fixed &fixed) const {
 
-	//return Fixed(_rawBits + fixed._rawBits);
 	return Fixed(this->toFloat() + fixed.toFloat());
 }
 
@@ -115,7 +114,6 @@ Fixed	Fixed::operator+(const Fixed &fixed) const {
 */
 Fixed	Fixed::operator-(const Fixed &fixed) const {
 
-	//return Fixed(_rawBits - fixed._rawBits);
 	return Fixed(this->toFloat() - fixed.toFloat());
 }
 
@@ -125,7 +123,6 @@ Fixed	Fixed::operator-(const Fixed &fixed) const {
 */
 Fixed	Fixed::operator*(const Fixed &fixed) const {
 
-	//return Fixed(_rawBits * fixed._rawBits >> _fractionalBits);
 	return Fixed(this->toFloat() * fixed.toFloat());
 }
 
@@ -137,10 +134,9 @@ Fixed	Fixed::operator/(const Fixed &fixed) const {
 
 	if (fixed.toFloat() == 0)
 	{
-		std::cout << RED << "Error: Division by zero, output undefined" << RESET << std::endl;
+		std::cout << RED << "ATTENTION: Division by zero, output undefined" << RESET << std::endl;
 		//return Fixed(0);
 	}
-	//return Fixed(_rawBits * (1 << _fractionalBits) / fixed._rawBits);
 	return Fixed(this->toFloat() / fixed.toFloat());
 }
 
@@ -190,19 +186,18 @@ Fixed	&Fixed::operator--(void) {
 */
 Fixed	Fixed::operator--(int) {
 
-	Fixed tmp(*this);
+	Fixed tmp = *this;
 	operator--();
 	return tmp;
 }
 
 int Fixed::getRawBits(void) const {
-	// std::cout << "getRawBits member function called" << std::endl;
+
 	return this->_rawBits;
 }
 
 void Fixed::setRawBits(int const raw) {
-	// std::cout << "setRawBits member function called";
-	// std::cout << " with: [" << raw << "] as an argument" << std::endl;
+
 	this->_rawBits = raw;
 }
 
@@ -256,6 +251,10 @@ Fixed const &Fixed::max(Fixed const &a, Fixed const &b) {
 	return a > b ? a : b;
 }
 
+/*
+** OUTPUT OPERATOR OVERLOAD `<<`
+** returns a float representation of the fixed point value of the object.
+*/
 std::ostream &operator<<(std::ostream &out, const Fixed &fixed) {
 
 	out << fixed.toFloat();
