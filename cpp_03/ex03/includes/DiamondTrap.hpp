@@ -16,9 +16,10 @@ class DiamondTrap : public ScavTrap, public FragTrap {
 
 		DiamondTrap &operator=(const DiamondTrap &diamondTrap);
 
-		void attack(std::string const &target);
 		void whoAmI(void);
 
+		// the following method is inherited from `ScavTrap` class:
+		// void attack(std::string const &target);
 };
 
 #endif

@@ -7,7 +7,13 @@ NAME = FragTrap
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -g
 
-SRCS = main.cpp src/ClapTrap.cpp src/ScavTrap.cpp src/FragTrap.cpp
+VPATH = src
+
+SRCS = main.cpp \
+	ClapTrap.cpp \
+	ScavTrap.cpp \
+	FragTrap.cpp
+
 OBJS = $(SRCS:.cpp=.o)
 
 # this is called by default when you just type make
@@ -19,8 +25,9 @@ $(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
 # recipe to compile .cpp files to .o files
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+# !! this is not needed because make will do this by default !!
+# %.o: %.cpp
+# 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 # recipe to cleans the object files
 clean:
@@ -36,8 +43,7 @@ re: fclean all
 # compiles with clang and runs with valgrind
 # to pass the ARGS variable to the makefile use:
 # make valgrind ARGS="arg1 arg2 arg3"
-valgrind:
-	g++ $(FLAGS) -g $(SRCS) -o $(NAME)
+valgrind: re
 	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) $(ARGS)
 
 .PHONY: all clean fclean re valgrind

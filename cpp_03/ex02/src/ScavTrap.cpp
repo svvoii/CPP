@@ -12,6 +12,7 @@ ScavTrap::ScavTrap(void) : ClapTrap() {
 	this->_attackDamage = 20;
 
 	std::cout << CYAN << "\t< ScavTrap default constructor called >" << RESET << " (name: " << this->_name << ")" << std::endl;
+	std::cout << std::endl;
 }
 
 /*
@@ -26,9 +27,11 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
 	this->_attackDamage = 20;
 
 	std::cout << CYAN << "\t< ScavTrap NAME constructor called >" << RESET << " (name: " << name << ")" << std::endl;
+	std::cout << std::endl;
 }
 
 ScavTrap::~ScavTrap(void) {
+
 	std::cout << RED << "\t< ScavTrap destructor called >" << RESET << " (name: " << this->_name << ")" << std::endl;
 }
 

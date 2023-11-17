@@ -75,6 +75,29 @@ DiamondTrap &DiamondTrap::operator=(const DiamondTrap &diamondTrap) {
     return (*this);
 }
 
+void DiamondTrap::whoAmI(void) {
+
+	if (this->_energyPoints == 0) {
+		std::cout << "DiamondTrap " << this->_name;
+		std::cout << " is out of energy!!!" << std::endl;
+		return ;
+    }
+
+	this->_energyPoints -= 1;
+    std::cout << "I AM (" << this->_name;
+    std::cout << ")!! THE SON OF THE (" << ClapTrap::_name << ")!";
+    std::cout << std::endl;
+}
+
+/*
+** The following method is inherited from `ScavTrap` class,
+** so it is not needed to redefine it here.
+**
+** In fact during evaluation of this project, the
+** ScavTrap::attack(target) is the one that must be
+** called when a DiamondTrap object calls its attack
+** method.
+**
 void DiamondTrap::attack(std::string const &target) {
     //ScavTrap::attack(target);
 	if (this->_energyPoints == 0) {
@@ -91,17 +114,4 @@ void DiamondTrap::attack(std::string const &target) {
 	std::cout << " (energy points left: " << this->_energyPoints << ")";
 	std::cout << std::endl;
 }
-
-void DiamondTrap::whoAmI(void) {
-
-	if (this->_energyPoints == 0) {
-		std::cout << "DiamondTrap " << this->_name;
-		std::cout << " is out of energy!!!" << std::endl;
-		return ;
-    }
-
-	this->_energyPoints -= 1;
-    std::cout << "I AM (" << this->_name;
-    std::cout << ")!! THE SON OF THE (" << ClapTrap::_name << ")!";
-    std::cout << std::endl;
-}
+*/

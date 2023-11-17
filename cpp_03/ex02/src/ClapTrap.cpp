@@ -38,6 +38,7 @@ ClapTrap::ClapTrap(std::string name) :
 ** to the new object.
 */
 ClapTrap::ClapTrap(const ClapTrap &clapTrap) {
+
 	std::cout << CYAN << "\t< ClapTrap copy constructor called >" << RESET << std::endl;
 
 	this->_name = clapTrap._name;
@@ -47,7 +48,9 @@ ClapTrap::ClapTrap(const ClapTrap &clapTrap) {
 }
 
 ClapTrap::~ClapTrap(void) {
+
 	std::cout << RED << "\t< ClapTrap destructor called >" << RESET << " (name: " << this->_name << ")" << std::endl;
+	std::cout << std::endl;
 }
 
 /*
@@ -58,6 +61,7 @@ ClapTrap::~ClapTrap(void) {
 ** but not the values.
 */
 ClapTrap &ClapTrap::operator=(const ClapTrap &clapTrap) {
+
 	std::cout << CYAN << "\t< ClapTrap assignment operator called >" << RESET << std::endl;
 
 	if (this == &clapTrap) {

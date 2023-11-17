@@ -29,6 +29,7 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
 }
 
 ScavTrap::~ScavTrap(void) {
+
 	std::cout << RED << "\t< ScavTrap destructor called >" << RESET << " (name: " << this->_name << ")" << std::endl;
 }
 

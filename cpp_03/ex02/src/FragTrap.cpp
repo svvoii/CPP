@@ -12,6 +12,7 @@ FragTrap::FragTrap(void) : ClapTrap() {
 	this->_attackDamage = 30;
 
 	std::cout << CYAN << "\t< FragTrap default constructor called >" << RESET << " (name: " << this->_name << ")" << std::endl;
+	std::cout << std::endl;
 }
 
 /*
@@ -26,9 +27,11 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name) {
 	this->_attackDamage = 30;
 
 	std::cout << CYAN << "\t< FragTrap NAME constructor called >" << RESET << " (name: " << name << ")" << std::endl;
+	std::cout << std::endl;
 }
 
 FragTrap::~FragTrap(void) {
+
 	std::cout << RED << "\t< FragTrap destructor called >" << RESET << " (name: " << this->_name << ")" << std::endl;
 }
 
