@@ -35,6 +35,18 @@
 # include <cctype>
 
 # define MAX_CONTACTS 8
+# define ADD	"add"
+# define SEARCH	"search"
+# define EXIT	"exit"
+
+// Some colors for the output.
+# define RED "\033[0;31m"
+# define GREEN "\033[0;32m"
+# define YELLOW "\033[0;33m"
+# define BLUE "\033[0;34m"
+# define MAGENTA "\033[0;35m"
+# define CYAN "\033[0;36m"
+# define RESET "\033[0m"
 
 class Contact {
 private:
@@ -59,11 +71,14 @@ class PhoneBook {
 private:
 	Contact		_contacts[MAX_CONTACTS];
 	int			_contactCount;
+	bool 		_isFull;
 
 public:
 	PhoneBook();
 	~PhoneBook();
 
+	void	displayPrompt(void) const;
+	void	inputToLowerAndTrim(std::string &input);
 	void	addContact(void);
 	void	displayContacts(void) const;
 	void	searchContact(void);

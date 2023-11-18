@@ -26,30 +26,47 @@
 
 int main(int argc, char **argv) {
 	
-	if (argc != 2) {
-		std::cout << "Usage: " << argv[0] << std::endl;
-		std::cout << "'ADD' to add a contact." << std::endl;
-		std::cout << "'SEARCH' to search for a contact." << std::endl;
-		std::cout << "'EXIT' to exit the phone book." << std::endl;
+	if (argv && argc != 1) {
+		std::cout << "Wrong number of arguments. Usage: `./phonebook`" << std::endl;
 		return (1);
 	}
-	std::string	input = argv[1];
+	std::string	input;
 	PhoneBook	phoneBook;
 
-	std::cout << "Welcome to your Awesome phone book!" << std::endl;
+	std::cout << "< Welcome to your Awesome phone book! >" << std::endl;
+
 	while (1) {
-		std::cout << "Enter command: ";
-		std::getline(std::cin, input);
-		if (input == "ADD") {
+
+		if (std::cin.eof()) {
+			std::cout << "..input error." << std::endl;
+			phoneBook.exitPhoneBook();
+			return 0;
+		}
+
+		phoneBook.displayPrompt();
+
+		if (!std::getline(std::cin, input)) {
+			std::cout << "Error reading input." << std::endl;
+			phoneBook.exitPhoneBook();
+			return (1);
+		}
+
+		phoneBook.inputToLowerAndTrim(input);
+		
+		if (input == ADD) {
 			phoneBook.addContact();
-		} else if (input == "SEARCH") {
+		}
+		else if (input == SEARCH) {
 			phoneBook.searchContact();
-		} else if (input == "EXIT") {
+		}
+		else if (input == EXIT) {
 			phoneBook.exitPhoneBook();
 			break;
-		} else {
-			std::cout << "Invalid command." << std::endl;
+		}
+		else {
+			std::cout << "..invalid command. Try again." << std::endl;
 		}
 	}
 	return (0);
 }
+
