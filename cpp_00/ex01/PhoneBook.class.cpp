@@ -163,12 +163,15 @@ void Contact::setContact(void) {
 				if (!isdigit(input[j])) {
 					std::cout << "..phone number must be numeric. Try again." << std::endl;
 					i--;
+					input.clear();
 					break;
 				}
 			}
 		}
 
-		values[i] = input;
+		if (!input.empty()) {
+			values[i] = input;
+		}
 	}
 
 	this->_firstName = values[0];
