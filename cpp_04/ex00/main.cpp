@@ -27,8 +27,8 @@ int main(void)
 		std::cout << std::endl;
 
 		i->makeSound(); //will output the cat sound!
-		j->makeSound();
-		meta->makeSound();
+		j->makeSound(); //will output the dog sound!
+		meta->makeSound(); //will output the animal sound!
 
 		delete meta;
 		delete j;
@@ -43,7 +43,7 @@ int main(void)
 		Dog		mylo;
 		Cat		tom;
 
-		std::cout << "unknown is a: " << unknown.getType() << std::endl;
+		std::cout << "unknown is an: " << unknown.getType() << std::endl;
 		unknown.makeSound();
 
 		std::cout << "mylo is a: " << mylo.getType() << std::endl;

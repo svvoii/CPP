@@ -65,9 +65,17 @@ Dog &Dog::operator=(Dog const &rhs) {
 /*
 ** Definition of the new private member functions,
 ** `_copyBrain()`
-*/
 void	Dog::_copyBrain(Brain const &src) {
 	
+	// ..deep copy of the Brain object
+	for (int i = 0; i < 100; i++) {
+		this->_brain->setIdea(i, src.getIdea(i));
+	}
+}
+*/
+void	Dog::_copyBrain(Brain const &src) {
+
+	// deep copy of the Brain object is done by the Brain class
 	*this->_brain = src;
 }
 

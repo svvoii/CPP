@@ -29,11 +29,18 @@
 
 class Brain
 {
+	private:
+		std::string ideas[100];
+
 	public:
 		Brain(void);
+		Brain(Brain const &src);
 		~Brain(void);
 
-		std::string		ideas[100];
+		Brain &operator=(Brain const &rhs);
+
+		void		setIdea(int index, std::string idea);
+		std::string	getIdea(int index) const;
 };
 
 #endif

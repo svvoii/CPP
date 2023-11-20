@@ -49,6 +49,21 @@ int	main() {
 			delete animals[i];
 		}
 	}
+	/*
+	*/
+	{
+		std::cout << std::endl;
+		std::cout << "= = = = = = = = = = TEST 3 = = = = = = = = = = =" << std::endl;
+		std::cout << std::endl;
+
+		Cat cat1;
+
+
+
+
+		Cat cat2 = cat1;
+		
+	}
 
 	return 0;
 }

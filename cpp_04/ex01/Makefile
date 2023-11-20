@@ -7,13 +7,15 @@ NAME = Brain
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -g
 
+VPATH = src
+
 SRCS = main.cpp \
-	   src/Animal.class.cpp \
-	   src/Dog.class.cpp \
-	   src/Cat.class.cpp \
-	   src/WrongAnimal.class.cpp \
-	   src/WrongCat.class.cpp \
-	   src/Brain.class.cpp
+	   Animal.class.cpp \
+	   Dog.class.cpp \
+	   Cat.class.cpp \
+	   WrongAnimal.class.cpp \
+	   WrongCat.class.cpp \
+	   Brain.class.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
@@ -26,8 +28,9 @@ $(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
 # recipe to compile .cpp files to .o files
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+# !! this is not needed because make will do this by default !!
+# %.o: %.cpp
+#	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 # recipe to cleans the object files
 clean:
@@ -35,7 +38,7 @@ clean:
 
 # recipe to cleans the object files and the executable
 fclean: clean
-	rm -rf $(NAME) *_shrubbery
+	rm -rf $(NAME)
 
 # recipe to cleans the object files and the executable
 re: fclean all
@@ -43,8 +46,7 @@ re: fclean all
 # compiles with clang and runs with valgrind
 # to pass the ARGS variable to the makefile use:
 # make valgrind ARGS="arg1 arg2 arg3"
-valgrind:
-	g++ $(FLAGS) -g $(SRCS) -o $(NAME)
+valgrind: re
 	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) $(ARGS)
 
 .PHONY: all clean fclean re valgrind

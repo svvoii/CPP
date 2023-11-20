@@ -83,7 +83,7 @@ std::string Animal::getType(void) const {
 void Animal::makeSound(void) const {
 
 	std::cout << "[" << this->_type << "]:";
-	std::cout << CYAN << "\t< makes a sound >" << RESET << std::endl;
+	std::cout << GREEN << "\t< makes a sound >" << RESET << std::endl;
 	std::cout << std::endl;
 }
 

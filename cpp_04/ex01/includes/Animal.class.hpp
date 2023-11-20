@@ -42,3 +42,12 @@ class Animal
 };
 
 #endif
+
+/*
+** The `virtual` keyword in `virtual ~Animal(void)` destructor
+** indicates that it is a virtual destructor. 
+** A virtual destructor is used when a class is intended to be 
+** used as a base class for other derived classes. 
+** It ensures that the destructor of the derived class is called 
+** when an object of the derived class is destroyed. 
+*/

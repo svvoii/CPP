@@ -67,14 +67,15 @@ Cat &Cat::operator=(Cat const &rhs) {
 ** `_copyBrain()`
 void	Cat::_copyBrain(Brain const &src) {
 	
-	// additional syntax to make a deep copy of the Brain object
+	// ..deep copy of the Brain object
 	for (int i = 0; i < 100; i++) {
 		this->_brain->setIdea(i, src.getIdea(i));
 	}
 }
 */
 void	Cat::_copyBrain(Brain const &src) {
-	
+
+	// deep copy of the Brain object is done by the Brain class
 	*this->_brain = src;
 }
 
