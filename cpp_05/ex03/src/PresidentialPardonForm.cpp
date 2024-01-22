@@ -57,6 +57,6 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(PresidentialPardonForm
 */
 void	PresidentialPardonForm::executeAction(void) const {
 
-	std::cout << _target << " has been pardoned by Zafod Beeblebrox." << std::endl;
+	std::cout << MAGENTA << _target << " has been pardoned by Zafod Beeblebrox." << RESET << std::endl;
 	std::cout << std::endl;
 }

@@ -181,7 +181,11 @@ void	ShrubberyCreationForm::executeAction(void) const {
 	else {
 		std::cout << RED << "\t< ShrubberyCreationForm >" << RESET;
 		std::cout << " could not open file: [" << this->_target << "_shrubbery]" << std::endl;
+		std::cout << std::endl;
 	}
+
+	std::cout << MAGENTA << "Shrybbebery form has been executed.. check file: [" << this->_target << "_shrubbery]" << RESET << std::endl;
+	std::cout << std::endl;
 
 	return ;
 }

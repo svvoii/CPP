@@ -60,7 +60,7 @@ void	RobotomyRequestForm::executeAction(void) const {
 	std::srand(std::time(NULL));
 	int random = std::rand() % 2;
 
-	std::cout << "Bzzz-z-z-z-... Bzzz-z-z-z-... (LOUD DRILLING NOISES)" << std::endl;
+	std::cout << MAGENTA << "Bzzz-z-z-z-... Bzzz-z-z-z-... (LOUD DRILLING NOISES)\t" << RESET;
 
 	if (random == 0) {
 		std::cout << "Robotomization of [" << _target << "] was successful!" << std::endl;

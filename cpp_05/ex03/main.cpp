@@ -22,21 +22,27 @@ int	main(void) {
 	unknown = someRandomIntern.makeForm("unknown", "unknown");
 
 	std::cout << std::endl;
+	std::cout << "Executing forms:" << std::endl << std::endl;
 
-	std::cout << "Executing forms:" << std::endl;
+	AForm *forms[FORM_TYPE_MAX + 1] = { rrf, scf, ppf, unknown };
+	for (int i = 0; i <= FORM_TYPE_MAX; i++) {
+		try {
+			if (forms[i])
+				forms[i]->executeAction();
+			else
+				throw std::runtime_error(" ...no such form");
+		}
+		catch (std::exception &e) {
+			std::cout << RED << "Error ececuting action" << e.what() << RESET << std::endl << std::endl;
+		}
+	}
+
+	for (int i = 0; i < FORM_TYPE_MAX; i++) {
+		if (forms[i])
+			delete forms[i];
+	}
+
 	std::cout << std::endl;
-
-	rrf->executeAction();
-	scf->executeAction();
-	ppf->executeAction();
-	unknown->executeAction();
-
-	std::cout << std::endl;
-
-	delete rrf;
-	delete scf;
-	delete ppf;
-	//delete unknown;
 
 	return 0;
 }
