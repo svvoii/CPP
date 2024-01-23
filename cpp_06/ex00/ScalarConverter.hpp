@@ -12,24 +12,25 @@
 
 # include <string>
 # include <iostream>
+# include <sstream>
 # include <iomanip>
 # include <limits>
 # include <cmath>
 
 class ScalarConverter {
 	private:
-		std::string const	_input;
-		char				_char;
-		int					_int;
-		float				_float;
-		double				_double;
+		std::string _input;
+		char		_char;
+		int			_int;
+		float		_float;
+		double		_double;
 		
 	public:
-	 	/*
 		ScalarConverter(std::string const &input);
 		ScalarConverter(ScalarConverter const &other);
 		~ScalarConverter();
 		ScalarConverter &operator=(ScalarConverter const &other);
+	 	/*
 		*/
 		
 		static void convert(const std::string &input);

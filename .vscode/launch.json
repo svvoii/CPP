@@ -6,9 +6,8 @@
 			"type": "cppdbg",
 			"request": "launch",
 			/* change this path to executable:
-			"program": "${workspaceFolder}/cpp_04/ex03/AMateria",
 			*/
-			"program": "${workspaceFolder}/cpp_05/ex03/Intern",
+			"program": "${workspaceFolder}/cpp_06/ex00/Convert",
 			// change this path for input args:
 			"args": [
 				/* cpp_09/ex02: 
@@ -24,9 +23,9 @@
 				"1 2 * 2 / 2 * 2 4 - +"
 				"(1 + 1)"
 				*/
-				/* cpp_01/ex04:
-				"infile", "sad", "happy"
+				/* cpp_06/ex00:
 				*/
+				"A"
 			],
 			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}/cpp_01/ex04/",

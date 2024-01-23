@@ -4,10 +4,12 @@
 
 NAME = Convert
 
-CXX = c++
+CXX = g++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -g
 
-SRCS = main.cpp
+SRCS = main.cpp \
+	ScalarConverter.cpp
+
 OBJS = $(SRCS:.cpp=.o)
 
 # this is called by default when you just type make
@@ -33,7 +35,6 @@ fclean: clean
 # recipe to cleans the object files and the executable
 re: fclean all
 
-# compiles with clang and runs with valgrind
 # to pass the ARGS variable to the makefile use:
 # make valgrind ARGS="arg1 arg2 arg3"
 valgrind:
