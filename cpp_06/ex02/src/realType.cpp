@@ -1,3 +1,10 @@
+// Adding Some color to the output
+# define RESET   "\033[0m"
+# define RED     "\033[31m"
+# define GREEN   "\033[32m"
+# define BLUE    "\033[34m"
+# define MAGENTA "\033[35m"
+# define CYAN    "\033[36m"
 /*
 ** In here we are implementing our custom functions for 
 ** identifying the actual type ov the objects.
@@ -14,7 +21,7 @@
 ** We are not using a pointer inside this function.
 */
 
-#include "ABC.class.hpp"
+#include "../includes/ABC.class.hpp"
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -41,7 +48,7 @@ std::string printType(int type) {
 /*
 ** This function generates an instance of `A`, `B` or `C`
 ** using `new` operator and returns a pointer to `Base`.
-** So, wewould need to free it later in the main function.
+** Needed to be deleted later in the main function.
 */
 Base * generate(void) {
 
@@ -55,50 +62,53 @@ Base * generate(void) {
 	} else {
 		base = new C();
 	}
-	std::cout << "Generated [" << printType(random) << "]" << std::endl;
+	std::cout << GREEN << "Generated [" << printType(random) << "]" << RESET << std::endl;
 
 	return base;
 }
 
 void identify(Base * p) {
 
-	std::cout << "`identify(Base * p)` via pointer. " << std::endl; 
+	std::cout << CYAN << "..using `identify(Base * p)` via pointer. " << RESET << std::endl; 
 	std::cout << "Identified as: [ ";
 
 	if (dynamic_cast<A *>(p)) {
-		std::cout << "A" << std::endl;
+		std::cout << "A";
 	}
 	else if (dynamic_cast<B *>(p)) {
-		std::cout << "B" << std::endl;
+		std::cout << "B";
 	}
 	else if (dynamic_cast<C *>(p)) {
-		std::cout << "C" << std::endl;
+		std::cout << "C";
 	}
 	std::cout << " ]" << std::endl;
 }
 
 void identify(Base & p) {
 
-	std::cout << "`identify(Base & p)` via reference. " << std::endl;
+	std::cout << CYAN << "..using `identify(Base & p)` via reference. " << RESET << std::endl;
 	std::cout << "Identified as: [ ";
 
 	try {
 		A &a = dynamic_cast<A &>(p);
-		std::cout << "A ]" << std::endl;
+		if (&a == &p)
+			std::cout << "A ]" << std::endl;
 	}
-	catch (std::bad_cast &bc) {
+	catch (std::exception &e) {
 
 		try {
 			B &b = dynamic_cast<B &>(p);
-			std::cout << "B ]" << std::endl;
+			if (&b == &p)
+				std::cout << "B ]" << std::endl;
 		}
-		catch (std::bad_cast &bc) {
+		catch (std::exception &e) {
 
 			try {
 				C &c = dynamic_cast<C &>(p);
-				std::cout << "C ]" << std::endl;
+				if (&c == &p)
+					std::cout << "C ]" << std::endl;
 			} 
-			catch (std::bad_cast &bc) {
+			catch (std::exception &e) {
 				std::cout << "Unknown type ]" << std::endl;
 			}
 		}

@@ -11,9 +11,9 @@
 
 #include "Serializer.hpp"
 
-std::string const	Serializer::_alphabet = "abcdefghijklmnopqrstuvwxyz";
-std::string const	Serializer::_digits = "0123456789";
-std::string const	Serializer::_special = " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
+std::string const Serializer::_alphabet = "abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+std::string const Serializer::_digits = "0123456789";
+//std::string const Serializer::_special = " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
 
 Serializer::Serializer() {
 }
@@ -32,8 +32,9 @@ Serializer &Serializer::operator=(Serializer const &other) {
 }
 
 std::string const	Serializer::_randomString() {
+
 	std::string	randomString;
-	int			randomLength = rand() % 10 + 1;
+	int			randomLength = rand() % 50 + 1;
 	
 	for (int i = 0; i < randomLength; i++) {
 		randomString += _alphabet[rand() % _alphabet.length()];
@@ -41,20 +42,52 @@ std::string const	Serializer::_randomString() {
 	return randomString;
 }
 
-int const			Serializer::_randomInt() {
+int Serializer::_randomInt() {
+
 	return rand() % 1000;
 }
 
-uintptr_t Serializer::serialize(Data *ptr) {
-	uintptr_t	serializedData;
+unsigned long Serializer::serialize(Data *ptr) {
+
+	unsigned long	serializedData;
 	
-	serializedData = reinterpret_cast<uintptr_t>(ptr);
+	serializedData = reinterpret_cast<unsigned long>(ptr);
 	return serializedData;
 }
 
-Data *Serializer::deserialize(uintptr_t raw) {
+Data *Serializer::deserialize(unsigned long raw) {
+
 	Data	*deserializedData;
 	
 	deserializedData = reinterpret_cast<Data *>(raw);
 	return deserializedData;
 }
+
+// uintptr_t Serializer::serialize(Data *ptr) {
+
+// 	uintptr_t	serializedData;
+	
+// 	serializedData = reinterpret_cast<uintptr_t>(ptr);
+// 	return serializedData;
+// }
+
+// Data *Serializer::deserialize(uintptr_t raw) {
+
+// 	Data	*deserializedData;
+	
+// 	deserializedData = reinterpret_cast<Data *>(raw);
+// 	return deserializedData;
+// }
+
+/*
+** `reinterpret_cast` is a type of casting operator that
+** converts any pointer type to any other pointer type.
+** In this case, we are converting a pointer to Data object
+** to an unsigned long and vice versa.
+** This is a form of serialization and deserialization.
+**
+** Serialization is the process of converting an object into
+** a stream of bytes to store the object or transmit it to memory,
+** a database, or a file. Its main purpose is to save the state of
+** an object in order to be able to recreate it when needed.
+*/

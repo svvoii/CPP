@@ -7,7 +7,9 @@ NAME = RealType
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -g
 
-SRCS = main.cpp
+SRCS = main.cpp \
+	   src/Base.class.cpp
+
 OBJS = $(SRCS:.cpp=.o)
 
 # this is called by default when you just type make

@@ -9,3 +9,27 @@
 ** classes `A`, `B`, `C` and `Base` and illustrates the way 
 ** we can identify the type of a variable.
 */
+
+#include "src/realType.cpp"
+
+int main(void) {
+
+	srand(time(NULL));
+
+	Base *base = generate();
+
+	std::cout << std::endl;
+	std::cout << MAGENTA << "Testing with a pointer to `Base`" << RESET << std::endl;
+	identify(base);
+
+	std::cout << std::endl;
+
+	std::cout << MAGENTA << "Testing with a reference to `Base`" << RESET << std::endl;
+	identify(*base);
+
+	std::cout << std::endl;
+
+	delete base;
+
+	return 0;
+}

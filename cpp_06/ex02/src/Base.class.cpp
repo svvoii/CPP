@@ -4,8 +4,8 @@
 ** Just the destructor.
 */
 
-#include "Base.class.hpp"
+#include "../includes/Base.class.hpp"
 
 Base::~Base() {
-	std::cout << "The BASE is destructed!" << std::endl;
+	//std::cout << "The BASE is destructed!" << std::endl;
 }

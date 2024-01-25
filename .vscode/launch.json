@@ -7,7 +7,7 @@
 			"request": "launch",
 			/* change this path to executable:
 			*/
-			"program": "${workspaceFolder}/cpp_06/ex00/Convert",
+			"program": "${workspaceFolder}/cpp_06/ex01/Serializer",
 			// change this path for input args:
 			"args": [
 				/* cpp_09/ex02: 
@@ -25,10 +25,9 @@
 				*/
 				/* cpp_06/ex00:
 				*/
-				"A"
 			],
 			"stopAtEntry": false,
-			"cwd": "${workspaceFolder}/cpp_01/ex04/",
+			"cwd": "${workspaceFolder}/cpp_06/ex01/",
 			"environment": [],
 			"externalConsole": false,
 			"MIMode": "gdb",

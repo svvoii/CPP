@@ -6,8 +6,11 @@ NAME = Serializer
 
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -g
+# CXXFLAGS = -Wall -Werror -Wextra -std=c++11 -g
 
-SRCS = main.cpp
+SRCS = main.cpp \
+	   Serializer.cpp
+
 OBJS = $(SRCS:.cpp=.o)
 
 # this is called by default when you just type make

@@ -52,6 +52,26 @@ ScalarConverter &ScalarConverter::operator=(ScalarConverter const &other) {
 	return *this;
 }
 
+bool	ScalarConverter::isSpecialFloatDouble() {
+	return (_input == "inff" || _input == "-inff" || _input == "+inff" || _input == "nanf" ||
+			_input == "inf" || _input == "-inf" || _input == "+inf" || _input == "nan");
+}
+
+int		ScalarConverter::getPrecision(bool isDouble) {
+
+	int precision = 1;
+	size_t dot = _input.find('.');
+
+	if (dot == std::string::npos) {
+		return precision;
+	}
+	else {
+		size_t nonZeroPos = _input.find_last_not_of('0');
+		precision = nonZeroPos - dot - 1;
+		return std::min(precision, isDouble ? 15 : 7);
+	}
+}
+
 void ScalarConverter::convert(const std::string &input) {
 
 	ScalarConverter converter(input);
@@ -63,19 +83,28 @@ void ScalarConverter::convert(const std::string &input) {
 
 void ScalarConverter::printChar() {
 
-	int tmp;
-	std::stringstream ss(_input);
-	ss >> tmp;
+	if (_input.length() == 1 && !std::isdigit(_input[0])) {
+		_char = _input[0];
+	}
+	else {
+		int tmp;
+		std::stringstream ss(_input);
+		ss >> tmp;
 
-	try {
-		_char = static_cast<char>(tmp);
-		if (std::isprint(_char)) {
-			std::cout << "char: '" << _char << "'" << std::endl;
-		} else {
-			std::cout << "char: Non displayable" << std::endl;
+		if (ss.fail()) {
+			std::cout << "char: impossible" << std::endl;
+			return;
 		}
-	} catch (std::exception &e) {
-		std::cout << "char: impossible" << std::endl;
+		else {
+			_char = static_cast<char>(tmp);
+		}
+	}
+
+	if (std::isprint(_char)) {
+		std::cout << "char: '" << _char << "'" << std::endl;
+	}
+	else {
+		std::cout << "char: Non displayable" << std::endl;
 	}
 }
 
@@ -93,45 +122,51 @@ void ScalarConverter::printInt() {
 }
 
 void ScalarConverter::printFloat() {
-	
-	std::stringstream ss(_input);
-	ss >> _float;
 
-	if (ss.fail()) {
-		std::cout << "float: impossible" << std::endl;
+	int precision = getPrecision(false);
+
+	if (isSpecialFloatDouble()) {
+		_float = strtof(_input.c_str(), NULL);
 	}
 	else {
-		if (std::isinf(_float) || std::isnan(_float)) {
-			std::cout << "float: " << _float << "f" << std::endl;
+		std::stringstream ss(_input);
+		ss >> _float;
+
+		if (ss.fail()) {
+			std::cout << "float: impossible" << std::endl;
+			return;
 		}
-		else {
-			std::cout << "float: " << std::fixed << std::setprecision(1) << _float << "f" << std::endl;
-		}
+	}
+	
+	if (std::isinf(_float) || std::isnan(_float)) {
+		std::cout << "float: " << _float << "f" << std::endl;
+	}
+	else {
+		std::cout << "float: " << std::fixed << std::setprecision(precision) << _float << "f" << std::endl;
 	}
 }
 
 void ScalarConverter::printDouble() {
 	
-	std::stringstream ss(_input);
-	ss >> _double;
-
-	if (ss.fail()) {
-		std::cout << "double: impossible" << std::endl;
+	int precision = getPrecision(true);
+	
+	if (isSpecialFloatDouble()) {
+		_double = strtod(_input.c_str(), NULL);
 	}
 	else {
-		if (std::isinf(_double) || std::isnan(_double)) {
-			std::cout << "double: " << _double << std::endl;
-		}
-		else {
-			std::cout << "double: " << std::fixed << std::setprecision(1) << _double << std::endl;
+		std::stringstream ss(_input);
+		ss >> _double;
+
+		if (ss.fail()) {
+			std::cout << "double: impossible" << std::endl;
+			return;
 		}
 	}
-}
-
-const char *ScalarConverter::ImpossibleException::what() const throw() {
-	return "impossible";
-}
-
-const char *ScalarConverter::NonDisplayableException::what() const throw() {
-	return "Non displayable";
+	
+	if (std::isinf(_double) || std::isnan(_double)) {
+		std::cout << "double: " << _double << std::endl;
+	}
+	else {
+		std::cout << "double: " << std::fixed << std::setprecision(precision) << _double << std::endl;
+	}
 }

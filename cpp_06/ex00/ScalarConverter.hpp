@@ -24,14 +24,15 @@ class ScalarConverter {
 		int			_int;
 		float		_float;
 		double		_double;
+
+		bool		isSpecialFloatDouble();
+		int			getPrecision(bool isDouble);
 		
 	public:
 		ScalarConverter(std::string const &input);
 		ScalarConverter(ScalarConverter const &other);
 		~ScalarConverter();
 		ScalarConverter &operator=(ScalarConverter const &other);
-	 	/*
-		*/
 		
 		static void convert(const std::string &input);
 
@@ -39,16 +40,7 @@ class ScalarConverter {
 		void printInt();
 		void printFloat();
 		void printDouble();
-		
-		class ImpossibleException: public std::exception {
-			public:
-				virtual const char *what() const throw();
-		};
-		
-		class NonDisplayableException: public std::exception {
-			public:
-				virtual const char *what() const throw();
-		};
+
 };
 
 #endif
