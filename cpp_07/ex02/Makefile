@@ -8,6 +8,7 @@ CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -g
 
 SRCS = main.cpp
+# SRCS = main_02.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 # this is called by default when you just type make

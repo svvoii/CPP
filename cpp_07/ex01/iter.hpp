@@ -14,7 +14,7 @@ void iter(T *array, size_t length, void (*f)(T const &)) {
 template <typename T>
 void print(T const &element) {
 
-	std::cout << element << std::endl;
+	std::cout << element;
 }
 
 #endif

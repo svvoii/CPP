@@ -27,8 +27,8 @@ T max(T &a, T &b) {
 
 /*
 ** Not much to explain here..
-** Simple template functions `swap`, `min` and `max`,
-** that speaks for themselves.
+** Simple template functions `swap`, `min` and `max`..
+**
 ** `template <typename T>` is used to make the functions
 ** generic, so they can be used with any type.
 **

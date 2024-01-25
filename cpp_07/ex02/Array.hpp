@@ -27,6 +27,9 @@
 # include <string>
 # include <exception>
 
+# include <cstdlib> // srand, rand
+# include <ctime> // time
+
 // Defining some ANSI escape codes for consol output colors
 # define RESET   "\033[0m"
 # define RED     "\033[31m"
@@ -100,8 +103,15 @@ template <typename T>
 Array<T>::Array(Array const &src) : _array(new T[src._size]), _size(src._size) {
 	std::cout << GREEN << "\t<<< copy constructor called, new Array is created and values are copied >>>" << RESET << std::endl;
 
-	for (size_t i = 0; i < this->_size; i++)
+	for (size_t i = 0; i < this->_size; i++) {
+		/* DEBUG */
 		this->_array[i] = src._array[i];
+		/**/
+		std::cout << _array[i] << " ";
+	}
+	/* DEBUG */
+	std::cout << std::endl;
+	/**/
 }
 
 /*
