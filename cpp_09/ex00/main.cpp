@@ -15,7 +15,8 @@ int main(int argc, char **argv)
 	BitcoinExchange exchange;
 
 	if (argc != 2) {
-		std::cout << "Error: could not open file." << std::endl;
+		std::cout << RED << "Wrong arguments. Usage:" << RESET << std::endl;
+		std::cout << GREEN << "btc input.txt" << RESET << std::endl;
 		return 1;
 	}
 	else {
@@ -26,11 +27,16 @@ int main(int argc, char **argv)
 		std::ifstream	file(argv[1]);
 
 		if (file.is_open()) {
+
 			while (getline(file, line)) {
-				if (!firstLine && line.find_first_not_of("0123456789-,.|") != std::string::npos) {
+
+				if (firstLine) {
+					firstLine = false;
+					continue;
+				}
+				if (!line.empty()) {
 					exchange.parseLine(line);
 				}
-				firstLine = false;
 			}
 			file.close();
 		}

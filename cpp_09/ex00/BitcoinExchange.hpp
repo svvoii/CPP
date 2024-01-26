@@ -1,3 +1,11 @@
+// Defining some ANSI escape codes for consol output colors
+#define RESET   "\033[0m"
+#define RED     "\033[31m"
+#define GREEN   "\033[32m"
+#define BLUE    "\033[34m"
+#define MAGENTA "\033[35m"
+#define CYAN    "\033[36m"
+
 #ifndef BITCOINEXCHANGE_HPP
 # define BITCOINEXCHANGE_HPP
 
@@ -8,9 +16,9 @@
 # include <cstdlib>
 # include <algorithm>
 
-const std::string		DATE_FORMAT = "YYYY-MM-DD";
-const std::string		DATA_FILE = "data_short.csv";
-//static const std::string		DATA_FILE = "data.csv";
+const std::string			DATE_FORMAT = "YYYY-MM-DD";
+//const std::string			DATA_FILE = "data_short.csv";
+static const std::string	DATA_FILE = "data.csv";
 
 class	BitcoinExchange {
 private:

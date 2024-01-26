@@ -4,7 +4,6 @@
 
 NAME = btc
 
-#CXX = g++
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -g
 

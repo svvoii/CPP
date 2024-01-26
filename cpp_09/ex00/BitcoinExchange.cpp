@@ -4,7 +4,9 @@
 ** This is the constructor definition which is called when an object is created.
 ** It is used to initialize the data members of the new object.
 */
-BitcoinExchange::BitcoinExchange(void) : yyyy_mm_dd("Date"), value("Value") {
+BitcoinExchange::BitcoinExchange(void) : 
+	yyyy_mm_dd("Date"), 
+	value("Value") {
 }
 
 /*
@@ -155,11 +157,13 @@ void	BitcoinExchange::saveHistoricalData() {
 
 void	BitcoinExchange::parseLine(std::string line) {
 
+	size_t	invalidCharIndex = line.find_first_not_of("0123456789-,.| ");
 	size_t	posSeparator = line.find("|");
 	float	result = 0;
 
-	if (posSeparator == std::string::npos) {
-		std::cout << "Error: Input line is not in the correct format: [" << line << "]" << std::endl;
+	if (invalidCharIndex != std::string::npos || posSeparator == std::string::npos) {
+		// std::cout << "Error: Input line is not in the correct format: [" << line << "]" << std::endl;
+		std::cout << RED << "Error: Bad input.. => " << RESET << line << std::endl;
 		return ;
 	}
 	yyyy_mm_dd = line.substr(0, posSeparator);
@@ -167,7 +171,6 @@ void	BitcoinExchange::parseLine(std::string line) {
 	yyyy_mm_dd.erase(std::remove_if(yyyy_mm_dd.begin(), yyyy_mm_dd.end(), ::isspace), yyyy_mm_dd.end());
 	value.erase(std::remove_if(value.begin(), value.end(), ::isspace), value.end());
 	if (isDateValid() == false || isInputValueValid() == false) {
-		//std::cout << "Error: wrong input [" << line << "]" << std::endl;
 		return ;
 	}
 	else {
