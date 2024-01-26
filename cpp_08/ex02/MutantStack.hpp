@@ -12,11 +12,11 @@
 **
 ** These are the member functions (main methods) of the `std::stack` class:
 **
-** `push(g)` - adds the element ‘g’ at the top of the stack.
-** `pop()` - deletes the top most element of the stack.
-** `top()` - returns a reference to the top most element of the stack.
-** `empty()` - returns whether the stack is empty.
-** `size()` - returns the size of the stack.
+** `push(g)`	- adds the element ‘g’ at the top of the stack.
+** `pop()`		- deletes the top most element of the stack.
+** `top()`		- returns a reference to the top most element of the stack.
+** `empty()`	- returns whether the stack is empty.
+** `size()`		- returns the size of the stack.
 **
 ** In the example of `MutantStack` class we inherit member functions
 ** from the `std::stack` class and add the functionality of iterating
@@ -76,13 +76,16 @@ class MutantStack : public std::stack<T>
 
 
 template <typename T>
-MutantStack<T>::MutantStack() : std::stack<T>() {}
+MutantStack<T>::MutantStack() : std::stack<T>() {
+}
 
 template <typename T>
-MutantStack<T>::MutantStack(MutantStack const &other) : std::stack<T>(other) {}
+MutantStack<T>::MutantStack(MutantStack const &other) : std::stack<T>(other) {
+}
 
 template <typename T>
-MutantStack<T>::~MutantStack() {}
+MutantStack<T>::~MutantStack() {
+}
 
 template <typename T>
 MutantStack<T> &MutantStack<T>::operator=(MutantStack const &other) {
@@ -95,6 +98,11 @@ MutantStack<T> &MutantStack<T>::operator=(MutantStack const &other) {
 ** `iterator` is a regular iterator/pointer that is used to traverse
 ** and modify the elements in the `MutantStack` class.
 ** It moves from the beginning to the end of the given container, `std::stack`. 
+**
+** The `c.begin()` synax is used to access the underlying container of the
+** `std::stack` class. The `std::stack` is a container adapter, meaning that
+** it's built on top of another container type (like `std::deque`, `std::vector`, etc.).
+** The underlying container is typically reffered to as `c` in the STD library. 
 */
 template <typename T>
 typename MutantStack<T>::iterator MutantStack<T>::begin() {

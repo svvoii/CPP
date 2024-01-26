@@ -1,3 +1,11 @@
+// Defining some ANSI escape codes for consol output colors
+#define RESET   "\033[0m"
+#define RED     "\033[31m"
+#define GREEN   "\033[32m"
+#define BLUE    "\033[34m"
+#define MAGENTA "\033[35m"
+#define CYAN    "\033[36m"
+
 #include "easyfind.hpp"
 
 #define MIN			10
@@ -13,44 +21,45 @@ int		main(void)
 	std::set<int>			set;
 	std::multiset<int>		multiset;
 
-	std::cout << "Fill containers with random numbers..." << std::endl;
-	std::cout << "Vector:  \t";
+	std::cout << "Fill containers with random numbers..." << RESET << std::endl;
+	std::cout << GREEN << "Vector:  \t";
 	fillWithRandomNumbers(vect, MIN, MAX, MAX_COUNT);
 	printContainer(vect);
 
-	std::cout << "List:    \t";
+	std::cout << BLUE << "List:    \t";
 	fillWithRandomNumbers(lst, MIN, MAX, MAX_COUNT);
 	printContainer(lst);
 
-	std::cout << "Deque:   \t";
+	std::cout << RED << "Deque:   \t";
 	fillWithRandomNumbers(deque, MIN, MAX, MAX_COUNT);
 	printContainer(deque);
 
-	std::cout << "Set:     \t";
+	std::cout << CYAN << "Set:     \t";
 	fillWithRandomNumbers(set, MIN, MAX, MAX_COUNT);
 	printContainer(set);
 
-	std::cout << "Multiset:\t";
+	std::cout << MAGENTA << "Multiset:\t";
 	fillWithRandomNumbers(multiset, MIN, MAX, MAX_COUNT);
 	printContainer(multiset);
 
-	std::cout << std::endl;
+	std::cout << RESET << std::endl;
 	std::cout << "Try to find [" << TO_FIND << "] in each container:" << std::endl;
 
-	std::cout << "Looking for [" << TO_FIND << "] in Vecotr... ";
+	std::cout << GREEN << "Looking for [" << TO_FIND << "] in Vecotr... ";
 	easyfind(vect, TO_FIND);
 
-	std::cout << "Looking for [" << TO_FIND << "] in a List... ";
+	std::cout << BLUE << "Looking for [" << TO_FIND << "] in a List... ";
 	easyfind(lst, TO_FIND);
 
-	std::cout << "Looking for [" << TO_FIND << "] in Deque... ";
+	std::cout << RED << "Looking for [" << TO_FIND << "] in Deque... ";
 	easyfind(deque, TO_FIND);
 
-	std::cout << "Looking for [" << TO_FIND << "] in a Set... ";
+	std::cout << CYAN << "Looking for [" << TO_FIND << "] in a Set... ";
 	easyfind(set, TO_FIND);
 
-	std::cout << "Looking for [" << TO_FIND << "] in Multiset... ";
+	std::cout << MAGENTA << "Looking for [" << TO_FIND << "] in Multiset... ";
 	easyfind(multiset, TO_FIND);
+	std::cout << RESET << std::endl;
 
 	return (0);
 };
