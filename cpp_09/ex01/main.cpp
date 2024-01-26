@@ -19,6 +19,8 @@
 
 int main(int argc, char **argv)
 {
+	RPNCalculator calculator;
+
 	if (argc != 2)
 	{
 		std::cout << "Error: Wrong number of arguments" << std::endl;
@@ -27,8 +29,8 @@ int main(int argc, char **argv)
 	try
 	{
 	
-	if (!isValidExpression(argv[1]))
-			throw std::runtime_error("Invalid expression");
+	if (!calculator.isValidExpression(argv[1]))
+		throw std::runtime_error("Invalid expression");
 	}
 	catch (std::exception &e)
 	{
@@ -36,15 +38,14 @@ int main(int argc, char **argv)
 		return (1);
 	}	
 
-	RPNCalculator<int> calculator;
 	std::string input = argv[1];
 
 	for (int i = 0; input[i]; i++) {
 		if (isspace(input[i])) {
 			continue;
-		} else if (isInSet(input[i], "0123456789")) {
+		} else if (calculator.isInSet(input[i], "0123456789")) {
 			calculator.push(input[i] - '0');
-		} else if (isInSet(input[i], "+-*/")) {
+		} else if (calculator.isInSet(input[i], "+-*/")) {
 			calculator.performOperation(input[i]);
 		}
 	}
