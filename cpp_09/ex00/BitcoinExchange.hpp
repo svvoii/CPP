@@ -21,31 +21,32 @@ const std::string			DATE_FORMAT = "YYYY-MM-DD";
 static const std::string	DATA_FILE = "data.csv";
 
 class	BitcoinExchange {
-private:
-	std::map<std::string, float>	_ratesBTC;
 
-public:
-	std::string						line;
-	std::string						yyyy_mm_dd;
-	std::string						yyyy;
-	std::string						mm;
-	std::string						dd;
-	std::string						value;
+	private:
+		std::map<std::string, float>	_ratesBTC;
 
-	BitcoinExchange(void);
-	BitcoinExchange(BitcoinExchange const &src);
-	~BitcoinExchange(void);
+	public:
+		std::string						line;
+		std::string						yyyy_mm_dd;
+		std::string						yyyy;
+		std::string						mm;
+		std::string						dd;
+		std::string						value;
 
-	//BitcoinExchange	&operator=(BitcoinExchange const &rhs);
+		BitcoinExchange(void);
+		BitcoinExchange(BitcoinExchange const &src);
+		BitcoinExchange	&operator=(BitcoinExchange const &rhs);
+		~BitcoinExchange(void);
 
-	std::map<std::string, float> const &getRates(void) const;
 
-	bool	isDateValid();
-	bool	isValueValid();
-	bool	isInputValueValid();
-	void	saveHistoricalData();
-	void	parseLine(std::string line);
-	void	outputData();
+		std::map<std::string, float> const &getRates(void) const;
+
+		bool	isDateValid();
+		bool	isValueValid();
+		bool	isInputValueValid();
+		void	saveHistoricalData();
+		void	parseLine(std::string line);
+		void	outputData();
 
 };
 

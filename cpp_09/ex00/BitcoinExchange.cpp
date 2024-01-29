@@ -23,15 +23,16 @@ BitcoinExchange::~BitcoinExchange(void) {
 /*
 ** This is the assignment operator definition which is called when an object is assigned
 ** the value of another object of the same type.
+** It will perform a deep copy of the data members of the object.
+*/
 BitcoinExchange	&BitcoinExchange::operator=(BitcoinExchange const &rhs) {
 	if (this != &rhs) {
 		yyyy_mm_dd = rhs.yyyy_mm_dd;
 		value = rhs.value;
-		ratesMap = rhs.ratesMap;
+		_ratesBTC = rhs._ratesBTC;
 	}
 	return *this;
 }
-*/
 
 bool	BitcoinExchange::isDateValid() {
 

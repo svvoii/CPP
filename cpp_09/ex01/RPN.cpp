@@ -19,9 +19,25 @@
 
 /*
 ** `RPNCalculator()` - Default constructor
-template <typename T>
 */
 RPNCalculator::RPNCalculator() {
+}
+
+/*
+** Copy constructor
+*/
+RPNCalculator::RPNCalculator(const RPNCalculator &other) {
+	*this = other;
+}
+
+/*
+** Copy assignment operator
+*/
+RPNCalculator &RPNCalculator::operator=(const RPNCalculator &other) {
+	if (this != &other) {
+		_stack = other._stack;
+	}
+	return *this;
 }
 
 RPNCalculator::~RPNCalculator() {
@@ -30,7 +46,6 @@ RPNCalculator::~RPNCalculator() {
 /* 
 ** `result()`
 ** Returns the value currently on top of the stack
-** In case
 */
 int RPNCalculator::result() {
 	while (_stack.size() > 1) {
@@ -40,9 +55,7 @@ int RPNCalculator::result() {
 }
 
 /*
-** `push(T value)`
 ** Pushes a value onto the stack
-template <typename T>
 */
 void RPNCalculator::push(int value) {
 	_stack.push(value);
@@ -53,7 +66,6 @@ void RPNCalculator::push(int value) {
 ** Pops two values, 
 ** performs the operation, based on the operator passed in, 
 ** and pushes the result back onto the stack
-template <typename T>
 */
 void RPNCalculator::performOperation(char op) {
 

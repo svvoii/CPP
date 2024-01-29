@@ -43,9 +43,11 @@ int main(int argc, char **argv)
 	for (int i = 0; input[i]; i++) {
 		if (isspace(input[i])) {
 			continue;
-		} else if (calculator.isInSet(input[i], "0123456789")) {
+		}
+		else if (calculator.isInSet(input[i], "0123456789")) {
 			calculator.push(input[i] - '0');
-		} else if (calculator.isInSet(input[i], "+-*/")) {
+		}
+		else if (calculator.isInSet(input[i], "+-*/")) {
 			calculator.performOperation(input[i]);
 		}
 	}

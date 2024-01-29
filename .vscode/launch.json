@@ -7,16 +7,16 @@
 			"request": "launch",
 			/* change this path to executable:
 			*/
-			"program": "${workspaceFolder}/cpp_09/ex00/btc",
+			"program": "${workspaceFolder}/cpp_09/ex02/PmergeMe",
 			// change this path for input args:
 			"args": [
 				/* cpp_09/ex02: 
 				"6", "e29", "3", "42", "5", "46", "52", "72", "34", "39",
+				*/
 				"17", "85", "9", "50", "11", "24", "19", "14", "35", "86"
-				*/
 				/* cpp_09/ex00: 
-				*/
 				"${workspaceFolder}/cpp_09/ex00/input.txt"
+				*/
 				/* cpp_09/ex01:
 				"8 9 * 9 - 9 - 9 - 4 - 1 +"
 				"7 7 * 7 -"

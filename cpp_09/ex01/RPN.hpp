@@ -20,24 +20,26 @@
 ```
 */
 
-//template <typename T> 
 class RPNCalculator {
-private:
-	std::stack<int> _stack;
 
-public:
-	RPNCalculator();
-	~RPNCalculator();
+	private:
+		std::stack<int> _stack;
 
-	int		result();
-	void	push(int value);
-	void	performOperation(char op);
+	public:
+		RPNCalculator();
+		RPNCalculator(const RPNCalculator &other);
+		RPNCalculator &operator=(const RPNCalculator &other);
+		~RPNCalculator();
 
-	bool	isInSet(char c, std::string set);
-	bool	isValidOperator(char c);
-	bool	isValidOperand(char c);
-	bool	isEnoughOperands(int operandCount, int operatorCount);
-	bool	isValidExpression(std::string expression);
+		int		result();
+		void	push(int value);
+		void	performOperation(char op);
+
+		bool	isInSet(char c, std::string set);
+		bool	isValidOperator(char c);
+		bool	isValidOperand(char c);
+		bool	isEnoughOperands(int operandCount, int operatorCount);
+		bool	isValidExpression(std::string expression);
 
 };
 

@@ -10,71 +10,83 @@ PmergeMe::PmergeMe(PmergeMe const & src) {
 	*this = src;
 }
 
-PmergeMe::~PmergeMe() {
-}
-
 PmergeMe &PmergeMe::operator=(PmergeMe const & rhs) {
+
 	if (this != &rhs) {
-		// to do
-		(void)rhs;
+		this->_vSorted = rhs._vSorted;
+		this->_lSorted = rhs._lSorted;
 	}
 	return *this;
 }
 
-void	printVector(std::vector<int>& v) {
-	std::cout << "Vector: ";
-	for (std::vector<int>::iterator it = v.begin(); it != v.end(); it++) {
-		std::cout << *it << " ";
-	}
-	std::cout << std::endl;
+PmergeMe::~PmergeMe() {
 }
 
-void	printList(std::list<int>& l) {
-	std::cout << "List: ";
-	for (std::list<int>::iterator it = l.begin(); it != l.end(); it++) {
-		std::cout << *it << " ";
-	}
+void	PmergeMe::sort(int argc, char **argv) {
+
+	std::vector<std::string>	args(argv + 1, argv + argc);
+
+	std::cout << std::endl << RED << "Before: " << RESET;
+	printContainer(args);
+
+	saveUnsortedContainer(_vectorUnsorted, argc, argv);
+	saveUnsortedContainer(_listUnsorted, argc, argv);
+
+	sortVector();
+
+	sortList();
+
+	fordJohnsonSortVector();
+
+	fordJohnsonSortList();
+
+	std::cout << GREEN << "After : " RESET;
+	// printContainer(_vSorted);
+	// printContainer(_lSorted);
+	// printContainer(_vSortedFordJohnson);
+	printContainer(_lSortedFordJohnson);
+
+	std::cout << MAGENTA << "Time to sort a range of " << RESET << argc - 1;
+	std::cout << MAGENTA << " elements with std::vector<int>: " << RESET << std::fixed << std::setprecision(6) << _timeToMergeSortVector << " s;" << std::endl;
+
+	std::cout << BLUE << "Time to sort a range of " << RESET << argc - 1;
+	std::cout << BLUE << " elements with std::list<int>:   " << RESET << std::fixed << std::setprecision(6) << _timeToMergeSortList << " s;" << std::endl;
+
+	std::cout << CYAN << "Time to sort a range of " << RESET << argc - 1;
+	std::cout << CYAN << " elements with Ford-Johnson and std::vector<int>: " << RESET << std::fixed << std::setprecision(6) << _timeToSortFordJohnsonVector << " s;" << std::endl;
+
+	std::cout << MAGENTA << "Time to sort a range of " << RESET << argc - 1;
+	std::cout << MAGENTA << " elements with Ford-Johnson and std::list<int>:   " << RESET << std::fixed << std::setprecision(6) << _timeToSortFordJohnsonList << " s;" << std::endl;
+
 	std::cout << std::endl;
 }
 
 /*
+** SORT USING VECTOR
+**
 ** The following 3 functions are used to sort a vector of integers
 ** using the merge-sort algorithm.
-** Th algorithm recursively splits the vector in two parts until
+** This algorithm recursively splits the vector in two parts until
 ** each part contains only one element.
 ** 
 ** Then, the algorithm merges the two parts by comparing the elements
 ** of each part and pushing the smallest element into a new vector.
 **
-** `sortVector` is the main function that calls the other two functions.
+** `sortVector` is the main sorting function that calls the other two functions.
 ** First we declare a vector of `unsorted` integers and fill it with the
 ** values passed as arguments. We also print the unsorted vector.
 ** Then we call the `splitInTwoThenMergeVector` to sort the vector.
 ** Finally we print the sorted vector and the time it took to sort it.
 */
-void	PmergeMe::sortVector(int argc, char **argv) {
+void	PmergeMe::sortVector() {
 
-	std::vector<int>	unsorted;
+	struct timeval	start, end;
 
-	for (int i = 1; i < argc; i++) {
-		unsorted.push_back(atoi(argv[i]));
-	}
+	gettimeofday(&start, NULL);
+	this->_vSorted = splitInTwoThenMergeVector(_vectorUnsorted);
+	gettimeofday(&end, NULL);
 
-	std::cout << "Before: ";
-	printVector(unsorted);
-
-	std::clock_t	start = std::clock();
-	
-	this->_vSorted = splitInTwoThenMergeVector(unsorted);
-
-	double	timeLapse = static_cast<double>(std::clock() - start) / static_cast<double>(CLOCKS_PER_SEC) * 100000;
-
-	std::cout << "After: ";
-	printVector(this->_vSorted);
-	
-	std::cout << "Time to process a range of " << argc - 1;
-	std::cout << " elements with std::vector<int> : " << timeLapse;
-	std::cout << " ~s" << std::endl;
+	_timeToMergeSortVector = ((end.tv_sec - start.tv_sec) * 1000000 + (end.tv_usec - start.tv_usec)) / 1000000.0;
 }
 
 /*
@@ -84,7 +96,7 @@ void	PmergeMe::sortVector(int argc, char **argv) {
 ** and call itself on each part until the base if condition is met.
 ** Then, the function will call `mergeVector` to merge the two parts.
 */
-static std::vector<int>	splitInTwoThenMergeVector(std::vector<int>& v) {
+std::vector<int>	PmergeMe::splitInTwoThenMergeVector(std::vector<int>& v) {
 
 	if (v.size() <= 1) {
 		return v;
@@ -107,7 +119,8 @@ static std::vector<int>	splitInTwoThenMergeVector(std::vector<int>& v) {
 ** `mergeVector` will merge the two parts by comparing the elements of each part
 ** and pushing the smallest element into a new vector.
 */
-static std::vector<int>	mergeVector(std::vector<int>& first, std::vector<int>& second) {
+std::vector<int>	PmergeMe::mergeVector(std::vector<int>& first, std::vector<int>& second) {
+
 	std::vector<int>	merged;
 	std::vector<int>::iterator	it1 = first.begin();
 	std::vector<int>::iterator	it2 = second.begin();
@@ -134,9 +147,20 @@ static std::vector<int>	mergeVector(std::vector<int>& first, std::vector<int>& s
 }
 
 /*
-** 
+** SORT USING LIST
 */
-std::list<int> mergeInsertList(std::list<int>& lst) {
+void	PmergeMe::sortList() {
+
+	struct timeval	start, end;
+
+	gettimeofday(&start, NULL);
+	this->_lSorted = mergeInsertList(_listUnsorted);
+	gettimeofday(&end, NULL);
+
+	_timeToMergeSortList = ((end.tv_sec - start.tv_sec) * 1000000 + (end.tv_usec - start.tv_usec)) / 1000000.0;
+}
+
+std::list<int> PmergeMe::mergeInsertList(std::list<int>& lst) {
 
 	if (lst.size() <= 1) {
 		return lst;
@@ -160,7 +184,7 @@ std::list<int> mergeInsertList(std::list<int>& lst) {
 	return result;
 }
 
-std::list<int>	mergeList(std::list<int>& first, std::list<int>& second) {
+std::list<int>	PmergeMe::mergeList(std::list<int>& first, std::list<int>& second) {
 	std::list<int>	merged;
 	std::list<int>::iterator	it1 = first.begin();
 	std::list<int>::iterator	it2 = second.begin();
@@ -186,29 +210,154 @@ std::list<int>	mergeList(std::list<int>& first, std::list<int>& second) {
 	return merged;
 }
 
-void	PmergeMe::sortList(int argc, char **argv) {
+/*
+** FORD-JOHNSON ALGORITHM WITH VECTOR
+*/
+void	PmergeMe::fordJohnsonSortVector() {
 
-	std::list<int>	unsorted;
+	std::vector<std::pair<int, int> >	pairs;
+	int n = _vectorUnsorted.size();
+	struct timeval	start, end;
 
-	for (int i = 1; i < argc; i++) {
-		unsorted.push_back(atoi(argv[i]));
+	gettimeofday(&start, NULL);
+
+	// Pairing the elements of the vector and sorting them
+	for (int i = 0; i < n; i += 2) {
+		if (_vectorUnsorted[i] < _vectorUnsorted[i + 1]) {
+			pairs.push_back(std::make_pair(_vectorUnsorted[i], _vectorUnsorted[i + 1]));
+		}
+		else {
+			pairs.push_back(std::make_pair(_vectorUnsorted[i + 1], _vectorUnsorted[i]));
+		}
 	}
 
-	std::cout << "Before: ";
-	printList(unsorted);
+	// If there is an unpaired element, we add it to the end of the vector
+	if (n % 2 == 1) {
+		pairs.push_back(std::make_pair(_vectorUnsorted[n - 1], INT_MAX));
+	}
 
-	std::clock_t	start = std::clock();
-	
-	std::list<int>	sorted = mergeInsertList(unsorted);
+	// Merging the pairs into a sorted vector
+	while (!pairs.empty()) {
 
-	double	timeLapse = static_cast<double>(std::clock() - start) / static_cast<double>(CLOCKS_PER_SEC) * 100000;
+		int min_index = 0;
 
-	std::cout << "After: ";
-	printList(sorted);
-	
-	std::cout << "Time to process a range of " << argc - 1;
-	std::cout << " elements with std::list<int> : " << timeLapse;
-	std::cout << " ~s" << std::endl;
+		for (size_t i = 1; i < pairs.size(); i++) {
+			if (pairs[i].first < pairs[min_index].first) {
+				min_index = i;
+			}
+		}
+
+		_vSortedFordJohnson.push_back(pairs[min_index].first);
+
+		if (pairs[min_index].second != std::numeric_limits<int>::max()) {
+			pairs[min_index].first = pairs[min_index].second;
+			pairs[min_index].second = std::numeric_limits<int>::max();
+		}
+		else {
+			pairs.erase(pairs.begin() + min_index);
+		}
+	}
+
+	gettimeofday(&end, NULL);
+
+	_timeToSortFordJohnsonVector = ((end.tv_sec - start.tv_sec) * 1000000 + (end.tv_usec - start.tv_usec)) / 1000000.0;
+
+}
+
+/*
+** FORD-JOHNSON ALGORITHM WITH LIST
+*/
+void	PmergeMe::fordJohnsonSortList() {
+
+	std::list<std::pair<int, int> >	pairs;
+	int n = _listUnsorted.size();
+	struct timeval	start, end;
+
+	gettimeofday(&start, NULL);
+
+	// Pairing the elements of the list and sorting them
+	std::list<int>::iterator	it = _listUnsorted.begin();
+	for (int i = 0; i < n; i += 2) {
+
+		std::list<int>::iterator	first = it++;
+		std::list<int>::iterator	second = it++;
+		if (*first < *second) {
+			pairs.push_back(std::make_pair(*first, *second));
+		}
+		else {
+			pairs.push_back(std::make_pair(*second, *first));
+		}
+	}
+
+	// If there is an unpaired element, we add it to the end of the list
+	if (n % 2 == 1) {
+		pairs.push_back(std::make_pair(*(--it), INT_MAX));
+	}
+
+	// Merging the pairs into a sorted list
+	while (!pairs.empty()) {
+
+		std::list<std::pair<int, int> >::iterator	min_it = pairs.begin();
+		//int min_index = 0;
+
+		for (std::list<std::pair<int, int> >::iterator it = pairs.begin(); it != pairs.end(); it++) {
+			if (it->first < min_it->first) {
+				min_it = it;
+			}
+		}
+
+		_lSortedFordJohnson.push_back(min_it->first);
+
+		if (min_it->second != INT_MAX) {
+			min_it->first = min_it->second;
+			min_it->second = INT_MAX;
+		}
+		else {
+			pairs.erase(min_it);
+		}
+	}
+
+	gettimeofday(&end, NULL);
+
+	_timeToSortFordJohnsonList = ((end.tv_sec - start.tv_sec) * 1000000 + (end.tv_usec - start.tv_usec)) / 1000000.0;
+}
+
+
+/*
+** Helper functions
+*/
+
+/*
+** Saving the unsorted elements into container
+*/
+template <typename T>
+void	PmergeMe::saveUnsortedContainer(T& container, int argc, char **argv) {
+
+	for (int i = 1; i < argc; i++) {
+
+		container.push_back(atoi(argv[i]));
+	}
+}
+
+/*
+** Printing out the container
+*/
+template <typename T>
+void	PmergeMe::printContainer(const T& container) {
+
+	typename T::const_iterator	it = container.begin();
+	int count = 0;
+
+	for (; it != container.end() && count < 14; it++, count++) {
+
+		std::cout << CYAN << *it << " ";
+	}
+
+	if (it != container.end()) {
+		std::cout << "[...]";
+	}
+
+	std::cout << RESET << std::endl;
 }
 
 /*
@@ -220,10 +369,8 @@ void	PmergeMe::sortList(int argc, char **argv) {
 bool	PmergeMe::isValidInputString(int argc, char **argv) {
 
 	for (int i = 1; i < argc; i++) {
+
 		if (std::string(argv[i]).find_first_not_of("0123456789 ") != std::string::npos) {
-			return false;
-		}
-		if (atoi(argv[i]) < 0) {
 			return false;
 		}
 	}
@@ -239,7 +386,9 @@ bool	PmergeMe::isValidNumSequence(int argc, char **argv) {
 	std::vector<int>	numbers;
 
 	for (int i = 1; i < argc; i++) {
+
 		num = atoi(argv[i]);
+
 		if (std::find(numbers.begin(), numbers.end(), num) != numbers.end()) {
 			return false;
 		}
@@ -247,96 +396,3 @@ bool	PmergeMe::isValidNumSequence(int argc, char **argv) {
 	}
 	return true;
 }
-
-/*
-** Ford-Johnson algorithm
-**
-** This implementation constructs a graph of tasks, 
-** where each task represents a number in the sequence. 
-** The graph is then used to find the longest path, 
-** which represents the optimal order in which to perform the tasks. 
-**
-** The sorted sequence is then constructed by performing the tasks in the optimal order.
-
-#include <iostream>
-#include <vector>
-#include <queue>
-#include <limits>
-*/
-
-using namespace std;
-
-/*
-** Here we definingthe struct Task to represent each number in the sequence.
-** Each task has a value and a list of dependencies.
-** The value is the number itself.
-** The dependencies are the indices of all numbers (in the unsorted sequence)
-** that come before the number/value in the given task.
-**
-** For example, if the sequence is {3, 1, 4, 2}, and we are constructing the task for 4,
-** then the value of the task is 4, and the dependencies are the indices of 3 and 1,
-** `dependencies = {0, 1}`.
-** because 3 and 1 come before 4 in the unsorted sequence.
-*/
-struct Task {
-	int value; // The value of the number
-	vector<int> dependencies; // The indices of the numbers that come before this number
-};
-
-// Define a function to construct the graph for the Ford-Johnson algorithm
-vector<Task> constructGraph(vector<int>& sequence) {
-	vector<Task> graph(sequence.size());
-	for (int i = 0; i < sequence.size(); i++) {
-		graph[i].value = sequence[i];
-		for (int j = 0; j < i; j++) {
-			if (sequence[j] < sequence[i]) {
-				graph[i].dependencies.push_back(j);
-			}
-		}
-	}
-	return graph;
-}
-
-// Define a function to find the longest path in the graph using the Bellman-Ford algorithm
-vector<int> findLongestPath(vector<Task>& graph) {
-	vector<int> dist(graph.size(), numeric_limits<int>::min());
-	dist[0] = 0;
-	for (int i = 0; i < graph.size(); i++) {
-		for (int j = 0; j < graph[i].dependencies.size(); j++) {
-			int k = graph[i].dependencies[j];
-			if (dist[k] + graph[k].value > dist[i]) {
-				dist[i] = dist[k] + graph[k].value;
-			}
-		}
-	}
-	return dist;
-}
-
-// Define a function to sort the sequence using the Ford-Johnson algorithm
-vector<int> fordJohnsonSort(vector<int>& sequence) {
-	vector<Task> graph = constructGraph(sequence);
-	vector<int> dist = findLongestPath(graph);
-	vector<int> sorted(sequence.size());
-	priority_queue<pair<int, int>> pq;
-	for (int i = 0; i < sequence.size(); i++) {
-		pq.push(make_pair(dist[i], sequence[i]));
-	}
-	for (int i = 0; i < sequence.size(); i++) {
-		sorted[i] = pq.top().second;
-		pq.pop();
-	}
-	return sorted;
-}
-
-/*
-// Define a main function to test the Ford-Johnson algorithm
-int main() {
-	vector<int> sequence = {3, 1, 4, 2};
-	vector<int> sorted = fordJohnsonSort(sequence);
-	for (int i = 0; i < sorted.size(); i++) {
-		cout << sorted[i] << " ";
-	}
-	cout << endl;
-	return 0;
-}
-*/

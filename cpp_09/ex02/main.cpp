@@ -10,7 +10,8 @@
 ** `Time to process a range of 5 elements with std::list : 0.000000 us`
 ** `Time to process a range of 5 elements with std::vector : 0.000000 us`
 **
-** `$>./PmergeMe 'shuf -i 1-100000 -n 3000 | tr "\n" " "'`
+** INPUTS :
+** `./PmergeMe `shuf -i 1-100000 -n 3000 | tr "\n" " "``
 ** `Before: 141 79 526 321 [...]`
 ** `After: 79 141 321 526 [...]`
 ** `Time to process a range of 3000 elements with std::list : 0.000000 us`
@@ -36,11 +37,13 @@ int main(int argc, char **argv) {
 			throw std::invalid_argument("duplicate number in the sequence.");
 		}
 
-		std::cout << "Using vector<int>:" << std::endl;
-		pmergeMe.sortVector(argc, argv);
+		pmergeMe.sort(argc, argv);
 
-		std::cout << std::endl << "Using list<int>:" << std::endl;
-		pmergeMe.sortList(argc, argv);
+		// std::cout << "Using vector<int>:" << std::endl;
+		// pmergeMe.sortVector(argc, argv);
+
+		// std::cout << std::endl << "Using list<int>:" << std::endl;
+		// pmergeMe.sortList(argc, argv);
 
 	}
 	catch(const std::exception& e) {
