@@ -40,20 +40,20 @@ void	PmergeMe::sort(int argc, char **argv) {
 
 	fordJohnsonSortList();
 
-	std::cout << GREEN << "After : " RESET;
-	// printContainer(_vSorted);
+	std::cout << YELLOW << "After : " RESET;
+	printContainer(_vSorted);
 	// printContainer(_lSorted);
 	// printContainer(_vSortedFordJohnson);
-	printContainer(_lSortedFordJohnson);
+	// printContainer(_lSortedFordJohnson);
 
-	std::cout << MAGENTA << "Time to sort a range of " << RESET << argc - 1;
-	std::cout << MAGENTA << " elements with std::vector<int>: " << RESET << std::fixed << std::setprecision(6) << _timeToMergeSortVector << " s;" << std::endl;
-
-	std::cout << BLUE << "Time to sort a range of " << RESET << argc - 1;
-	std::cout << BLUE << " elements with std::list<int>:   " << RESET << std::fixed << std::setprecision(6) << _timeToMergeSortList << " s;" << std::endl;
+	std::cout << GREEN << "Time to sort a range of " << RESET << argc - 1;
+	std::cout << GREEN << " elements with merge-sort and std::vector<int>: " << RESET << std::fixed << std::setprecision(6) << _timeToMergeSortVector << " s;" << std::endl;
 
 	std::cout << CYAN << "Time to sort a range of " << RESET << argc - 1;
-	std::cout << CYAN << " elements with Ford-Johnson and std::vector<int>: " << RESET << std::fixed << std::setprecision(6) << _timeToSortFordJohnsonVector << " s;" << std::endl;
+	std::cout << CYAN << " elements with merge-sort and std::list<int>:   " << RESET << std::fixed << std::setprecision(6) << _timeToMergeSortList << " s;" << std::endl;
+
+	std::cout << BLUE << "Time to sort a range of " << RESET << argc - 1;
+	std::cout << BLUE << " elements with Ford-Johnson and std::vector<int>: " << RESET << std::fixed << std::setprecision(6) << _timeToSortFordJohnsonVector << " s;" << std::endl;
 
 	std::cout << MAGENTA << "Time to sort a range of " << RESET << argc - 1;
 	std::cout << MAGENTA << " elements with Ford-Johnson and std::list<int>:   " << RESET << std::fixed << std::setprecision(6) << _timeToSortFordJohnsonList << " s;" << std::endl;
@@ -222,7 +222,7 @@ void	PmergeMe::fordJohnsonSortVector() {
 	gettimeofday(&start, NULL);
 
 	// Pairing the elements of the vector and sorting them
-	for (int i = 0; i < n; i += 2) {
+	for (int i = 0; i < n - 1; i += 2) {
 		if (_vectorUnsorted[i] < _vectorUnsorted[i + 1]) {
 			pairs.push_back(std::make_pair(_vectorUnsorted[i], _vectorUnsorted[i + 1]));
 		}
@@ -277,7 +277,7 @@ void	PmergeMe::fordJohnsonSortList() {
 
 	// Pairing the elements of the list and sorting them
 	std::list<int>::iterator	it = _listUnsorted.begin();
-	for (int i = 0; i < n; i += 2) {
+	for (int i = 0; i < n - 1; i += 2) {
 
 		std::list<int>::iterator	first = it++;
 		std::list<int>::iterator	second = it++;
@@ -291,7 +291,7 @@ void	PmergeMe::fordJohnsonSortList() {
 
 	// If there is an unpaired element, we add it to the end of the list
 	if (n % 2 == 1) {
-		pairs.push_back(std::make_pair(*(--it), INT_MAX));
+		pairs.push_back(std::make_pair(*it, INT_MAX));
 	}
 
 	// Merging the pairs into a sorted list

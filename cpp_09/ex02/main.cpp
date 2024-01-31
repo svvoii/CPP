@@ -39,12 +39,6 @@ int main(int argc, char **argv) {
 
 		pmergeMe.sort(argc, argv);
 
-		// std::cout << "Using vector<int>:" << std::endl;
-		// pmergeMe.sortVector(argc, argv);
-
-		// std::cout << std::endl << "Using list<int>:" << std::endl;
-		// pmergeMe.sortList(argc, argv);
-
 	}
 	catch(const std::exception& e) {
 		std::cerr << "Error: " << e.what() << '\n';
