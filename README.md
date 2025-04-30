@@ -1,23 +1,82 @@
-# C++
+# C++ Project Series
 
-I have enjoyed the C++ modules immensely. The completed tosks successfully demonstrates the grasp of Object-Oriented Programming (OOP) principles.  
-Intricately designed, these projects delve deep into C++ language features, emphasizing the application of OOP concepts such as encapsulation, polymorphism, and inheritance.  
-Post-completion, I emerged with a strengthened ability to design, implement, and manage complex C++ applications.  
+## Overview
 
-Additionally, skills acquired include the enhanced use of class structures, object management, and leveraging OOP principles to improve code efficiency and maintainability.  
+This project is a comprehensive series of C++ modules designed to build and strengthen Object-Oriented Programming (OOP) skills. It addresses the need for a structured understanding of core C++ concepts by progressively applying theory to practical, real-world problems.  
 
-- CPP00: Fundamental exploration of C++ basics, strengthening the understanding and application of syntax, data types and control structures.  
-- CPP01: Deepened knowledge of memory allocation, pointers and references, exploring their utilization in C++.  
-- CPP02: Introduced concepts of Object-Oriented Programming (OOP), including classes and objects, encapsulation, and constructors and destructors.  
-- CPP03: Further delved into OOP, focusing on inheritance and polymorphism, the cornerstone of C++ programs.  
-- CPP04: Explored advanced C++ concepts, including abstract classes and interfaces, enriching my software design skills.  
-- CPP05: Enhanced understanding of exception handling in C++, equipping me to build robust and fault-resistant applications.  
-- CPP06: Focused on C++ Standard Template Library (STL), learning about powerful features like vectors, iterators, and algorithms.  
-- CPP07: Delved into C++ templates, both function and class templates, enabling me to write more efficient and reusable code.  
-- CPP08: This module focuses on the use of the Standard Template Library (STL) in C++, as well as use of standard Containers and Algorithms in C++.
-- CPP09: This final module serves as a comprehensive test of all previous knowledge. It synthesizes everything learned from the basics to advanced C++ concepts, including OOP, STL, templates.
+Targeted at aspiring software developers, the series enhances proficiency in C++ through real coding challenges, focusing on encapsulation, polymorphism, inheritance, and modern programming patterns. By the end, it empowers developers to design, implement, and maintain robust C++ applications.
 
+---
 
----   
-Completed in November 2023
+## Features
+
+•	Object-Oriented Programming (encapsulation, inheritance, polymorphism)   
+•	Class design and object lifecycle management   
+•	Use of abstract classes and interfaces for flexible architecture   
+•	Exception handling for building fault-tolerant applications   
+•	Efficient coding through the C++ Standard Template Library (STL)   
+•	Reusable code via function and class templates   
+•	In-depth memory management (pointers, references, allocation)   
+•	Real-world project synthesis in final module   
+
+---
+
+## Tech Stack
+
+| Category | Technologies |
+| -------- | ------------ |
+| Programming | C++, Makefile |
+| Concepts | OOP, Memory Management, Templates, STL |
+| Dev Tools | Vim, Git, VSCode |
+| Testing | Manual Testing |
+
+---
+
+## Lessons Learned
+
+This project has improved my skills in several areas, including:
+
+•	Designing modular, scalable applications using OOP principles in C++ (encapsulation, inheritance, polymorphism)   
+•	Managing complex memory operations and debugging pointer issues (pointers, references, dynamic memory)   
+•	Writing reusable, efficient code with templates and STL (standard template library)   
+•	Building fault-resistant applications through structured exception handling (try/catch)   
+•	Strengthening logical thinking, planning, and debugging workflows (problem-solving)   
+
+---
+
+## Try it out!
+
+Pre-requisites:
+
+•	C++ Compiler (e.g., g++, clang++)   
+•	Git installed   
+
+```bash
+# Clone the repo
+git clone https://github.com/svvoii/CPP.git
+
+# Go into the project directory
+cd CPP
+
+# Compile a specific module (e.g. CPP04/ex00)
+cd cpp04
+cd ex00
+make
+
+# Run compiled app
+./Polimorphism
+
+```
+
+Each module is independent. Ensure you have a working C++ compiler installed, and use the provided Makefile to build execution file for each exercise in every module.
+
+---
+
+## Author
+
+[My GitHub](https://github.com/svvoii)  
+[My LinkedIn](https://www.linkedin.com/in/bocancia/)  
+[My Portfolio](https://sbocanci.me/)  
+
+---
 
